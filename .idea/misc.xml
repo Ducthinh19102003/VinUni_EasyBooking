@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/ic_email_black_24dp.xml" value="0.216" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_local_phone_black_24dp.xml" value="0.216" />
+        <entry key="app/src/main/res/drawable-v24/ic_person_black_24dp.xml" value="0.216" />
+        <entry key="app/src/main/res/drawable/btn_bg.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/calendar_bg.xml" value="0.1485" />
+        <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_menu_camera.xml" value="0.1085" />
+        <entry key="app/src/main/res/drawable/ic_menu_gallery.xml" value="0.1085" />
+        <entry key="app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1085" />
+        <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.1085" />
+        <entry key="app/src/main/res/layout/account_student.xml" value="0.11859741210937501" />
+        <entry key="app/src/main/res/layout/activity_admin_info.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/activity_booking.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.1574074074074074" />
+        <entry key="app/src/main/res/layout/activity_home_page_professor.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/activity_login_admin.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/activity_login_professor.xml" value="0.21912078857421874" />
+        <entry key="app/src/main/res/layout/activity_login_student.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2761886596679688" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.2157135009765625" />
+        <entry key="app/src/main/res/layout/activity_office_hour_booking.xml" value="0.22708333333333333" />
+        <entry key="app/src/main/res/layout/activity_view_calender.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/admin_info.xml" value="0.478515625" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/layout/home_page.xml" value="0.22810492882361777" />
+        <entry key="app/src/main/res/layout/item_professor.xml" value="0.1404485774945609" />
+        <entry key="app/src/main/res/layout/login.xml" value="0.18681318681318682" />
+        <entry key="app/src/main/res/layout/login_admin.xml" value="0.2764897664388021" />
+        <entry key="app/src/main/res/layout/login_professor.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/login_student.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/register_admin.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/layout/register_professor.xml" value="0.26221415201822923" />
+        <entry key="app/src/main/res/layout/register_student.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.18697916666666667" />
+        <entry key="app/src/main/res/menu/main_activity2.xml" value="0.20885416666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
