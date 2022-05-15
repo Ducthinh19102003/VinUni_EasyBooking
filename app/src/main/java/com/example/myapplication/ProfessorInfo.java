@@ -1,9 +1,17 @@
 package com.example.myapplication;
+
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
+
+import java.util.ArrayList;
+
 public class ProfessorInfo {
     private String email;
     private String password;
     private String name;
     private String subject;
+    private ArrayList<DocumentReference> Events;
+    private ArrayList<Timestamp> availableTimeSlots;
 
 
     public ProfessorInfo() {
@@ -15,6 +23,8 @@ public class ProfessorInfo {
         this.password = password;
         this.subject = subject;
         this.email = email;
+        this.Events = new ArrayList<>();
+        this.availableTimeSlots = new ArrayList<>();
     }
 
     public String getEmail() {
@@ -47,6 +57,20 @@ public class ProfessorInfo {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public ArrayList<DocumentReference> getEvents(){
+        return this.Events;
+    }
+
+    public ArrayList<Timestamp> getAvailableTimeSlots(){
+        return this.availableTimeSlots;
+    }
+
+    public void setEvents(ArrayList<DocumentReference> eventsList){ this.Events = eventsList; }
+
+    public void setAvailableTimeSlots(ArrayList<Timestamp> availableTimeSlots) {
+        this.availableTimeSlots = availableTimeSlots;
     }
 }
 
