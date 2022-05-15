@@ -1804,9 +1804,11 @@ int drawable googleg_standard_color_18 0x7f08007b
 int drawable ic_baseline_account_circle_24 0x7f08007c
 int drawable ic_baseline_event_24 0x7f08007d
 int drawable ic_clock_black_24dp 0x7f08007e
+int drawable ic_email_black_24dp 0x7f0800af
 int drawable ic_keyboard_black_24dp 0x7f08007f
 int drawable ic_launcher_background 0x7f080080
 int drawable ic_launcher_foreground 0x7f080081
+int drawable ic_local_phone_black_24dp 0x7f0800b0
 int drawable ic_menu_camera 0x7f080082
 int drawable ic_menu_gallery 0x7f080083
 int drawable ic_menu_slideshow 0x7f080084
@@ -1814,6 +1816,7 @@ int drawable ic_mtrl_checked_circle 0x7f080085
 int drawable ic_mtrl_chip_checked_black 0x7f080086
 int drawable ic_mtrl_chip_checked_circle 0x7f080087
 int drawable ic_mtrl_chip_close_circle 0x7f080088
+int drawable ic_person_black_24dp 0x7f0800b1
 int drawable image1 0x7f0800ae
 int drawable material_cursor_drawable 0x7f080089
 int drawable material_ic_calendar_black_24dp 0x7f08008a
@@ -1967,6 +1970,7 @@ int id center_horizontal 0x7f0a006b
 int id center_vertical 0x7f0a006c
 int id chain 0x7f0a006d
 int id chains 0x7f0a006e
+int id changeProfile 0x7f0a01e0
 int id checkbox 0x7f0a006f
 int id checked 0x7f0a0070
 int id chip 0x7f0a0071
@@ -2065,6 +2069,9 @@ int id ifRoom 0x7f0a00cd
 int id ignore 0x7f0a00ce
 int id ignoreRequest 0x7f0a00cf
 int id image 0x7f0a00d0
+int id imageView2 0x7f0a01e1
+int id imageView3 0x7f0a01e2
+int id imageView4 0x7f0a01e3
 int id img_professor 0x7f0a01db
 int id info 0x7f0a00d1
 int id invisible 0x7f0a00d2
@@ -2085,6 +2092,7 @@ int id linear 0x7f0a00e0
 int id listMode 0x7f0a00e1
 int id list_item 0x7f0a00e2
 int id locale 0x7f0a00e3
+int id logout 0x7f0a01e4
 int id ltr 0x7f0a00e4
 int id masked 0x7f0a00e5
 int id material_clock_display 0x7f0a00e6
@@ -2187,6 +2195,10 @@ int id prof_email 0x7f0a01dc
 int id prof_list 0x7f0a01dd
 int id prof_name 0x7f0a01de
 int id prof_subjects 0x7f0a01df
+int id profileEmail 0x7f0a01e5
+int id profileImage 0x7f0a01e6
+int id profileName 0x7f0a01e7
+int id profilePhone 0x7f0a01e8
 int id progressBar 0x7f0a0146
 int id progress_circular 0x7f0a0147
 int id progress_horizontal 0x7f0a0148
@@ -2194,6 +2206,8 @@ int id radio 0x7f0a0149
 int id ratio 0x7f0a014a
 int id rectangles 0x7f0a014b
 int id registerProf 0x7f0a014c
+int id resendCode 0x7f0a01e9
+int id resetPasswordLocal 0x7f0a01ea
 int id reverseSawtooth 0x7f0a014d
 int id right 0x7f0a014e
 int id rightToLeft 0x7f0a014f
@@ -2291,6 +2305,9 @@ int id textSpacerNoTitle 0x7f0a01aa
 int id textStart 0x7f0a01ab
 int id textTop 0x7f0a01ac
 int id textView 0x7f0a01ad
+int id textView3 0x7f0a01eb
+int id textView4 0x7f0a01ec
+int id textView5 0x7f0a01ed
 int id text_input_end_icon 0x7f0a01ae
 int id text_input_error_icon 0x7f0a01af
 int id text_input_start_icon 0x7f0a01b0
@@ -2323,6 +2340,7 @@ int id uniform 0x7f0a01ca
 int id unlabeled 0x7f0a01cb
 int id up 0x7f0a01cc
 int id useLogo 0x7f0a01cd
+int id verifyMsg 0x7f0a01ee
 int id view_offset_helper 0x7f0a01ce
 int id view_tree_lifecycle_owner 0x7f0a01cf
 int id view_tree_saved_state_registry_owner 0x7f0a01d0
@@ -2404,8 +2422,10 @@ int layout abc_search_dropdown_item_icons_2line 0x7f0d0018
 int layout abc_search_view 0x7f0d0019
 int layout abc_select_dialog_material 0x7f0d001a
 int layout abc_tooltip 0x7f0d001b
+int layout account_student 0x7f0d007c
 int layout activity_booking 0x7f0d001c
 int layout activity_home_page_professor 0x7f0d001d
+int layout activity_home_page_student 0x7f0d007d
 int layout activity_main 0x7f0d001e
 int layout activity_office_hour_booking 0x7f0d007a
 int layout activity_view_calender 0x7f0d001f
@@ -2427,7 +2447,6 @@ int layout design_navigation_menu 0x7f0d002e
 int layout design_navigation_menu_item 0x7f0d002f
 int layout design_text_input_end_icon 0x7f0d0030
 int layout design_text_input_start_icon 0x7f0d0031
-int layout home_page 0x7f0d0032
 int layout item_professor 0x7f0d007b
 int layout login 0x7f0d0033
 int layout material_chip_input_combo 0x7f0d0034

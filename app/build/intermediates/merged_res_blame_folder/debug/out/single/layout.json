@@ -1,5 +1,21 @@
 [
     {
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_office_hour_booking.xml",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_office_hour_booking.xml"
+    },
+    {
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_home_page_professor.xml",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_home_page_professor.xml"
+    },
+    {
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/register_professor.xml",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/register_professor.xml"
+    },
+    {
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/home_page.xml",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/home_page.xml"
+    },
+    {
         "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/register_student.xml",
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/register_student.xml"
     },
@@ -16,27 +32,19 @@
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_booking.xml"
     },
     {
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/account_student.xml",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/account_student.xml"
+    },
+    {
         "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/item_professor.xml",
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/item_professor.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_office_hour_booking.xml",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_office_hour_booking.xml"
-    },
-    {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_home_page_professor.xml",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_home_page_professor.xml"
-    },
-    {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/register_professor.xml",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/register_professor.xml"
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_home_page_student.xml",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_home_page_student.xml"
     },
     {
         "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_view_calender.xml",
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_view_calender.xml"
-    },
-    {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/home_page.xml",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/home_page.xml"
     }
 ]

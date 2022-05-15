@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import com.example.myapplication.RecyclerViewProfessor.OfficeHourBooking;
 public class HomePageStudent extends AppCompatActivity {
     CardView booking;
     TextView name,email;
+    static String studentName;
+    static String studentEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -40,6 +40,10 @@
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/login.xml"
     },
     {
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_activity_home_page_student.xml.flat",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_home_page_student.xml"
+    },
+    {
         "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-xhdpi/ic_launcher.webp"
     },
@@ -52,8 +56,16 @@
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/navigation/mobile_navigation.xml"
     },
     {
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable-v24_ic_person_black_24dp.xml.flat",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable-v24/ic_person_black_24dp.xml"
+    },
+    {
         "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable_btn_bg.xml.flat",
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable/btn_bg.xml"
+    },
+    {
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable-v24_ic_local_phone_black_24dp.xml.flat",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable-v24/ic_local_phone_black_24dp.xml"
     },
     {
         "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -120,12 +132,12 @@
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable-v24/image1.jpeg"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_home_page.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/home_page.xml"
-    },
-    {
         "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/font_alata.xml.flat",
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/font/alata.xml"
+    },
+    {
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable-v24_ic_email_black_24dp.xml.flat",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable-v24/ic_email_black_24dp.xml"
     },
     {
         "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_activity_home_page_professor.xml.flat",
@@ -154,6 +166,10 @@
     {
         "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/font_amaranth_bold.xml.flat",
         "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/font/amaranth_bold.xml"
+    },
+    {
+        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_account_student.xml.flat",
+        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/account_student.xml"
     },
     {
         "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_item_professor.xml.flat",

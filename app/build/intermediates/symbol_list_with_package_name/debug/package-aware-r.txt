@@ -1805,9 +1805,11 @@ drawable googleg_standard_color_18
 drawable ic_baseline_account_circle_24
 drawable ic_baseline_event_24
 drawable ic_clock_black_24dp
+drawable ic_email_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_local_phone_black_24dp
 drawable ic_menu_camera
 drawable ic_menu_gallery
 drawable ic_menu_slideshow
@@ -1815,6 +1817,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_person_black_24dp
 drawable image1
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
@@ -1968,6 +1971,7 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
+id changeProfile
 id checkbox
 id checked
 id chip
@@ -2066,6 +2070,9 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView2
+id imageView3
+id imageView4
 id img_professor
 id info
 id invisible
@@ -2086,6 +2093,7 @@ id linear
 id listMode
 id list_item
 id locale
+id logout
 id ltr
 id masked
 id material_clock_display
@@ -2188,6 +2196,10 @@ id prof_email
 id prof_list
 id prof_name
 id prof_subjects
+id profileEmail
+id profileImage
+id profileName
+id profilePhone
 id progressBar
 id progress_circular
 id progress_horizontal
@@ -2195,6 +2207,8 @@ id radio
 id ratio
 id rectangles
 id registerProf
+id resendCode
+id resetPasswordLocal
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2292,6 +2306,9 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
+id textView3
+id textView4
+id textView5
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2324,6 +2341,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id verifyMsg
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
@@ -2405,8 +2423,10 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout account_student
 layout activity_booking
 layout activity_home_page_professor
+layout activity_home_page_student
 layout activity_main
 layout activity_office_hour_booking
 layout activity_view_calender
@@ -2428,7 +2448,6 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
-layout home_page
 layout item_professor
 layout login
 layout material_chip_input_combo

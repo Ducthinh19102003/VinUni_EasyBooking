@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-57:12
-INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-57:12
-INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-57:12
-INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-57:12
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-59:12
+INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-59:12
+INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-59:12
+INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-59:12
 MERGED from [androidx.databinding:viewbinding:7.1.3] /Users/thinhdao/.gradle/caches/transforms-3/1d179d97fb359b5de901cf9a54f548be/transformed/viewbinding-7.1.3/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-ui:2.4.2] /Users/thinhdao/.gradle/caches/transforms-3/311861f2422828a093051ea5b8b8a400/transformed/navigation-ui-2.4.2/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.4.0] /Users/thinhdao/.gradle/caches/transforms-3/bd3d64735d5e6b82cd472f53a33cdd16/transformed/material-1.4.0/AndroidManifest.xml:17:1-24:12
@@ -19,10 +19,12 @@ MERGED from [androidx.navigation:navigation-runtime:2.4.2] /Users/thinhdao/.grad
 MERGED from [androidx.activity:activity-ktx:1.2.3] /Users/thinhdao/.gradle/caches/transforms-3/a3098bb847dd2c2ce024bf516ca4a7aa/transformed/activity-ktx-1.2.3/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-common:2.4.2] /Users/thinhdao/.gradle/caches/transforms-3/416f43dffe44e844ecbb5b3e54143f2c/transformed/navigation-common-2.4.2/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1] /Users/thinhdao/.gradle/caches/transforms-3/71a4f29b8449d94649b60e5114d870e1/transformed/lifecycle-viewmodel-ktx-2.4.1/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:15:1-39:12
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/thinhdao/.gradle/caches/transforms-3/8cfe277b6c0dbed7faa9157a001659d3/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/thinhdao/.gradle/caches/transforms-3/f31d7f5d1be27fa8858c3529ba0a329d/transformed/viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/thinhdao/.gradle/caches/transforms-3/c06e4e73c94c1b36365aa50189a0573a/transformed/recyclerview-1.2.1/AndroidManifest.xml:17:1-24:12
 MERGED from [de.hdodenhof:circleimageview:3.1.0] /Users/thinhdao/.gradle/caches/transforms-3/db9a765334a89521173b4c34c175fc41/transformed/circleimageview-3.1.0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/thinhdao/.gradle/caches/transforms-3/d15c463e9ad4c4947372eeae0ffcbbae/transformed/picasso-2.71828/AndroidManifest.xml:2:1-14:12
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/thinhdao/.gradle/caches/transforms-3/5d329aff977c8396ce7061876a12d5bd/transformed/firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta06] /Users/thinhdao/.gradle/caches/transforms-3/4915d70486fa438b324fd5e342237fd4/transformed/firebase-appcheck-interop-16.0.0-beta06/AndroidManifest.xml:15:1-26:12
 MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/thinhdao/.gradle/caches/transforms-3/e609942112f05849a657a9acf6637c1b/transformed/firebase-common-20.1.0/AndroidManifest.xml:15:1-40:12
@@ -74,20 +76,21 @@ MERGED from [androidx.tracing:tracing:1.0.0] /Users/thinhdao/.gradle/caches/tran
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /Users/thinhdao/.gradle/caches/transforms-3/1ff792657c023d58aece05eb4b4d836d/transformed/annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/thinhdao/.gradle/caches/transforms-3/d2e2a92c3df720a2072020caebce3bed/transformed/protolite-well-known-types-18.0.0/AndroidManifest.xml:2:1-11:12
 MERGED from [io.grpc:grpc-android:1.44.1] /Users/thinhdao/.gradle/caches/transforms-3/7989a8bee30985b6c63a5eb7a1a7bcda/transformed/grpc-android-1.44.1/AndroidManifest.xml:2:1-11:12
-INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-57:12
-INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-57:12
-INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-57:12
+MERGED from [com.android.support:exifinterface:27.1.0] /Users/thinhdao/.gradle/caches/transforms-3/debd4e36336993e1cfa3b69279c6df7c/transformed/exifinterface-27.1.0/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-59:12
+INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-59:12
+INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-59:12
 	package
 		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:3:5-40
 		INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-57:12
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-59:12
 		INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-57:12
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:1-59:12
 		INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:2:11-69
@@ -99,6 +102,8 @@ MERGED from [com.google.firebase:firebase-database:20.0.4] /Users/thinhdao/.grad
 MERGED from [com.google.firebase:firebase-database:20.0.4] /Users/thinhdao/.gradle/caches/transforms-3/67dd89bac13d2f662c2ddeda5b8221a0/transformed/firebase-database-20.0.4/AndroidManifest.xml:26:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.gradle/caches/transforms-3/3828e7a5fae7b77f8ca67b3a1754286b/transformed/firebase-firestore-24.1.1/AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.gradle/caches/transforms-3/3828e7a5fae7b77f8ca67b3a1754286b/transformed/firebase-firestore-24.1.1/AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:27:5-67
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:27:5-67
 	android:name
 		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:5:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
@@ -109,12 +114,14 @@ MERGED from [com.google.firebase:firebase-database:20.0.4] /Users/thinhdao/.grad
 MERGED from [com.google.firebase:firebase-database:20.0.4] /Users/thinhdao/.gradle/caches/transforms-3/67dd89bac13d2f662c2ddeda5b8221a0/transformed/firebase-database-20.0.4/AndroidManifest.xml:25:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.gradle/caches/transforms-3/3828e7a5fae7b77f8ca67b3a1754286b/transformed/firebase-firestore-24.1.1/AndroidManifest.xml:13:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.gradle/caches/transforms-3/3828e7a5fae7b77f8ca67b3a1754286b/transformed/firebase-firestore-24.1.1/AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:26:5-79
 MERGED from [io.grpc:grpc-android:1.44.1] /Users/thinhdao/.gradle/caches/transforms-3/7989a8bee30985b6c63a5eb7a1a7bcda/transformed/grpc-android-1.44.1/AndroidManifest.xml:9:5-79
 MERGED from [io.grpc:grpc-android:1.44.1] /Users/thinhdao/.gradle/caches/transforms-3/7989a8bee30985b6c63a5eb7a1a7bcda/transformed/grpc-android-1.44.1/AndroidManifest.xml:9:5-79
 	android:name
 		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:8:5-55:19
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:8:5-57:19
 MERGED from [com.google.android.material:material:1.4.0] /Users/thinhdao/.gradle/caches/transforms-3/bd3d64735d5e6b82cd472f53a33cdd16/transformed/material-1.4.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.4.0] /Users/thinhdao/.gradle/caches/transforms-3/bd3d64735d5e6b82cd472f53a33cdd16/transformed/material-1.4.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/thinhdao/.gradle/caches/transforms-3/0377dfb231357277573ce07eba1cbcc4/transformed/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
@@ -125,8 +132,12 @@ MERGED from [com.google.firebase:firebase-database:20.0.4] /Users/thinhdao/.grad
 MERGED from [com.google.firebase:firebase-database:20.0.4] /Users/thinhdao/.gradle/caches/transforms-3/67dd89bac13d2f662c2ddeda5b8221a0/transformed/firebase-database-20.0.4/AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.gradle/caches/transforms-3/3828e7a5fae7b77f8ca67b3a1754286b/transformed/firebase-firestore-24.1.1/AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.gradle/caches/transforms-3/3828e7a5fae7b77f8ca67b3a1754286b/transformed/firebase-firestore-24.1.1/AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:29:5-37:19
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:29:5-37:19
 MERGED from [de.hdodenhof:circleimageview:3.1.0] /Users/thinhdao/.gradle/caches/transforms-3/db9a765334a89521173b4c34c175fc41/transformed/circleimageview-3.1.0/AndroidManifest.xml:9:5-20
 MERGED from [de.hdodenhof:circleimageview:3.1.0] /Users/thinhdao/.gradle/caches/transforms-3/db9a765334a89521173b4c34c175fc41/transformed/circleimageview-3.1.0/AndroidManifest.xml:9:5-20
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/thinhdao/.gradle/caches/transforms-3/d15c463e9ad4c4947372eeae0ffcbbae/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/thinhdao/.gradle/caches/transforms-3/d15c463e9ad4c4947372eeae0ffcbbae/transformed/picasso-2.71828/AndroidManifest.xml:7:5-12:19
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/thinhdao/.gradle/caches/transforms-3/5d329aff977c8396ce7061876a12d5bd/transformed/firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/thinhdao/.gradle/caches/transforms-3/5d329aff977c8396ce7061876a12d5bd/transformed/firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta06] /Users/thinhdao/.gradle/caches/transforms-3/4915d70486fa438b324fd5e342237fd4/transformed/firebase-appcheck-interop-16.0.0-beta06/AndroidManifest.xml:24:5-20
@@ -161,82 +172,88 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/thin
 		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:9:9-35
 	android:theme
 		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:14:9-51
+activity#com.example.myapplication.AccountStudent
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:15:9-17:40
+	android:exported
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:17:13-37
+	android:name
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:16:13-43
 activity#com.example.myapplication.RecyclerViewProfessor.OfficeHourBooking
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:15:9-17:39
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:18:9-20:39
 	android:exported
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:17:13-36
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:20:13-36
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:16:13-68
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:19:13-68
 activity#com.example.myapplication.HomePageProfessor
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:18:9-20:40
-	android:exported
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:20:13-37
-	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:19:13-46
-activity#com.example.myapplication.ViewCalender
 ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:21:9-23:40
 	android:exported
 		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:23:13-37
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:22:13-41
-activity#com.example.myapplication.Booking
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:22:13-46
+activity#com.example.myapplication.ViewCalender
 ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:24:9-26:40
 	android:exported
 		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:26:13-37
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:25:13-36
-activity#com.example.myapplication.RegisterStudent
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:27:9-30:51
-	android:parentActivityName
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:30:13-48
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:25:13-41
+activity#com.example.myapplication.Booking
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:27:9-29:40
 	android:exported
 		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:29:13-37
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:28:13-44
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:28:13-36
+activity#com.example.myapplication.RegisterStudent
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:30:9-33:51
+	android:parentActivityName
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:33:13-48
+	android:exported
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:32:13-37
+	android:name
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:31:13-44
 activity#com.example.myapplication.HomePageStudent
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:31:9-33:40
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:34:9-36:40
 	android:exported
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:33:13-37
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:36:13-37
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:32:13-44
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:35:13-44
 activity#com.example.myapplication.MainActivity
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:34:9-42:20
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:37:9-44:20
 	android:exported
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:36:13-36
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:39:13-36
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:35:13-41
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:38:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:37:13-41:29
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:40:13-43:29
 action#android.intent.action.MAIN
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:38:17-69
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:41:17-69
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:38:25-66
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:41:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:40:17-77
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:42:17-77
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:40:27-74
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:42:27-74
 activity#com.example.myapplication.RegisterProfessor
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:43:9-46:51
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:45:9-48:51
 	android:parentActivityName
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:46:13-48
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:48:13-48
 	android:exported
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:45:13-36
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:47:13-36
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:44:13-46
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:46:13-46
 activity#com.example.myapplication.Login
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:47:9-50:58
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:49:9-52:58
 	android:parentActivityName
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:50:13-55
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:52:13-55
 	android:exported
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:49:13-36
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:51:13-36
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:48:13-34
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:50:13-34
 meta-data#preloaded_fonts
-ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:52:9-54:57
+ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:54:9-56:57
 	android:resource
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:54:13-54
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:56:13-54
 	android:name
-		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:53:13-43
+		ADDED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml:55:13-43
 uses-sdk
 INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml
@@ -271,6 +288,8 @@ MERGED from [androidx.navigation:navigation-common:2.4.2] /Users/thinhdao/.gradl
 MERGED from [androidx.navigation:navigation-common:2.4.2] /Users/thinhdao/.gradle/caches/transforms-3/416f43dffe44e844ecbb5b3e54143f2c/transformed/navigation-common-2.4.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1] /Users/thinhdao/.gradle/caches/transforms-3/71a4f29b8449d94649b60e5114d870e1/transformed/lifecycle-viewmodel-ktx-2.4.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1] /Users/thinhdao/.gradle/caches/transforms-3/71a4f29b8449d94649b60e5114d870e1/transformed/lifecycle-viewmodel-ktx-2.4.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/thinhdao/.gradle/caches/transforms-3/8cfe277b6c0dbed7faa9157a001659d3/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/thinhdao/.gradle/caches/transforms-3/8cfe277b6c0dbed7faa9157a001659d3/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/thinhdao/.gradle/caches/transforms-3/f31d7f5d1be27fa8858c3529ba0a329d/transformed/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
@@ -279,6 +298,8 @@ MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/thinhdao/.gradle/c
 MERGED from [androidx.recyclerview:recyclerview:1.2.1] /Users/thinhdao/.gradle/caches/transforms-3/c06e4e73c94c1b36365aa50189a0573a/transformed/recyclerview-1.2.1/AndroidManifest.xml:20:5-22:41
 MERGED from [de.hdodenhof:circleimageview:3.1.0] /Users/thinhdao/.gradle/caches/transforms-3/db9a765334a89521173b4c34c175fc41/transformed/circleimageview-3.1.0/AndroidManifest.xml:5:5-7:41
 MERGED from [de.hdodenhof:circleimageview:3.1.0] /Users/thinhdao/.gradle/caches/transforms-3/db9a765334a89521173b4c34c175fc41/transformed/circleimageview-3.1.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/thinhdao/.gradle/caches/transforms-3/d15c463e9ad4c4947372eeae0ffcbbae/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] /Users/thinhdao/.gradle/caches/transforms-3/d15c463e9ad4c4947372eeae0ffcbbae/transformed/picasso-2.71828/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/thinhdao/.gradle/caches/transforms-3/5d329aff977c8396ce7061876a12d5bd/transformed/firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/thinhdao/.gradle/caches/transforms-3/5d329aff977c8396ce7061876a12d5bd/transformed/firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta06] /Users/thinhdao/.gradle/caches/transforms-3/4915d70486fa438b324fd5e342237fd4/transformed/firebase-appcheck-interop-16.0.0-beta06/AndroidManifest.xml:19:5-21:41
@@ -381,6 +402,8 @@ MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/thinh
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/thinhdao/.gradle/caches/transforms-3/d2e2a92c3df720a2072020caebce3bed/transformed/protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
 MERGED from [io.grpc:grpc-android:1.44.1] /Users/thinhdao/.gradle/caches/transforms-3/7989a8bee30985b6c63a5eb7a1a7bcda/transformed/grpc-android-1.44.1/AndroidManifest.xml:5:5-7:41
 MERGED from [io.grpc:grpc-android:1.44.1] /Users/thinhdao/.gradle/caches/transforms-3/7989a8bee30985b6c63a5eb7a1a7bcda/transformed/grpc-android-1.44.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:exifinterface:27.1.0] /Users/thinhdao/.gradle/caches/transforms-3/debd4e36336993e1cfa3b69279c6df7c/transformed/exifinterface-27.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.0] /Users/thinhdao/.gradle/caches/transforms-3/debd4e36336993e1cfa3b69279c6df7c/transformed/exifinterface-27.1.0/AndroidManifest.xml:20:5-44
 INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml
 INJECTED from /Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
@@ -445,6 +468,8 @@ MERGED from [com.google.firebase:firebase-database:20.0.4] /Users/thinhdao/.grad
 MERGED from [com.google.firebase:firebase-database:20.0.4] /Users/thinhdao/.gradle/caches/transforms-3/67dd89bac13d2f662c2ddeda5b8221a0/transformed/firebase-database-20.0.4/AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.gradle/caches/transforms-3/3828e7a5fae7b77f8ca67b3a1754286b/transformed/firebase-firestore-24.1.1/AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.gradle/caches/transforms-3/3828e7a5fae7b77f8ca67b3a1754286b/transformed/firebase-firestore-24.1.1/AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:30:9-36:19
+MERGED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:30:9-36:19
 MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/thinhdao/.gradle/caches/transforms-3/e609942112f05849a657a9acf6637c1b/transformed/firebase-common-20.1.0/AndroidManifest.xml:33:9-37:35
 MERGED from [com.google.firebase:firebase-common:20.1.0] /Users/thinhdao/.gradle/caches/transforms-3/e609942112f05849a657a9acf6637c1b/transformed/firebase-common-20.1.0/AndroidManifest.xml:33:9-37:35
 	android:exported
@@ -473,6 +498,20 @@ ADDED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.grad
 		ADDED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.gradle/caches/transforms-3/3828e7a5fae7b77f8ca67b3a1754286b/transformed/firebase-firestore-24.1.1/AndroidManifest.xml:22:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-firestore:24.1.1] /Users/thinhdao/.gradle/caches/transforms-3/3828e7a5fae7b77f8ca67b3a1754286b/transformed/firebase-firestore-24.1.1/AndroidManifest.xml:21:17-111
+meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
+ADDED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:33:13-35:85
+	android:value
+		ADDED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:35:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-storage:20.0.1] /Users/thinhdao/.gradle/caches/transforms-3/49df5dbbc301e11b96cfa63596636946/transformed/firebase-storage-20.0.1/AndroidManifest.xml:34:17-107
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] /Users/thinhdao/.gradle/caches/transforms-3/d15c463e9ad4c4947372eeae0ffcbbae/transformed/picasso-2.71828/AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/thinhdao/.gradle/caches/transforms-3/d15c463e9ad4c4947372eeae0ffcbbae/transformed/picasso-2.71828/AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/thinhdao/.gradle/caches/transforms-3/d15c463e9ad4c4947372eeae0ffcbbae/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/thinhdao/.gradle/caches/transforms-3/d15c463e9ad4c4947372eeae0ffcbbae/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
 provider#com.google.firebase.provider.FirebaseInitProvider
 ADDED from [com.google.firebase:firebase-common:20.1.0] /Users/thinhdao/.gradle/caches/transforms-3/e609942112f05849a657a9acf6637c1b/transformed/firebase-common-20.1.0/AndroidManifest.xml:26:9-31:39
 	android:authorities

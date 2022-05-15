@@ -16,11 +16,12 @@
         <entry key="app/src/main/res/drawable/ic_menu_gallery.xml" value="0.1085" />
         <entry key="app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1085" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.1085" />
-        <entry key="app/src/main/res/layout/account_student.xml" value="0.11859741210937501" />
+        <entry key="app/src/main/res/layout/account_student.xml" value="0.27929382324218743" />
         <entry key="app/src/main/res/layout/activity_admin_info.xml" value="0.23645833333333333" />
         <entry key="app/src/main/res/layout/activity_booking.xml" value="0.23645833333333333" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.1574074074074074" />
         <entry key="app/src/main/res/layout/activity_home_page_professor.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/layout/activity_home_page_student.xml" value="0.18341979980468748" />
         <entry key="app/src/main/res/layout/activity_login_admin.xml" value="0.23645833333333333" />
         <entry key="app/src/main/res/layout/activity_login_professor.xml" value="0.21912078857421874" />
         <entry key="app/src/main/res/layout/activity_login_student.xml" value="0.23645833333333333" />
