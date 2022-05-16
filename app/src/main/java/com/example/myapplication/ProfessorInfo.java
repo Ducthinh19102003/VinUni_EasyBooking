@@ -10,9 +10,8 @@ public class ProfessorInfo {
     private String password;
     private String name;
     private String subject;
-    private ArrayList<DocumentReference> Events;
+    private ArrayList<String> Events;
     private ArrayList<Timestamp> availableTimeSlots;
-
 
     public ProfessorInfo() {
 
@@ -59,7 +58,7 @@ public class ProfessorInfo {
         this.subject = subject;
     }
 
-    public ArrayList<DocumentReference> getEvents(){
+    public ArrayList<String> getEvents(){
         return this.Events;
     }
 
@@ -67,7 +66,7 @@ public class ProfessorInfo {
         return this.availableTimeSlots;
     }
 
-    public void setEvents(ArrayList<DocumentReference> eventsList){ this.Events = eventsList; }
+    public void setEvents(ArrayList<String> eventsList){ this.Events = eventsList; }
 
     public void setAvailableTimeSlots(ArrayList<Timestamp> availableTimeSlots) {
         this.availableTimeSlots = availableTimeSlots;
