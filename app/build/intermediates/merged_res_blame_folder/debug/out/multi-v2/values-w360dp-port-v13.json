@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+            "outputFile": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w360dp-port-v13\\values-w360dp-port-v13.xml",
             "map": [
                 {
-                    "source": "/Users/thinhdao/.gradle/caches/transforms-3/bd3d64735d5e6b82cd472f53a33cdd16/transformed/material-1.4.0/res/values-w360dp-port-v13/values-w360dp-port-v13.xml",
+                    "source": "C:\\Users\\FPTSHOP\\.gradle\\caches\\transforms-3\\bd3d64735d5e6b82cd472f53a33cdd16\\transformed\\material-1.4.0\\res\\values-w360dp-port-v13\\values-w360dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

@@ -9,7 +9,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.myapplication.ProfessorInfo;
+//import com.example.myapplication.ProfessorInfo;
 import com.example.myapplication.R;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;

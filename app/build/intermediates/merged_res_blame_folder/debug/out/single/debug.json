@@ -1,178 +1,178 @@
 [
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_activity_booking.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_booking.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable_ic_menu_camera.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable/ic_menu_camera.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable_ic_launcher_background.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable_side_nav_bar.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_activity_main.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_main.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_booking.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_booking.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_menu_camera.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable\\ic_menu_camera.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable_ic_menu_slideshow.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable/ic_menu_slideshow.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_local_phone_black_24dp.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable-v24\\ic_local_phone_black_24dp.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_login.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/login.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_login.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\login.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_activity_home_page_student.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_home_page_student.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_menu_gallery.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable\\ic_menu_gallery.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/navigation_mobile_navigation.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/navigation/mobile_navigation.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable-v24_ic_person_black_24dp.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable-v24/ic_person_black_24dp.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable_btn_bg.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable\\btn_bg.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable_btn_bg.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable/btn_bg.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable-v24_ic_local_phone_black_24dp.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable-v24/ic_local_phone_black_24dp.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\navigation_mobile_navigation.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\navigation\\mobile_navigation.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_home_page_student.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_home_page_student.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable-v24_background.jpeg.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable-v24/background.jpeg"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_account_circle_24.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable\\ic_baseline_account_circle_24.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_register_student.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/register_student.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_person_black_24dp.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable-v24\\ic_person_black_24dp.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_register_student.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\register_student.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable_ic_baseline_account_circle_24.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable/ic_baseline_account_circle_24.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_image1.jpeg.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable-v24\\image1.jpeg"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable_ic_baseline_event_24.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable/ic_baseline_event_24.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\font_alata.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\font\\alata.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_register_professor.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/register_professor.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_register_professor.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\register_professor.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable_side_nav_bar.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable/side_nav_bar.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\navigation\\nav_graph.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\font_amaranth_bold.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\font\\amaranth_bold.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_activity_view_calender.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_view_calender.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_menu_slideshow.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable\\ic_menu_slideshow.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/menu_activity_main_drawer.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/menu/activity_main_drawer.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable_ic_menu_gallery.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable/ic_menu_gallery.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\menu_main_activity2.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\menu\\main_activity2.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable-v24_image1.jpeg.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable-v24/image1.jpeg"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_event_24.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable\\ic_baseline_event_24.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/font_alata.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/font/alata.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_item_professor.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\item_professor.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable-v24_ic_email_black_24dp.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/drawable-v24/ic_email_black_24dp.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_view_calender.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_view_calender.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_activity_home_page_professor.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_home_page_professor.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\menu_activity_main_drawer.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/menu_main_activity2.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/menu/main_activity2.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_account_student.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\account_student.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/font_alatsi.ttf.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/font/alatsi.ttf"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_activity_office_hour_booking.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/activity_office_hour_booking.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\font_alatsi.ttf.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\font\\alatsi.ttf"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_home_page_professor.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_home_page_professor.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/navigation_nav_graph.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/navigation/nav_graph.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_background.jpeg.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable-v24\\background.jpeg"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/font_amaranth_bold.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/font/amaranth_bold.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_account_student.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/account_student.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_email_black_24dp.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable-v24\\ic_email_black_24dp.xml"
     },
     {
-        "merged": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/build/intermediates/merged_res/debug/layout_item_professor.xml.flat",
-        "source": "/Users/thinhdao/AndroidStudioProjects/VinUni EasyBooking/app/src/main/res/layout/item_professor.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_office_hour_booking.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_office_hour_booking.xml"
     }
 ]
