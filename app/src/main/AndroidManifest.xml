@@ -25,6 +25,9 @@
             android:name=".ViewCalender"
             android:exported="false" />
         <activity
+            android:name=".ProfessorSetAvailableTimeSlots.WeekViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".Booking"
             android:exported="false" />
         <activity
