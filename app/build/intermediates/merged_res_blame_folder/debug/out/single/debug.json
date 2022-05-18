@@ -8,12 +8,12 @@
         "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
-    },
-    {
         "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable_side_nav_bar.xml.flat",
         "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_hour_slot_cell.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\hour_slot_cell.xml"
     },
     {
         "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_booking.xml.flat",
@@ -50,6 +50,10 @@
     {
         "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_calendar_cell.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\calendar_cell.xml"
     },
     {
         "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_launcher_background.xml.flat",
@@ -132,8 +136,16 @@
         "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable\\ic_baseline_event_24.xml"
     },
     {
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
         "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_item_professor.xml.flat",
         "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\item_professor.xml"
+    },
+    {
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_week_view.xml.flat",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_week_view.xml"
     },
     {
         "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_view_calender.xml.flat",

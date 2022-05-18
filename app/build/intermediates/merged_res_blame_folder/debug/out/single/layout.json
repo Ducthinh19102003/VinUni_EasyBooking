@@ -1,9 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\register_professor.xml",
-        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\register_professor.xml"
-    },
-    {
         "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\register_student.xml",
         "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\register_student.xml"
     },
@@ -20,20 +16,12 @@
         "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_professor.xml",
-        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\item_professor.xml"
-    },
-    {
-        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\login.xml",
-        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\login.xml"
-    },
-    {
         "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_home_page_professor.xml",
         "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_home_page_professor.xml"
     },
     {
-        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\account_student.xml",
-        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\account_student.xml"
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_week_view.xml",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_week_view.xml"
     },
     {
         "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_office_hour_booking.xml",
@@ -42,5 +30,29 @@
     {
         "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_home_page_student.xml",
         "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\activity_home_page_student.xml"
+    },
+    {
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\register_professor.xml",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\register_professor.xml"
+    },
+    {
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_professor.xml",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\item_professor.xml"
+    },
+    {
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\login.xml",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\login.xml"
+    },
+    {
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\account_student.xml",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\account_student.xml"
+    },
+    {
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\calendar_cell.xml",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\calendar_cell.xml"
+    },
+    {
+        "merged": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\hour_slot_cell.xml",
+        "source": "C:\\Users\\FPTSHOP\\Documents\\GitHub\\VinUni_EasyBooking\\app\\src\\main\\res\\layout\\hour_slot_cell.xml"
     }
 ]
