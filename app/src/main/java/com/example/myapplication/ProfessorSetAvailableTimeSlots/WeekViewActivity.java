@@ -51,7 +51,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         CalendarUtils.selectedDate = LocalDate.now();
         initWidgets();
         setWeekView();
-        setHourSlotsView();
+
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -61,6 +61,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         HourSlotUtils.profAvailableSlots = (ArrayList<Timestamp>) document.get("availableTimeSlots");
                         HourSlotUtils.clearMySchedule();
+                        setHourSlotsView();
                     } else {
                         Log.d(TAG, "No such document");
                     }
