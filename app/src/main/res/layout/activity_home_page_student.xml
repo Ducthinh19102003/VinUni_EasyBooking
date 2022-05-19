@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#2196F3"
+    android:background="#FFFFFF"
     tools:context=".HomePageStudent">
 
     <LinearLayout
@@ -54,7 +54,7 @@
         android:layout_height="184dp"
         android:layout_gravity="center"
         android:layout_marginTop="200dp"
-        app:cardBackgroundColor="#FFFFFF">
+        app:cardBackgroundColor="#D1F1FF">
 
         <ImageView
             android:layout_width="174dp"

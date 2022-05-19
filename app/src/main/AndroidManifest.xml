@@ -53,6 +53,14 @@
             android:name=".Login"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".BookingProcess.SelectDate"
+            android:exported="true"
+            android:parentActivityName=".HomePageStudent" />
+        <activity
+            android:name=".BookingProcess.OfficeHourBooking"
+            android:exported="true" />
+
 
         <meta-data
             android:name="preloaded_fonts"

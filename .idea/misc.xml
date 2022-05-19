@@ -10,6 +10,7 @@
         <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/activity_week_view.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/calendar_cell.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/hour_slot_cell.xml" value="0.264" />
+        <entry key="app/src/main/res/drawable-v24/custom_round_main_btn.xml" value="0.153" />
         <entry key="app/src/main/res/drawable-v24/ic_email_black_24dp.xml" value="0.216" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_local_phone_black_24dp.xml" value="0.216" />
@@ -34,6 +35,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2761886596679688" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.2157135009765625" />
         <entry key="app/src/main/res/layout/activity_office_hour_booking.xml" value="0.22708333333333333" />
+        <entry key="app/src/main/res/layout/activity_select_time.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/layout/activity_view_calender.xml" value="0.23645833333333333" />
         <entry key="app/src/main/res/layout/admin_info.xml" value="0.478515625" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.22239583333333332" />
@@ -41,6 +43,7 @@
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.22239583333333332" />
         <entry key="app/src/main/res/layout/home_page.xml" value="0.22810492882361777" />
         <entry key="app/src/main/res/layout/item_professor.xml" value="0.1404485774945609" />
+        <entry key="app/src/main/res/layout/item_timeslot.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/layout/login.xml" value="0.18681318681318682" />
         <entry key="app/src/main/res/layout/login_admin.xml" value="0.2764897664388021" />
         <entry key="app/src/main/res/layout/login_professor.xml" value="0.23645833333333333" />

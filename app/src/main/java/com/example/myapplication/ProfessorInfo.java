@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 
@@ -12,18 +15,20 @@ public class ProfessorInfo {
     private String subject;
     private ArrayList<String> Events;
     private ArrayList<Timestamp> availableTimeSlots;
+    private String UID;
 
     public ProfessorInfo() {
 
     }
 
-    public ProfessorInfo(String email, String password, String name, String subject) {
+    public ProfessorInfo(String email, String password, String name, String subject, String UID) {
         this.name = name;
         this.password = password;
         this.subject = subject;
         this.email = email;
         this.Events = new ArrayList<>();
         this.availableTimeSlots = new ArrayList<>();
+        this.UID = UID;
     }
 
     public String getEmail() {
@@ -70,6 +75,14 @@ public class ProfessorInfo {
 
     public void setAvailableTimeSlots(ArrayList<Timestamp> availableTimeSlots) {
         this.availableTimeSlots = availableTimeSlots;
+    }
+
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
     }
 }
 
