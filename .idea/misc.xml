@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/activity_booking.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/activity_event_list_view.xml" value="0.152" />
         <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/activity_home_page_professor.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/activity_home_page_student.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/activity_office_hour_booking.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/activity_week_view.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/calendar_cell.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/event_slot_cell.xml" value="0.1" />
         <entry key="..\:/Users/FPTSHOP/Documents/GitHub/VinUni_EasyBooking/app/src/main/res/layout/hour_slot_cell.xml" value="0.264" />
         <entry key="app/src/main/res/drawable-v24/custom_round_main_btn.xml" value="0.153" />
         <entry key="app/src/main/res/drawable-v24/ic_email_black_24dp.xml" value="0.216" />

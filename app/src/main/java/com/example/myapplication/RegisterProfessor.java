@@ -92,7 +92,7 @@ public class RegisterProfessor extends AppCompatActivity {
                     return;
                 }
 
-                professor = new ProfessorInfo(email, password, name, subject);
+                professor = new ProfessorInfo(email, password, name, subject, "1");
                 progressBar.setVisibility(View.VISIBLE);
 
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

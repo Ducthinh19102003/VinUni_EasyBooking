@@ -27,18 +27,18 @@ public final class ItemProfessorBinding implements ViewBinding {
   public final TextView profEmail;
 
   @NonNull
-  public final TextView profName;
-
-  @NonNull
   public final TextView profSubjects;
 
+  @NonNull
+  public final TextView timeSlot;
+
   private ItemProfessorBinding(@NonNull CardView rootView, @NonNull CircleImageView imgProfessor,
-      @NonNull TextView profEmail, @NonNull TextView profName, @NonNull TextView profSubjects) {
+      @NonNull TextView profEmail, @NonNull TextView profSubjects, @NonNull TextView timeSlot) {
     this.rootView = rootView;
     this.imgProfessor = imgProfessor;
     this.profEmail = profEmail;
-    this.profName = profName;
     this.profSubjects = profSubjects;
+    this.timeSlot = timeSlot;
   }
 
   @Override
@@ -80,20 +80,20 @@ public final class ItemProfessorBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.prof_name;
-      TextView profName = ViewBindings.findChildViewById(rootView, id);
-      if (profName == null) {
-        break missingId;
-      }
-
       id = R.id.prof_subjects;
       TextView profSubjects = ViewBindings.findChildViewById(rootView, id);
       if (profSubjects == null) {
         break missingId;
       }
 
-      return new ItemProfessorBinding((CardView) rootView, imgProfessor, profEmail, profName,
-          profSubjects);
+      id = R.id.timeSlot;
+      TextView timeSlot = ViewBindings.findChildViewById(rootView, id);
+      if (timeSlot == null) {
+        break missingId;
+      }
+
+      return new ItemProfessorBinding((CardView) rootView, imgProfessor, profEmail, profSubjects,
+          timeSlot);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

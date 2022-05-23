@@ -23,6 +23,7 @@ public class EventInfo {
     private ArrayList<String> members;
     private Timestamp startTime;
     private Timestamp endTime;
+    private String note;
 
 
     public EventInfo() {
@@ -34,6 +35,7 @@ public class EventInfo {
         this.startTime = startTime;
         this.endTime = endTime;
         this.members = new ArrayList<>();
+        this.note = "";
     }
 
 
@@ -61,6 +63,8 @@ public class EventInfo {
         this.members = members;
     }
 
+    public void addMembers(String member) {this.members.add(member);}
+
     public String getHost() {
         return host;
     }
@@ -77,9 +81,10 @@ public class EventInfo {
                 //retrieving the id
                 String eventID = documentReference.getId();
                 Log.d(TAG, "DocumentSnapshot written with ID: " + eventID);
+
                 //Adding event id to host's array
                 //Check if the host's ID is in the "Professors" collection
-                DocumentReference userRef = db.collection("Professors").document(event.getHost());
+                DocumentReference userRef = db.collection("Professors").document(event.getHost().trim());
                 userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -87,16 +92,38 @@ public class EventInfo {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 //if the host id is indeed in "Professors"
-                                db.collection("Professors").document(event.getHost()).update("Events", FieldValue.arrayUnion(eventID));
+                                db.collection("Professors").document(event.getHost().trim()).update("events", FieldValue.arrayUnion(eventID));
                             } else {
                                 //if the host id is not in "Professors"
-                                db.collection("Students").document(event.getHost()).update("Events", FieldValue.arrayUnion(eventID));
+                                db.collection("Students").document(event.getHost().trim()).update("events", FieldValue.arrayUnion(eventID));
                             }
                         } else {
                             Log.d(TAG, "Failed with: ", task.getException());
                         }
                     }
                 });
+
+                //Adding event id to member's array
+                for (String i: event.getMembers()) {
+                    DocumentReference memberRef = db.collection("Professors").document(i.trim());
+                    memberRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    //if the host id is indeed in "Professors"
+                                    db.collection("Professors").document(i.trim()).update("events", FieldValue.arrayUnion(eventID));
+                                } else {
+                                    //if the host id is not in "Professors"
+                                    db.collection("Students").document(i.trim()).update("events", FieldValue.arrayUnion(eventID));
+                                }
+                            } else {
+                                Log.d(TAG, "Failed with: ", task.getException());
+                            }
+                        }
+                    });
+                }
             }
         })
                 .addOnFailureListener(new OnFailureListener() {
@@ -124,4 +151,11 @@ public class EventInfo {
         return false;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 }

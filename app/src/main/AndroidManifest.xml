@@ -13,11 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".AccountStudent"
+            android:name=".SeeEventList.EventListViewActivity"
             android:exported="false" />
         <activity
-            android:name=".RecyclerViewProfessor.OfficeHourBooking"
-            android:exported="true" />
+            android:name=".AccountStudent"
+            android:exported="false" />
         <activity
             android:name=".HomePageProfessor"
             android:exported="false" />
@@ -42,6 +42,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -60,7 +61,6 @@
         <activity
             android:name=".BookingProcess.OfficeHourBooking"
             android:exported="true" />
-
 
         <meta-data
             android:name="preloaded_fonts"

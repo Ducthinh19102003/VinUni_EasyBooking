@@ -22,10 +22,18 @@ public final class ActivityHomePageProfessorBinding implements ViewBinding {
   @NonNull
   public final Button button;
 
+  @NonNull
+  public final Button button3;
+
+  @NonNull
+  public final Button button4;
+
   private ActivityHomePageProfessorBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button button) {
+      @NonNull Button button, @NonNull Button button3, @NonNull Button button4) {
     this.rootView = rootView;
     this.button = button;
+    this.button3 = button3;
+    this.button4 = button4;
   }
 
   @Override
@@ -61,7 +69,20 @@ public final class ActivityHomePageProfessorBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityHomePageProfessorBinding((ConstraintLayout) rootView, button);
+      id = R.id.button3;
+      Button button3 = ViewBindings.findChildViewById(rootView, id);
+      if (button3 == null) {
+        break missingId;
+      }
+
+      id = R.id.button4;
+      Button button4 = ViewBindings.findChildViewById(rootView, id);
+      if (button4 == null) {
+        break missingId;
+      }
+
+      return new ActivityHomePageProfessorBinding((ConstraintLayout) rootView, button, button3,
+          button4);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

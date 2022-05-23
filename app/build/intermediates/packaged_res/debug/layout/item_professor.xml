@@ -17,7 +17,7 @@
             android:src="@drawable/image1" />
 
         <TextView
-            android:id="@+id/prof_name"
+            android:id="@+id/timeSlot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -31,7 +31,7 @@
             android:id="@+id/prof_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/prof_name"
+            android:layout_below="@+id/timeSlot"
             android:layout_alignParentTop="true"
             android:layout_marginStart="15dp"
             android:layout_marginTop="45dp"

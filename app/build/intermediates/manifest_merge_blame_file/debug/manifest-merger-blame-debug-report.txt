@@ -16,271 +16,294 @@
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 12-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:6:5-79
 12-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:6:22-76
-13
-14    <application
-14-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:8:5-60:19
-15        android:allowBackup="true"
-15-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:9:9-35
-16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-16-->[androidx.core:core:1.5.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\a4f112428bc4b96a5f7c524bb8751d23\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
-17        android:debuggable="true"
-18        android:extractNativeLibs="false"
-19        android:icon="@mipmap/ic_launcher"
-19-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:10:9-43
-20        android:label="@string/app_name"
-20-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:11:9-41
-21        android:roundIcon="@mipmap/ic_launcher_round"
-21-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:12:9-54
-22        android:supportsRtl="true"
-22-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:13:9-35
-23        android:testOnly="true"
-24        android:theme="@style/Theme.MyApplication" >
-24-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:14:9-51
-25        <activity
-25-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:15:9-17:40
-26            android:name="com.example.myapplication.AccountStudent"
-26-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:16:13-43
-27            android:exported="false" />
-27-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:17:13-37
-28        <activity
-28-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:18:9-20:39
-29            android:name="com.example.myapplication.RecyclerViewProfessor.OfficeHourBooking"
-29-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:19:13-68
-30            android:exported="true" />
-30-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:20:13-36
-31        <activity
-31-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:21:9-23:40
-32            android:name="com.example.myapplication.HomePageProfessor"
-32-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:22:13-46
-33            android:exported="false" />
-33-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:23:13-37
-34        <activity
-34-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:24:9-26:40
-35            android:name="com.example.myapplication.ViewCalender"
-35-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:25:13-41
-36            android:exported="false" />
-36-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:26:13-37
-37        <activity
-37-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:27:9-29:40
-38            android:name="com.example.myapplication.ProfessorSetAvailableTimeSlots.WeekViewActivity"
-38-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:28:13-76
-39            android:exported="false" />
-39-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:29:13-37
-40        <activity
-40-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:30:9-32:40
-41            android:name="com.example.myapplication.Booking"
-41-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:31:13-36
-42            android:exported="false" />
-42-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:32:13-37
-43        <activity
-43-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:33:9-36:51
-44            android:name="com.example.myapplication.RegisterStudent"
-44-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:34:13-44
-45            android:exported="false"
-45-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:35:13-37
-46            android:parentActivityName="com.example.myapplication.Login" />
-46-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:36:13-48
+13    <uses-permission android:name="android.permission.VIBRATE" />
+13-->[com.wdullaer:materialdatetimepicker:4.2.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\8fce8b2a1f74a1b2142985e3b20718a3\transformed\materialdatetimepicker-4.2.3\AndroidManifest.xml:26:5-66
+13-->[com.wdullaer:materialdatetimepicker:4.2.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\8fce8b2a1f74a1b2142985e3b20718a3\transformed\materialdatetimepicker-4.2.3\AndroidManifest.xml:26:22-63
+14
+15    <application
+15-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:8:5-71:19
+16        android:allowBackup="true"
+16-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:9:9-35
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.5.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\a4f112428bc4b96a5f7c524bb8751d23\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
+18        android:debuggable="true"
+19        android:extractNativeLibs="false"
+20        android:icon="@mipmap/ic_launcher"
+20-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:10:9-43
+21        android:label="@string/app_name"
+21-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:11:9-41
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:12:9-54
+23        android:supportsRtl="true"
+23-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:13:9-35
+24        android:testOnly="true"
+25        android:theme="@style/Theme.MyApplication" >
+25-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:14:9-51
+26        <activity
+26-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:15:9-17:40
+27            android:name="com.example.myapplication.SeeEventList.EventListViewActivity"
+27-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:16:13-63
+28            android:exported="false" />
+28-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:17:13-37
+29        <activity
+29-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:18:9-20:40
+30            android:name="com.example.myapplication.AccountStudent"
+30-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:19:13-43
+31            android:exported="false" />
+31-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:20:13-37
+32        <activity
+32-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:21:9-23:39
+33            android:name="com.example.myapplication.RecyclerViewProfessor.OfficeHourBooking"
+33-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:22:13-68
+34            android:exported="true" />
+34-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:23:13-36
+35        <activity
+35-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:24:9-26:40
+36            android:name="com.example.myapplication.HomePageProfessor"
+36-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:25:13-46
+37            android:exported="false" />
+37-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:26:13-37
+38        <activity
+38-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:27:9-29:40
+39            android:name="com.example.myapplication.ViewCalender"
+39-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:28:13-41
+40            android:exported="false" />
+40-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:29:13-37
+41        <activity
+41-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:30:9-32:40
+42            android:name="com.example.myapplication.ProfessorSetAvailableTimeSlots.WeekViewActivity"
+42-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:31:13-76
+43            android:exported="false" />
+43-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:32:13-37
+44        <activity
+44-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:33:9-35:40
+45            android:name="com.example.myapplication.Booking"
+45-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:34:13-36
+46            android:exported="false" />
+46-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:35:13-37
 47        <activity
-47-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:37:9-39:40
-48            android:name="com.example.myapplication.HomePageStudent"
-48-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:38:13-44
-49            android:exported="false" />
-49-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:39:13-37
-50        <activity
-50-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:40:9-47:20
-51            android:name="com.example.myapplication.MainActivity"
-51-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:41:13-41
-52            android:exported="true" >
-52-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:42:13-36
-53            <intent-filter>
-53-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:43:13-46:29
-54                <action android:name="android.intent.action.MAIN" />
-54-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:44:17-69
-54-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:44:25-66
-55
-56                <category android:name="android.intent.category.LAUNCHER" />
-56-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:45:17-77
-56-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:45:27-74
-57            </intent-filter>
-58        </activity>
-59        <activity
-59-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:48:9-51:51
-60            android:name="com.example.myapplication.RegisterProfessor"
-60-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:49:13-46
-61            android:exported="true"
-61-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:50:13-36
-62            android:parentActivityName="com.example.myapplication.Login" />
-62-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:51:13-48
+47-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:36:9-39:51
+48            android:name="com.example.myapplication.RegisterStudent"
+48-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:37:13-44
+49            android:exported="false"
+49-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:38:13-37
+50            android:parentActivityName="com.example.myapplication.Login" />
+50-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:39:13-48
+51        <activity
+51-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:40:9-42:40
+52            android:name="com.example.myapplication.HomePageStudent"
+52-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:41:13-44
+53            android:exported="false" />
+53-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:42:13-37
+54        <activity
+54-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:43:9-51:20
+55            android:name="com.example.myapplication.MainActivity"
+55-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:44:13-41
+56            android:exported="true" >
+56-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:45:13-36
+57            <intent-filter>
+57-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:46:13-50:29
+58                <action android:name="android.intent.action.MAIN" />
+58-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:47:17-69
+58-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:47:25-66
+59
+60                <category android:name="android.intent.category.LAUNCHER" />
+60-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:49:17-77
+60-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:49:27-74
+61            </intent-filter>
+62        </activity>
 63        <activity
-63-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:52:9-55:58
-64            android:name="com.example.myapplication.Login"
-64-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:53:13-34
+63-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:52:9-55:51
+64            android:name="com.example.myapplication.RegisterProfessor"
+64-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:53:13-46
 65            android:exported="true"
 65-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:54:13-36
-66            android:parentActivityName="com.example.myapplication.MainActivity" />
-66-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:55:13-55
-67
-68        <meta-data
-68-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:57:9-59:57
-69            android:name="preloaded_fonts"
-69-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:58:13-43
-70            android:resource="@array/preloaded_fonts" />
-70-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:59:13-54
-71
-72        <activity
-72-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:27:9-44:20
-73            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-73-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:28:13-80
-74            android:excludeFromRecents="true"
-74-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:29:13-46
-75            android:exported="true"
-75-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:30:13-36
-76            android:launchMode="singleTask"
-76-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:31:13-44
-77            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-77-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:32:13-72
-78            <intent-filter>
-78-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:33:13-43:29
-79                <action android:name="android.intent.action.VIEW" />
-79-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:34:17-69
-79-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:34:25-66
-80
-81                <category android:name="android.intent.category.DEFAULT" />
-81-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:36:17-76
-81-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:36:27-73
-82                <category android:name="android.intent.category.BROWSABLE" />
-82-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:37:17-78
-82-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:37:27-75
-83
-84                <data
-84-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:39:17-42:51
-85                    android:host="firebase.auth"
-85-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:40:21-49
-86                    android:path="/"
-86-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:41:21-37
-87                    android:scheme="genericidp" />
-87-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:42:21-48
-88            </intent-filter>
-89        </activity>
-90        <activity
-90-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:45:9-62:20
-91            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-91-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:46:13-79
-92            android:excludeFromRecents="true"
-92-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:47:13-46
-93            android:exported="true"
-93-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:48:13-36
-94            android:launchMode="singleTask"
-94-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:49:13-44
-95            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-95-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:50:13-72
-96            <intent-filter>
-96-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:51:13-61:29
-97                <action android:name="android.intent.action.VIEW" />
-97-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:34:17-69
-97-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:34:25-66
-98
-99                <category android:name="android.intent.category.DEFAULT" />
-99-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:36:17-76
-99-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:36:27-73
-100                <category android:name="android.intent.category.BROWSABLE" />
-100-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:37:17-78
-100-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:37:27-75
-101
-102                <data
-102-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:39:17-42:51
-103                    android:host="firebase.auth"
-103-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:40:21-49
-104                    android:path="/"
-104-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:41:21-37
-105                    android:scheme="recaptcha" />
-105-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:42:21-48
-106            </intent-filter>
-107        </activity>
-108
-109        <service
-109-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:64:9-70:19
-110            android:name="com.google.firebase.components.ComponentDiscoveryService"
-110-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:65:13-84
-111            android:directBootAware="true"
-111-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:35:13-43
-112            android:exported="false" >
-112-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:66:13-37
-113            <meta-data
-113-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:67:13-69:85
-114                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-114-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:68:17-109
-115                android:value="com.google.firebase.components.ComponentRegistrar" />
-115-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:69:17-82
-116            <meta-data
-116-->[com.google.firebase:firebase-database:20.0.4] C:\Users\FPTSHOP\.gradle\caches\transforms-3\67dd89bac13d2f662c2ddeda5b8221a0\transformed\firebase-database-20.0.4\AndroidManifest.xml:32:13-34:85
-117                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-117-->[com.google.firebase:firebase-database:20.0.4] C:\Users\FPTSHOP\.gradle\caches\transforms-3\67dd89bac13d2f662c2ddeda5b8221a0\transformed\firebase-database-20.0.4\AndroidManifest.xml:33:17-109
-118                android:value="com.google.firebase.components.ComponentRegistrar" />
-118-->[com.google.firebase:firebase-database:20.0.4] C:\Users\FPTSHOP\.gradle\caches\transforms-3\67dd89bac13d2f662c2ddeda5b8221a0\transformed\firebase-database-20.0.4\AndroidManifest.xml:34:17-82
-119            <meta-data
-119-->[com.google.firebase:firebase-firestore:24.1.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3828e7a5fae7b77f8ca67b3a1754286b\transformed\firebase-firestore-24.1.1\AndroidManifest.xml:20:13-22:85
-120                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-120-->[com.google.firebase:firebase-firestore:24.1.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3828e7a5fae7b77f8ca67b3a1754286b\transformed\firebase-firestore-24.1.1\AndroidManifest.xml:21:17-111
-121                android:value="com.google.firebase.components.ComponentRegistrar" />
-121-->[com.google.firebase:firebase-firestore:24.1.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3828e7a5fae7b77f8ca67b3a1754286b\transformed\firebase-firestore-24.1.1\AndroidManifest.xml:22:17-82
-122            <meta-data
-122-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\49df5dbbc301e11b96cfa63596636946\transformed\firebase-storage-20.0.1\AndroidManifest.xml:33:13-35:85
-123                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-123-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\49df5dbbc301e11b96cfa63596636946\transformed\firebase-storage-20.0.1\AndroidManifest.xml:34:17-107
-124                android:value="com.google.firebase.components.ComponentRegistrar" />
-124-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\49df5dbbc301e11b96cfa63596636946\transformed\firebase-storage-20.0.1\AndroidManifest.xml:35:17-82
-125        </service>
-126
-127        <provider
-127-->[com.squareup.picasso:picasso:2.71828] C:\Users\FPTSHOP\.gradle\caches\transforms-3\d15c463e9ad4c4947372eeae0ffcbbae\transformed\picasso-2.71828\AndroidManifest.xml:8:9-11:40
-128            android:name="com.squareup.picasso.PicassoProvider"
-128-->[com.squareup.picasso:picasso:2.71828] C:\Users\FPTSHOP\.gradle\caches\transforms-3\d15c463e9ad4c4947372eeae0ffcbbae\transformed\picasso-2.71828\AndroidManifest.xml:9:13-64
-129            android:authorities="com.example.myapplication.com.squareup.picasso"
-129-->[com.squareup.picasso:picasso:2.71828] C:\Users\FPTSHOP\.gradle\caches\transforms-3\d15c463e9ad4c4947372eeae0ffcbbae\transformed\picasso-2.71828\AndroidManifest.xml:10:13-72
-130            android:exported="false" />
-130-->[com.squareup.picasso:picasso:2.71828] C:\Users\FPTSHOP\.gradle\caches\transforms-3\d15c463e9ad4c4947372eeae0ffcbbae\transformed\picasso-2.71828\AndroidManifest.xml:11:13-37
-131        <provider
-131-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:26:9-31:39
-132            android:name="com.google.firebase.provider.FirebaseInitProvider"
-132-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:27:13-77
-133            android:authorities="com.example.myapplication.firebaseinitprovider"
-133-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:28:13-72
-134            android:directBootAware="true"
-134-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:29:13-43
-135            android:exported="false"
-135-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:30:13-37
-136            android:initOrder="100" />
-136-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:31:13-36
+66            android:parentActivityName="com.example.myapplication.Login" />
+66-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:55:13-48
+67        <activity
+67-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:56:9-59:58
+68            android:name="com.example.myapplication.Login"
+68-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:57:13-34
+69            android:exported="true"
+69-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:58:13-36
+70            android:parentActivityName="com.example.myapplication.MainActivity" />
+70-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:59:13-55
+71        <activity
+71-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:60:9-63:61
+72            android:name="com.example.myapplication.BookingProcess.SelectDate"
+72-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:61:13-54
+73            android:exported="true"
+73-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:62:13-36
+74            android:parentActivityName="com.example.myapplication.HomePageStudent" />
+74-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:63:13-58
+75        <activity
+75-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:64:9-66:39
+76            android:name="com.example.myapplication.BookingProcess.OfficeHourBooking"
+76-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:65:13-61
+77            android:exported="true" />
+77-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:66:13-36
+78
+79        <meta-data
+79-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:68:9-70:57
+80            android:name="preloaded_fonts"
+80-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:69:13-43
+81            android:resource="@array/preloaded_fonts" />
+81-->C:\Users\FPTSHOP\Documents\GitHub\VinUni_EasyBooking\app\src\main\AndroidManifest.xml:70:13-54
+82
+83        <activity
+83-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:27:9-44:20
+84            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+84-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:28:13-80
+85            android:excludeFromRecents="true"
+85-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:29:13-46
+86            android:exported="true"
+86-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:30:13-36
+87            android:launchMode="singleTask"
+87-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:31:13-44
+88            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+88-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:32:13-72
+89            <intent-filter>
+89-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:33:13-43:29
+90                <action android:name="android.intent.action.VIEW" />
+90-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:34:17-69
+90-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:34:25-66
+91
+92                <category android:name="android.intent.category.DEFAULT" />
+92-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:36:17-76
+92-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:36:27-73
+93                <category android:name="android.intent.category.BROWSABLE" />
+93-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:37:17-78
+93-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:37:27-75
+94
+95                <data
+95-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:39:17-42:51
+96                    android:host="firebase.auth"
+96-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:40:21-49
+97                    android:path="/"
+97-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:41:21-37
+98                    android:scheme="genericidp" />
+98-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:42:21-48
+99            </intent-filter>
+100        </activity>
+101        <activity
+101-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:45:9-62:20
+102            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+102-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:46:13-79
+103            android:excludeFromRecents="true"
+103-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:47:13-46
+104            android:exported="true"
+104-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:48:13-36
+105            android:launchMode="singleTask"
+105-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:49:13-44
+106            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+106-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:50:13-72
+107            <intent-filter>
+107-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:51:13-61:29
+108                <action android:name="android.intent.action.VIEW" />
+108-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:34:17-69
+108-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:34:25-66
+109
+110                <category android:name="android.intent.category.DEFAULT" />
+110-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:36:17-76
+110-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:36:27-73
+111                <category android:name="android.intent.category.BROWSABLE" />
+111-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:37:17-78
+111-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:37:27-75
+112
+113                <data
+113-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:39:17-42:51
+114                    android:host="firebase.auth"
+114-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:40:21-49
+115                    android:path="/"
+115-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:41:21-37
+116                    android:scheme="recaptcha" />
+116-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:42:21-48
+117            </intent-filter>
+118        </activity>
+119
+120        <service
+120-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:64:9-70:19
+121            android:name="com.google.firebase.components.ComponentDiscoveryService"
+121-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:65:13-84
+122            android:directBootAware="true"
+122-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:35:13-43
+123            android:exported="false" >
+123-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:66:13-37
+124            <meta-data
+124-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:67:13-69:85
+125                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+125-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:68:17-109
+126                android:value="com.google.firebase.components.ComponentRegistrar" />
+126-->[com.google.firebase:firebase-auth:21.0.3] C:\Users\FPTSHOP\.gradle\caches\transforms-3\c2cb551e0e7ce58e4845372c9084497c\transformed\firebase-auth-21.0.3\AndroidManifest.xml:69:17-82
+127            <meta-data
+127-->[com.google.firebase:firebase-database:20.0.4] C:\Users\FPTSHOP\.gradle\caches\transforms-3\67dd89bac13d2f662c2ddeda5b8221a0\transformed\firebase-database-20.0.4\AndroidManifest.xml:32:13-34:85
+128                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+128-->[com.google.firebase:firebase-database:20.0.4] C:\Users\FPTSHOP\.gradle\caches\transforms-3\67dd89bac13d2f662c2ddeda5b8221a0\transformed\firebase-database-20.0.4\AndroidManifest.xml:33:17-109
+129                android:value="com.google.firebase.components.ComponentRegistrar" />
+129-->[com.google.firebase:firebase-database:20.0.4] C:\Users\FPTSHOP\.gradle\caches\transforms-3\67dd89bac13d2f662c2ddeda5b8221a0\transformed\firebase-database-20.0.4\AndroidManifest.xml:34:17-82
+130            <meta-data
+130-->[com.google.firebase:firebase-firestore:24.1.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3828e7a5fae7b77f8ca67b3a1754286b\transformed\firebase-firestore-24.1.1\AndroidManifest.xml:20:13-22:85
+131                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+131-->[com.google.firebase:firebase-firestore:24.1.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3828e7a5fae7b77f8ca67b3a1754286b\transformed\firebase-firestore-24.1.1\AndroidManifest.xml:21:17-111
+132                android:value="com.google.firebase.components.ComponentRegistrar" />
+132-->[com.google.firebase:firebase-firestore:24.1.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3828e7a5fae7b77f8ca67b3a1754286b\transformed\firebase-firestore-24.1.1\AndroidManifest.xml:22:17-82
+133            <meta-data
+133-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\49df5dbbc301e11b96cfa63596636946\transformed\firebase-storage-20.0.1\AndroidManifest.xml:33:13-35:85
+134                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+134-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\49df5dbbc301e11b96cfa63596636946\transformed\firebase-storage-20.0.1\AndroidManifest.xml:34:17-107
+135                android:value="com.google.firebase.components.ComponentRegistrar" />
+135-->[com.google.firebase:firebase-storage:20.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\49df5dbbc301e11b96cfa63596636946\transformed\firebase-storage-20.0.1\AndroidManifest.xml:35:17-82
+136        </service>
 137
-138        <activity
-138-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3fcd91ef0b7ca1453621b3b369a0fb2f\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
-139            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-139-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3fcd91ef0b7ca1453621b3b369a0fb2f\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
-140            android:exported="false"
-140-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3fcd91ef0b7ca1453621b3b369a0fb2f\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
-141            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-141-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3fcd91ef0b7ca1453621b3b369a0fb2f\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
-142
-143        <meta-data
-143-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\2896feedb3c7ff4ccffe9fc23a7d34e0\transformed\play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
-144            android:name="com.google.android.gms.version"
-144-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\2896feedb3c7ff4ccffe9fc23a7d34e0\transformed\play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
-145            android:value="@integer/google_play_services_version" />
-145-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\2896feedb3c7ff4ccffe9fc23a7d34e0\transformed\play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
-146
-147        <uses-library
-147-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
-148            android:name="androidx.window.extensions"
-148-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
-149            android:required="false" />
-149-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
-150        <uses-library
-150-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
-151            android:name="androidx.window.sidecar"
-151-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
-152            android:required="false" />
-152-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
-153    </application>
-154
-155</manifest>
+138        <provider
+138-->[com.squareup.picasso:picasso:2.8] C:\Users\FPTSHOP\.gradle\caches\transforms-3\1dad91e1344f1b2c98946f17c0b4c7a9\transformed\picasso-2.8\AndroidManifest.xml:8:9-11:40
+139            android:name="com.squareup.picasso.PicassoProvider"
+139-->[com.squareup.picasso:picasso:2.8] C:\Users\FPTSHOP\.gradle\caches\transforms-3\1dad91e1344f1b2c98946f17c0b4c7a9\transformed\picasso-2.8\AndroidManifest.xml:9:13-64
+140            android:authorities="com.example.myapplication.com.squareup.picasso"
+140-->[com.squareup.picasso:picasso:2.8] C:\Users\FPTSHOP\.gradle\caches\transforms-3\1dad91e1344f1b2c98946f17c0b4c7a9\transformed\picasso-2.8\AndroidManifest.xml:10:13-72
+141            android:exported="false" />
+141-->[com.squareup.picasso:picasso:2.8] C:\Users\FPTSHOP\.gradle\caches\transforms-3\1dad91e1344f1b2c98946f17c0b4c7a9\transformed\picasso-2.8\AndroidManifest.xml:11:13-37
+142        <provider
+142-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:26:9-31:39
+143            android:name="com.google.firebase.provider.FirebaseInitProvider"
+143-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:27:13-77
+144            android:authorities="com.example.myapplication.firebaseinitprovider"
+144-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:28:13-72
+145            android:directBootAware="true"
+145-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:29:13-43
+146            android:exported="false"
+146-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:30:13-37
+147            android:initOrder="100" />
+147-->[com.google.firebase:firebase-common:20.1.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\e609942112f05849a657a9acf6637c1b\transformed\firebase-common-20.1.0\AndroidManifest.xml:31:13-36
+148
+149        <activity
+149-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3fcd91ef0b7ca1453621b3b369a0fb2f\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+150            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+150-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3fcd91ef0b7ca1453621b3b369a0fb2f\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+151            android:exported="false"
+151-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3fcd91ef0b7ca1453621b3b369a0fb2f\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+152            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+152-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\FPTSHOP\.gradle\caches\transforms-3\3fcd91ef0b7ca1453621b3b369a0fb2f\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+153
+154        <meta-data
+154-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\2896feedb3c7ff4ccffe9fc23a7d34e0\transformed\play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+155            android:name="com.google.android.gms.version"
+155-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\2896feedb3c7ff4ccffe9fc23a7d34e0\transformed\play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+156            android:value="@integer/google_play_services_version" />
+156-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\2896feedb3c7ff4ccffe9fc23a7d34e0\transformed\play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+157
+158        <uses-library
+158-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+159            android:name="androidx.window.extensions"
+159-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+160            android:required="false" />
+160-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+161        <uses-library
+161-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+162            android:name="androidx.window.sidecar"
+162-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+163            android:required="false" />
+163-->[androidx.window:window:1.0.0] C:\Users\FPTSHOP\.gradle\caches\transforms-3\97eb89435f3e5c99ecf6002c69636522\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+164    </application>
+165
+166</manifest>
