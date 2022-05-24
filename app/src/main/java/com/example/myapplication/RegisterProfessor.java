@@ -92,7 +92,6 @@ public class RegisterProfessor extends AppCompatActivity {
                     return;
                 }
 
-                professor = new ProfessorInfo(email, password, name, subject);
                 progressBar.setVisibility(View.VISIBLE);
 
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -100,6 +99,7 @@ public class RegisterProfessor extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             profID = fAuth.getCurrentUser().getUid();
+                            professor = new ProfessorInfo(email, password, name, subject, profID);
                             DocumentReference documentReference = fStore.collection("Professors").document(profID);
                             documentReference.set(professor).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

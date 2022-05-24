@@ -6,14 +6,18 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotAdapter;
 import com.example.myapplication.R;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,37 +31,44 @@ import java.util.HashMap;
 import com.google.firebase.Timestamp;
 
 public class SelectDate extends AppCompatActivity implements
-        DatePickerDialog.OnDateSetListener  {
+        DatePickerDialog.OnDateSetListener, TimeSlotAdapter.OnTimeSlotListener  {
 
     DatePickerDialog datePickerDialog ;
-    AppCompatButton setDateBtn, setTimeBtn;
+    AppCompatButton setDateBtn, setTimeBtn, makeAppointmentBtn;
     TextView dateSelected, timeSelected;
 
     RecyclerView timeSlotRecyclerView;
     TimeSlotAdapter timeSlotAdapter;
     RecyclerView.LayoutManager layoutManager;
+    Dialog dialog;
 
     public static ArrayList<Timestamp> availableSlots;
     public static String UID_professor;
     ArrayList<Calendar> calendarList;
     HashMap<String, ArrayList<Timestamp>> categorizedTimeslots;
-    static String date;
+    static String date = "";
+    static String time;
     ArrayList<Timestamp> hours;
 
     void setTimeSlotRecyclerView() {
-        timeSlotAdapter = new TimeSlotAdapter(SelectDate.this, hours);
-        layoutManager = new GridLayoutManager(getApplicationContext(), 4);
-        timeSlotRecyclerView.setLayoutManager(layoutManager);
+        Log.d("SelectDate", availableSlots + " ");
+        Log.d("SelectDate", hours + " ");
+
+        timeSlotRecyclerView = dialog.findViewById(R.id.recTimeID);
+        timeSlotAdapter = new TimeSlotAdapter(SelectDate.this, hours, this);
+        layoutManager = new GridLayoutManager(getApplicationContext(), 3);
         timeSlotRecyclerView.setAdapter(timeSlotAdapter);
+        timeSlotRecyclerView.setLayoutManager(layoutManager);
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_time);
+        setContentView(R.layout.activity_make_appointment);
 
         calendarList = new ArrayList<Calendar>();
-        timeSlotRecyclerView = findViewById(R.id.timeSlotID);
+
 
         setCalendarArrays();
         categorizedTimeslots = timestampArrayListToHashMap();
@@ -66,6 +77,7 @@ public class SelectDate extends AppCompatActivity implements
         actionBar.setDisplayHomeAsUpEnabled(true);
         dateSelected = findViewById(R.id.dateDisplay);
         timeSelected = findViewById(R.id.timeDisplay);
+        makeAppointmentBtn = findViewById(R.id.setappoinment);
 
         setDateBtn = findViewById(R.id.setDate);
         setTimeBtn = findViewById(R.id.setTime);
@@ -100,13 +112,58 @@ public class SelectDate extends AppCompatActivity implements
                 datePickerDialog.show(getSupportFragmentManager(), "DatePickerDialog");
             }
         });
+        setTimeBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                if (date.equals("")) Toast.makeText(SelectDate.this, "Select date first!", Toast.LENGTH_SHORT).show();
+                else openDialog(SelectDate.this);
+            }
+        });
+
+        makeAppointmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+    }
+    public void openDialog(Activity activity) {
+        dialog = new Dialog(activity);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.select_time_slot);
+
+        Button ok = dialog.findViewById(R.id.okBtn);
+        Button cancel = dialog.findViewById(R.id.cancelBtn);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                time = "";
+                timeSelected.setText(time);
+                dialog.dismiss();
+            }
+        });
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timeSelected.setText(time);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        setTimeSlotRecyclerView();
     }
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         date = dayOfMonth + "/" + "0" + (monthOfYear+1) + "/"+ year;
         Toast.makeText(SelectDate.this, date, Toast.LENGTH_LONG).show();
         dateSelected.setText(date);
         hours = categorizedTimeslots.get(date);
-        setTimeSlotRecyclerView();
     }
 
     public void setCalendarArrays() {
@@ -132,5 +189,10 @@ public class SelectDate extends AppCompatActivity implements
             }
         }
         return timeStampHashMap;
+    }
+
+    @Override
+    public void onTimeSlotClick(int position) {
+        Log.d("Time", time);
     }
 }
