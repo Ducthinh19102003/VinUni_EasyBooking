@@ -9,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.SeeEventList.EventListViewActivity;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
+public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 {
     private final ArrayList<LocalDate> days;
     private final OnItemListener onItemListener;
@@ -45,6 +47,8 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         else
         {
             holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
+            String selectedDateString = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            if (EventListViewActivity.eventInfoHashMap.containsKey(selectedDateString)) holder.dayOfMonth.setTextColor(Color.RED);
             if(date.equals(CalendarUtils.selectedDate))
                 holder.parentView.setBackgroundColor(Color.LTGRAY);
         }

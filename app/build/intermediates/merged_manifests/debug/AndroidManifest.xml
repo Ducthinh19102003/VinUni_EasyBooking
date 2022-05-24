@@ -30,9 +30,6 @@
             android:name="com.example.myapplication.AccountStudent"
             android:exported="false" />
         <activity
-            android:name="com.example.myapplication.RecyclerViewProfessor.OfficeHourBooking"
-            android:exported="true" />
-        <activity
             android:name="com.example.myapplication.HomePageProfessor"
             android:exported="false" />
         <activity

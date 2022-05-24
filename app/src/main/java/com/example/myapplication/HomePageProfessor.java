@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.EventInfo.eventToDatabase;
+import static com.example.myapplication.EventInfo.memberJoinEvent;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +12,7 @@ import android.view.View;
 import com.example.myapplication.CreateCustomEvent.CreateCustomEventTest;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.WeekViewActivity;
 import com.example.myapplication.SeeEventList.EventListViewActivity;
+import com.google.firebase.Timestamp;
 
 public class HomePageProfessor extends AppCompatActivity {
     //Need to pass professor name in for further activities
@@ -29,6 +33,9 @@ public class HomePageProfessor extends AppCompatActivity {
     }
 
     public void toSetDummyEvent(View view) {
-        CreateCustomEventTest.test();
+       memberJoinEvent("pv7cQBcJqqd4FaWrLM8qxe16mis1",
+               "SCAjKS04hBKsCHFgZ37s");
+//        EventInfo dummyEvent = new EventInfo("GutdziKpOWV44uZ6aSEeQqhwfVc2", new Timestamp(1653876000, 0), new Timestamp(1653879600, 0));
+//        eventToDatabase(dummyEvent);
     }
 }

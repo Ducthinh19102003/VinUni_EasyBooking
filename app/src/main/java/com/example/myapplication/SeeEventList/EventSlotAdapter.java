@@ -49,7 +49,6 @@ public class EventSlotAdapter extends RecyclerView.Adapter<EventSlotViewHolder>{
         {
             Timestamp startHour = event.getStartTime();
             Timestamp endHour = event.getEndTime();
-            Log.d("Debug", startHour.toString()+endHour.toString());
             holder.hourOfEvent.setText(String.valueOf(startHour.toDate().getHours() + ":" + startHour.toDate().getMinutes() + "-" + endHour.toDate().getHours() + ":" + endHour.toDate().getMinutes()));
             holder.dayOfEvent.setText(startHour.toDate().toString());
             holder.eventSlotParent.setBackgroundColor(Color.LTGRAY);

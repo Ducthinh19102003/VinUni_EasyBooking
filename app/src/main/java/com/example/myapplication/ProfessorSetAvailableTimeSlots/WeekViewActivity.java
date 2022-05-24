@@ -17,14 +17,17 @@ import android.widget.Toast;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils.daysInWeekArray;
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils.monthYearFromDate;
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotUtils.defaultHours;
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotUtils.profAvailableSlots;
 
+import com.example.myapplication.EventInfo;
 import com.example.myapplication.HomePageProfessor;
 import com.example.myapplication.R;
+import com.example.myapplication.SeeEventList.EventListViewActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
@@ -48,6 +51,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         Log.d("WeekViewActivity", "Started");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_view);
+        EventListViewActivity.eventInfoHashMap = new HashMap<String, ArrayList<EventInfo>>();
         CalendarUtils.selectedDate = LocalDate.now();
         initWidgets();
         setWeekView();
