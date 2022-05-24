@@ -31,7 +31,6 @@ public class ProfessorAdapter extends RecyclerView.Adapter<ProfessorAdapter.MyVi
     @Override
     public ProfessorAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.item_professor,parent,false);
-
         return new MyViewHolder(v, listener);
     }
 
@@ -59,7 +58,7 @@ public class ProfessorAdapter extends RecyclerView.Adapter<ProfessorAdapter.MyVi
 
         public MyViewHolder(@NonNull View itemView, OnItemListener listener) {
             super(itemView);
-            name = itemView.findViewById(R.id.timeSlot);
+            name = itemView.findViewById(R.id.name_professor);
             email = itemView.findViewById(R.id.prof_email);
             subjects = itemView.findViewById(R.id.prof_subjects);
             profPicture = itemView.findViewById(R.id.img_professor);
