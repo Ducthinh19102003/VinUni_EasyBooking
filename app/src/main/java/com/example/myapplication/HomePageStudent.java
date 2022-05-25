@@ -6,10 +6,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.BookingProcess.OfficeHourBooking;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -39,24 +42,45 @@ public class HomePageStudent extends AppCompatActivity {
     DrawerLayout drawer;
     BottomNavigationView bottomNavigationView;
 
+    FloatingActionButton officeHourFAB, discussionRoomFAB;
+    ExtendedFloatingActionButton fab;
+    TextView officeHourText, discussionRoomText;
+
+    // to check whether sub FABs are visible or not
+    Boolean isAllFabsVisible;
+
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomePageBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityHomePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarHomePage.toolbar);
-        binding.appBarHomePage.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        //fabs4life
+        officeHourFAB = binding.appBarHomePage.officeHourFAB;
+        discussionRoomFAB = binding.appBarHomePage.discussionRoomFAB;
+        fab = binding.appBarHomePage.fab;
+        officeHourText = binding.appBarHomePage.officeHourText;
+        discussionRoomText = binding.appBarHomePage.discussionRoomText;
+
+        //fabs are invisible at first
+        isAllFabsVisible = false;
+        officeHourFAB.setVisibility(View.GONE);
+        discussionRoomFAB.setVisibility(View.GONE);
+        officeHourText.setVisibility(View.GONE);
+        discussionRoomText.setVisibility(View.GONE);
+        fab.shrink();
+        //ok go on
+//        binding.appBarHomePage.fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -96,5 +120,32 @@ public class HomePageStudent extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home_page);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void changeFABsVisibility(View view) {
+        if (!isAllFabsVisible){
+            discussionRoomFAB.show();
+            discussionRoomText.setVisibility(View.VISIBLE);
+            officeHourFAB.show();
+            officeHourText.setVisibility(View.VISIBLE);
+            fab.extend();
+            isAllFabsVisible = true;
+        }
+        else {
+            officeHourText.setVisibility(View.GONE);
+            discussionRoomFAB.hide();
+            officeHourFAB.hide();
+            discussionRoomText.setVisibility(View.GONE);
+            fab.shrink();
+            isAllFabsVisible = false;
+        }
+    }
+
+    public void toBookOfficeHour(View view) {
+        Toast.makeText(this, "to book office hour", Toast.LENGTH_SHORT).show();
+    }
+
+    public void toBookDiscussionRoom(View view) {
+        Toast.makeText(this, "to book discussion room", Toast.LENGTH_SHORT).show();
     }
 }
