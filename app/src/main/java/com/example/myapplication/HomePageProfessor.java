@@ -33,9 +33,10 @@ public class HomePageProfessor extends AppCompatActivity {
     }
 
     public void toSetDummyEvent(View view) {
-       memberJoinEvent("pv7cQBcJqqd4FaWrLM8qxe16mis1",
-               "SCAjKS04hBKsCHFgZ37s");
+//       memberJoinEvent("pv7cQBcJqqd4FaWrLM8qxe16mis1",
+//               "SCAjKS04hBKsCHFgZ37s");
 //        EventInfo dummyEvent = new EventInfo("GutdziKpOWV44uZ6aSEeQqhwfVc2", new Timestamp(1653876000, 0), new Timestamp(1653879600, 0));
 //        eventToDatabase(dummyEvent);
+        RoomInfo.roomBooking("A101", new EventInfo("GutdziKpOWV44uZ6aSEeQqhwfVc2", new Timestamp(1653886000, 0), new Timestamp(1653889600, 0)));
     }
 }

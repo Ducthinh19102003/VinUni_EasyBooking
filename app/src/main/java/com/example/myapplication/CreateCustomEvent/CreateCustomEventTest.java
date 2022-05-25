@@ -19,7 +19,7 @@ public class CreateCustomEventTest {
     public static void test(){
         EventInfo createdEvent = new EventInfo(hostID, startTime, endTime);
         createdEvent.setNote("pikapika");
-        createdEvent.addMembers("pv7cQBcJqqd4FaWrLM8qxe16mis1");
+        createdEvent.addMember("pv7cQBcJqqd4FaWrLM8qxe16mis1");
         EventInfo.eventToDatabase(createdEvent);
     }
 

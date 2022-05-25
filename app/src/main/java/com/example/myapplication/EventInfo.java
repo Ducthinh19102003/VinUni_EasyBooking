@@ -67,7 +67,72 @@ public class EventInfo {
         this.members = members;
     }
 
-    public void addMembers(String member) {this.members.add(member);}
+    public void addMember(String memberID) {
+        //This is for adding new member to the eventInfo object BEFORE it gets online.
+        //For why, see method RoomInfo.roomBooking.
+        //check for conflict
+        EventInfo event = this;
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference memberRef = db.collection("Professors").document(memberID.trim());
+        memberRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentReference memberDocRef;
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        //if the new member id is indeed in "Professors"
+                        memberDocRef = db.collection("Professors").document(memberID.trim());
+                    } else {
+                        //if the new member id is not in "Professors"
+                        memberDocRef = db.collection("Students").document(memberID.trim());
+                    }
+                    memberDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                    ArrayList<String> eventIDArrayList = (ArrayList<String>) document.get("events");
+                                    //Retrieve the event arraylist from the ids
+                                    List<Task<DocumentSnapshot>> tasks = new ArrayList<>();
+                                    for (String doc : eventIDArrayList) {
+                                        Log.d("Debug", doc.trim()); //yes, a bug was here
+                                        tasks.add(db.collection("Events").document(doc.trim()).get());
+                                    }
+                                    Tasks.whenAllSuccess(tasks).addOnSuccessListener(new OnSuccessListener<List<Object>>() {
+                                        @Override
+                                        public void onSuccess(List<Object> list) {
+                                            //Do what you need to do with your list
+                                            ArrayList<EventInfo> memberEventInfoArrayList = new ArrayList<>();
+                                            for (Object object : list) {
+                                                EventInfo fm = ((DocumentSnapshot) object).toObject(EventInfo.class);
+                                                if (fm != null) memberEventInfoArrayList.add(fm);
+                                                boolean conflict = checkConflict(event , memberEventInfoArrayList);
+                                                if (conflict) Log.d("Debug", "conflict");
+                                                else {
+                                                    event.members.add(memberID);
+                                                }
+                                            }
+                                        }
+
+                                    });
+                                } else {
+                                    Log.d(TAG, "No such document");
+                                }
+                            } else {
+                                Log.d(TAG, "get failed with ", task.getException());
+                            }
+                        }
+                    });
+
+                } else {
+                    Log.d(TAG, "Failed with: ", task.getException());
+                }
+            }
+        });
+    }
 
     public String getHost() {
         return host;
