@@ -18,16 +18,23 @@ import android.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
     EditText getEmail, getPassword;
     TextView toRegister;
     Button LoginButton;
     FirebaseAuth fAuth;
-    static int portal;
+    FirebaseFirestore fstore;
+    static public ProfessorInfo currentProfessor;
+    static public StudentInfo currentStudent;
+    static public int portal;
     private static final String tag = "MyActivity";
 
     ProgressBar progressBar;
@@ -36,10 +43,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        // calling the action bar
-        // getSupportActionBar().setTitle("example");
 
-        // calling the action bar
         ActionBar actionBar = getSupportActionBar();
         if (Login.portal == 1) {
             actionBar.setTitle("Welcome student!");
@@ -48,7 +52,6 @@ public class Login extends AppCompatActivity {
             actionBar.setTitle("Welcome professor!");
         }
 
-        // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         getEmail = findViewById(R.id.email);
@@ -57,6 +60,7 @@ public class Login extends AppCompatActivity {
         toRegister = findViewById(R.id.createAccount);
 
         fAuth = FirebaseAuth.getInstance();
+        fstore = FirebaseFirestore.getInstance();
 
         progressBar = findViewById(R.id.progressBar);
         // adding on click listener for our button.
@@ -94,9 +98,29 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            if (Login.portal == 1) startActivity(new Intent(getApplicationContext(), HomePageStudent.class));
-                            if (Login.portal == 2) startActivity(new Intent(getApplicationContext(), HomePageProfessor.class));
-                            finish();
+
+                            if (Login.portal == 1) {
+                                String UID_student = fAuth.getCurrentUser().getUid();
+                                DocumentReference docRef = fstore.collection("Students").document(UID_student);
+                                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        currentStudent = documentSnapshot.toObject(StudentInfo.class);
+                                        startActivity(new Intent(getApplicationContext(), HomePageStudent.class));
+                                    }
+                                });
+                            }
+                            else if (Login.portal == 2) {
+                                String UID_professor = fAuth.getCurrentUser().getUid();
+                                DocumentReference docRef = fstore.collection("Professors").document(UID_professor);
+                                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        currentProfessor = documentSnapshot.toObject(ProfessorInfo.class);
+                                        startActivity(new Intent(getApplicationContext(), HomePageProfessor.class));
+                                    }
+                                });
+                            }
                         } else {
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);

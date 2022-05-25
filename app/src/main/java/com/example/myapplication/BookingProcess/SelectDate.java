@@ -177,6 +177,7 @@ public class SelectDate extends AppCompatActivity implements
 
     public HashMap<String, ArrayList<Timestamp>> timestampArrayListToHashMap(){
         HashMap<String, ArrayList<Timestamp>> timeStampHashMap = new HashMap<String, ArrayList<Timestamp>>();
+//        String pattern = "dd/MM/yyyy";
         String pattern = "dd/MM/yyyy";
         DateFormat df = new SimpleDateFormat(pattern);
         for (Timestamp availableTimeSlot: availableSlots){

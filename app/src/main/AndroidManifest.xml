@@ -16,19 +16,13 @@
             android:name=".SeeEventList.EventListViewActivity"
             android:exported="false" />
         <activity
-            android:name=".AccountStudent"
+            android:name=".Display_events"
             android:exported="false" />
         <activity
             android:name=".HomePageProfessor"
             android:exported="false" />
         <activity
-            android:name=".ViewCalender"
-            android:exported="false" />
-        <activity
             android:name=".ProfessorSetAvailableTimeSlots.WeekViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Booking"
             android:exported="false" />
         <activity
             android:name=".RegisterStudent"
@@ -36,7 +30,8 @@
             android:parentActivityName=".Login" />
         <activity
             android:name=".HomePageStudent"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -57,11 +52,11 @@
         <activity
             android:name=".BookingProcess.SelectDate"
             android:exported="true"
-            android:parentActivityName=".HomePageStudent" />
+            android:parentActivityName=".BookingProcess.OfficeHourBooking" />
         <activity
             android:name=".BookingProcess.OfficeHourBooking"
-            android:exported="true" />
-
+            android:exported="true"
+            android:parentActivityName=".HomePageStudent" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
