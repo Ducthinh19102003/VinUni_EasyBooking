@@ -19,6 +19,9 @@
             android:name=".HomePageProfessor"
             android:exported="true" />
         <activity
+            android:name=".RoomBookingProcess.RoomBookingActivity"
+            android:exported="true" />
+        <activity
             android:name=".ProfessorSetAvailableTimeSlots.WeekViewActivity"
             android:exported="true" />
         <activity

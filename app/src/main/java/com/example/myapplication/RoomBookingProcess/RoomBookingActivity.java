@@ -1,11 +1,14 @@
-package com.example.myapplication.BookingProcess;
+package com.example.myapplication.RoomBookingProcess;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.BookingProcess.SelectDate;
+import com.example.myapplication.BookingProcess.TimeSlotAdapter;
 import com.example.myapplication.R;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
@@ -16,8 +19,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,48 +38,31 @@ import java.util.HashMap;
 
 import com.google.firebase.Timestamp;
 
-public class SelectDate extends AppCompatActivity implements
-        DatePickerDialog.OnDateSetListener, TimeSlotAdapter.OnTimeSlotListener  {
+import android.os.Bundle;
+
+import com.example.myapplication.R;
+
+public class RoomBookingActivity extends AppCompatActivity implements
+        DatePickerDialog.OnDateSetListener  {
 
     DatePickerDialog datePickerDialog ;
     AppCompatButton setDateBtn, setTimeBtn, makeAppointmentBtn;
     TextView dateSelected, timeSelected;
 
-    RecyclerView timeSlotRecyclerView;
-    TimeSlotAdapter timeSlotAdapter;
-    RecyclerView.LayoutManager layoutManager;
     Dialog dialog;
 
-    public static ArrayList<Timestamp> availableSlots;
-    public static String UID_professor;
-    ArrayList<Calendar> calendarList;
     HashMap<String, ArrayList<Timestamp>> categorizedTimeslots;
     static String date = "";
-    static String time;
-    ArrayList<Timestamp> hours;
+    static String startTime, endTime;
 
-    void setTimeSlotRecyclerView() {
-        Log.d("SelectDate", availableSlots + " ");
-        Log.d("SelectDate", hours + " ");
 
-        timeSlotRecyclerView = dialog.findViewById(R.id.recTimeID);
-        timeSlotAdapter = new TimeSlotAdapter(SelectDate.this, hours, this);
-        layoutManager = new GridLayoutManager(getApplicationContext(), 3);
-        timeSlotRecyclerView.setAdapter(timeSlotAdapter);
-        timeSlotRecyclerView.setLayoutManager(layoutManager);
-
-    }
+    Spinner roomSpinner;
+    static String selectedRoom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_make_appointment);
-
-        calendarList = new ArrayList<Calendar>();
-
-
-        setCalendarArrays();
-        categorizedTimeslots = timestampArrayListToHashMap();
+        setContentView(R.layout.activity_room_booking);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -86,7 +77,7 @@ public class SelectDate extends AppCompatActivity implements
         setDateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                datePickerDialog = DatePickerDialog.newInstance(SelectDate.this,
+                datePickerDialog = DatePickerDialog.newInstance(RoomBookingActivity.this,
                         now.get(Calendar.YEAR), // Initial year selection
                         now.get(Calendar.MONTH), // Initial month selection
                         now.get(Calendar.DAY_OF_MONTH)// Inital day selection
@@ -98,15 +89,12 @@ public class SelectDate extends AppCompatActivity implements
 
                 Calendar min_date_c = Calendar.getInstance();
                 datePickerDialog.setMinDate(min_date_c);
-
-                Calendar[] calendarArray = calendarList.toArray(new Calendar[calendarList.size()]);
-                datePickerDialog.setSelectableDays(calendarArray);
                 datePickerDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
 
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
 
-                        Toast.makeText(SelectDate.this, "Datepicker Canceled", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RoomBookingActivity.this, "Datepicker Canceled", Toast.LENGTH_SHORT).show();
                     }
                 });
                 datePickerDialog.show(getSupportFragmentManager(), "DatePickerDialog");
@@ -116,8 +104,8 @@ public class SelectDate extends AppCompatActivity implements
 
             @Override
             public void onClick(View view) {
-                if (date.equals("")) Toast.makeText(SelectDate.this, "Select date first!", Toast.LENGTH_SHORT).show();
-                else openDialog(SelectDate.this);
+                if (date.equals("")) Toast.makeText(RoomBookingActivity.this, "Select date first!", Toast.LENGTH_SHORT).show();
+                else openDialog(RoomBookingActivity.this);
             }
         });
 
@@ -128,22 +116,54 @@ public class SelectDate extends AppCompatActivity implements
             }
         });
 
+        //this part is dedicated  to the spinner
+        roomSpinner = findViewById(R.id.roomSpinner);
+        String[] rooms = {"A101", "A102", "A103", "A104", "A105", "A106"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item,
+                rooms);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        this.roomSpinner.setAdapter(adapter);
+        this.roomSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedRoom = onItemSelectedHandler(parent, view, position, id);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
+    private String onItemSelectedHandler(AdapterView<?> adapterView, View view, int position, long id) {
+        Adapter adapter = adapterView.getAdapter();
+        String selectedRoom = (String) adapter.getItem(position);
+
+        Toast.makeText(getApplicationContext(), "Selected room: " + selectedRoom ,Toast.LENGTH_SHORT).show();
+        return selectedRoom;
+    }
+
+
     public void openDialog(Activity activity) {
         dialog = new Dialog(activity);
         dialog.setCancelable(false);
-        dialog.setContentView(R.layout.select_time_slot);
+        dialog.setContentView(R.layout.select_booking_time);
 
-        Button ok = dialog.findViewById(R.id.okBtn);
-        Button cancel = dialog.findViewById(R.id.cancelBtn);
-
-
+        Button ok = dialog.findViewById(R.id.ok_btn);
+        Button cancel = dialog.findViewById(R.id.cancel_btn);
+        EditText startHour = dialog.findViewById(R.id.startHour);
+        EditText endHour = dialog.findViewById(R.id.endHour);
+        EditText startMinute = dialog.findViewById(R.id.startMinute);
+        EditText endMinute = dialog.findViewById(R.id.endMinute);
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                time = "";
-                timeSelected.setText(time);
+                startTime = endTime = "";
+                timeSelected.setText("");
                 dialog.dismiss();
             }
         });
@@ -151,51 +171,21 @@ public class SelectDate extends AppCompatActivity implements
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                timeSelected.setText(time);
+                startTime = startHour.getText().toString() +":" + startMinute.getText().toString();
+                endTime = endHour.getText().toString() +":" + endMinute.getText().toString();
+                timeSelected.setText(startTime +"-" + endTime);
                 dialog.dismiss();
             }
         });
-
         dialog.show();
         Window window = dialog.getWindow();
         window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        setTimeSlotRecyclerView();
     }
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         date = dayOfMonth + "/" + "0" + (monthOfYear+1) + "/"+ year;
-        Toast.makeText(SelectDate.this, date, Toast.LENGTH_LONG).show();
+        Toast.makeText(RoomBookingActivity.this, date, Toast.LENGTH_LONG).show();
         dateSelected.setText(date);
-        hours = categorizedTimeslots.get(date);
     }
 
-    public void setCalendarArrays() {
-        for (Timestamp timestamp: availableSlots) {
-            Date date = timestamp.toDate();
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            calendarList.add(cal);
-        }
-    }
 
-    public HashMap<String, ArrayList<Timestamp>> timestampArrayListToHashMap(){
-        HashMap<String, ArrayList<Timestamp>> timeStampHashMap = new HashMap<String, ArrayList<Timestamp>>();
-//        String pattern = "dd/MM/yyyy";
-        String pattern = "dd/MM/yyyy";
-        DateFormat df = new SimpleDateFormat(pattern);
-        for (Timestamp availableTimeSlot: availableSlots){
-            Date date = availableTimeSlot.toDate();
-            String dateString = df.format(date);
-            if (timeStampHashMap.containsKey(dateString)) timeStampHashMap.get(dateString).add(availableTimeSlot);
-            else {
-                timeStampHashMap.put(dateString, new ArrayList<Timestamp>());
-                timeStampHashMap.get(dateString).add(availableTimeSlot);
-            }
-        }
-        return timeStampHashMap;
-    }
-
-    @Override
-    public void onTimeSlotClick(int position) {
-        Log.d("Time", time);
-    }
 }
