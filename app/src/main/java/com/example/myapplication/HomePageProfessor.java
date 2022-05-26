@@ -1,17 +1,13 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.EventInfo.eventToDatabase;
-import static com.example.myapplication.EventInfo.memberJoinEvent;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.myapplication.CreateCustomEvent.CreateCustomEventTest;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.WeekViewActivity;
-import com.example.myapplication.SeeEventList.EventListViewActivity;
+import com.example.myapplication.Fragments.Calendar.EventListViewActivity;
 import com.google.firebase.Timestamp;
 
 public class HomePageProfessor extends AppCompatActivity {
@@ -31,7 +27,6 @@ public class HomePageProfessor extends AppCompatActivity {
         Intent k = new Intent(this, EventListViewActivity.class);
         startActivity(k);
     }
-
     public void toSetDummyEvent(View view) {
 //       memberJoinEvent("pv7cQBcJqqd4FaWrLM8qxe16mis1",
 //               "SCAjKS04hBKsCHFgZ37s");

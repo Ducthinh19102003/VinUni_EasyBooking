@@ -1,7 +1,6 @@
-package com.example.myapplication.SeeEventList;
+package com.example.myapplication.Fragments.Calendar;
 
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.EventInfo;
-import com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotUtils;
-import com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotViewHolder;
 import com.example.myapplication.R;
 import com.google.firebase.Timestamp;
 

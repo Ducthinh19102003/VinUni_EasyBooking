@@ -51,7 +51,7 @@ public class RegisterStudent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(fAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(getApplicationContext(), HomePageStudent.class));
+                    startActivity(new Intent(getApplicationContext(), HomePage.class));
                     finish();
                 }
 

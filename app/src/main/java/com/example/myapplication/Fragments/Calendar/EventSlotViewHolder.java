@@ -1,4 +1,4 @@
-package com.example.myapplication.SeeEventList;
+package com.example.myapplication.Fragments.Calendar;
 
 import android.view.View;
 import android.widget.TextView;
@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.EventInfo;
 import com.example.myapplication.R;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class EventSlotViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener

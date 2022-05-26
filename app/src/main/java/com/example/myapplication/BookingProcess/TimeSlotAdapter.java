@@ -49,7 +49,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
         String timetime = h + ":" + m;
         holder.time.setText(timetime);
 
-        if (selectedPosition==position) {
+        if (selectedPosition==holder.getBindingAdapterPosition()) {
             holder.time.setBackgroundColor(ContextCompat.getColor(context, R.color.teal_200));
         }
         else
@@ -59,7 +59,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
             @Override
             public void onClick(View view) {
                 SelectDate.time = timetime;
-                selectedPosition=position;
+                selectedPosition = holder.getBindingAdapterPosition();
                 notifyDataSetChanged();
             }
         });

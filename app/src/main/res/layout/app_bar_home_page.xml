@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePageStudent">
+    tools:context=".HomePage">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -33,7 +33,7 @@
         android:layout_height="215dp"
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="125dp"
-        android:onClick="toBookOfficeHour"
+        android:onClick="OfficeHour"
         android:layout_marginRight="@dimen/fab_margin"
         app:srcCompat="@drawable/ic_office_hour" />
 
@@ -44,7 +44,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="190dp"
-        android:onClick="toBookDiscussionRoom"
+        android:onClick="DiscussionRoom"
         app:srcCompat="@drawable/ic_room" />
 
     <androidx.appcompat.widget.Toolbar

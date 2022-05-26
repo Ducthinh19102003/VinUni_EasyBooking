@@ -1,26 +1,31 @@
-package com.example.myapplication.SeeEventList;
+package com.example.myapplication.Fragments.Calendar;
 
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils.daysInWeekArray;
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils.monthYearFromDate;
-import static com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils.selectedDate;
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotUtils.defaultHours;
+import static com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotUtils.profAvailableSlots;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-
 import com.example.myapplication.EventInfo;
+import com.example.myapplication.Fragments.Home.HomeFragment;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarAdapter;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotAdapter;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotUtils;
 import com.example.myapplication.R;
+import com.example.myapplication.databinding.FragmentCalendarBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -36,11 +41,14 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class EventListViewActivity extends AppCompatActivity implements EventSlotAdapter.OnItemListener, CalendarAdapter.OnItemListener {
+public class CalendarFragment extends Fragment implements EventSlotAdapter.OnItemListener, CalendarAdapter.OnItemListener {
+
+    private FragmentCalendarBinding binding;
     private RecyclerView eventRecyclerView, calendarRecyclerView;
     private TextView monthYearText;
     private static final String TAG  = "WeekViewActivity";
@@ -50,10 +58,12 @@ public class EventListViewActivity extends AppCompatActivity implements EventSlo
     private static ArrayList<EventInfo> eventInfoArrayList = new ArrayList<>();
     public static HashMap<String, ArrayList<EventInfo>> eventInfoHashMap = new HashMap<String, ArrayList<EventInfo>>();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_list_view);
+
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        binding = FragmentCalendarBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
         CalendarUtils.selectedDate = LocalDate.now();
         initWidgets();
         setWeekView();
@@ -110,7 +120,7 @@ public class EventListViewActivity extends AppCompatActivity implements EventSlo
                 }
             }
         });
-
+    return root;
     }
 
     private HashMap<String, ArrayList<EventInfo>> eventInfoArrayListToHashMap(ArrayList<EventInfo> eventInfoArrayList) {
@@ -135,16 +145,16 @@ public class EventListViewActivity extends AppCompatActivity implements EventSlo
         if (eventInfoHashMap.containsKey(selectedDateString)) passing = eventInfoHashMap.get(selectedDateString);
         if (CalendarUtils.selectedDate.compareTo(LocalDate.now()) < 0) passing = new ArrayList<>();
         EventSlotAdapter eventSlotAdapter = new EventSlotAdapter(passing, this);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 1);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         eventRecyclerView.setLayoutManager(layoutManager);
         eventRecyclerView.setAdapter(eventSlotAdapter);
     }
 
     private void initWidgets()
     {
-        calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
-        monthYearText = findViewById(R.id.monthYearTV);
-        eventRecyclerView = findViewById(R.id.EventRecyclerView);
+        calendarRecyclerView = binding.calendarRecyclerView;
+        monthYearText = binding.monthYearTV;
+        eventRecyclerView = binding.EventRecyclerView;
     }
 
     @Override
@@ -159,7 +169,7 @@ public class EventListViewActivity extends AppCompatActivity implements EventSlo
         ArrayList<LocalDate> days = daysInWeekArray(CalendarUtils.selectedDate);
 
         CalendarAdapter calendarAdapter = new CalendarAdapter(days, this);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
     }

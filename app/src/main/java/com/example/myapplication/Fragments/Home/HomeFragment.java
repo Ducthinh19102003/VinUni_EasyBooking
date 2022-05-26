@@ -38,11 +38,9 @@ public class HomeFragment extends Fragment {
     private RecyclerView CardsEventsRv;
     private static final String TAG  = "WeekViewActivity";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String usertype;
-    String userID;
 
-    private static ArrayList<EventInfo> eventInfoArrayList = new ArrayList<>();
-    public static ArrayList<CardEvents> cardEventsArrayList = new ArrayList<CardEvents>();
+    private static ArrayList<EventInfo> eventInfoArrayList;
+    public static ArrayList<CardEvents> cardEventsArrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,70 +49,14 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         CardsEventsRv = binding.appointmentsID;
+        eventInfoArrayList = new ArrayList<>();
+        cardEventsArrayList = new ArrayList<CardEvents>();
 
-        if (Login.portal == 1) {
-            usertype = "Students";
-        }
-        else if (Login.portal == 2) {
-            usertype = "Professors";
-        }
-        DocumentReference docRef = db.collection(usertype).document(userID);
-
-        //Retrieve the array of event ids
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        ArrayList<String> eventIDArrayList = (ArrayList<String>) document.get("events");
-                        //Retrieve the event arraylist from the ids
-                        List<Task<DocumentSnapshot>> tasks = new ArrayList<>();
-                        for (String doc : eventIDArrayList) {
-                            Log.d("Debug", doc.trim()); //yes, a bug was here
-                            tasks.add(db.collection("Events").document(doc.trim()).get());
-                        }
-                        Tasks.whenAllSuccess(tasks).addOnSuccessListener(new OnSuccessListener<List<Object>>() {
-                            @Override
-                            public void onSuccess(List<Object> list) {
-                                //Do what you need to do with your list
-                                Log.d("debug", list.toString());
-                                //create dummy list, put everything there, check later
-                                ArrayList<EventInfo> eventInfoDummyList = new ArrayList<>();
-                                for (Object object : list) {
-
-                                    EventInfo fm = ((DocumentSnapshot) object).toObject(EventInfo.class);
-                                    eventInfoDummyList.add(fm);
-                                }
-                                //look into the dummy list
-                                for (EventInfo event :eventInfoDummyList){
-                                    if (event == null){
-                                        String fmID = eventIDArrayList.get(eventInfoDummyList.indexOf(null));
-                                        docRef.update("events", FieldValue.arrayRemove(fmID));
-                                    }
-                                    else if (event.getStartTime().compareTo(Timestamp.now()) < 0){
-                                        String fmID = eventIDArrayList.get(eventInfoDummyList.indexOf(event));
-                                        db.collection("Events").document(fmID).delete();
-                                        docRef.update("events", FieldValue.arrayRemove(fmID));
-                                    }
-                                    else eventInfoArrayList.add(event);
-                                }
-                                //Get Hashmap here
-                                Collections.sort(eventInfoArrayList);
-                                CreateCardEventsArrayList();
-                                setEventView();
-                            }
-
-                        });
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
+//        retrieveData();
+//        Log.d("HomeFragment", eventInfoArrayList + "");
+//        CreateCardEventsArrayList();
+//        Log.d("HomeFragment", cardEventsArrayList + "");
+//        setCardsEventsView();
         return root;
     }
 
@@ -141,7 +83,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private void setEventView() {
+    public void setCardsEventsView() {
         CardEventsAdapter eventSlotAdapter = new CardEventsAdapter(cardEventsArrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         CardsEventsRv.setLayoutManager(layoutManager);
@@ -152,5 +94,61 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public void retrieveData() {
+        //Retrieve the array of event ids
+
+        DocumentReference docRef = db.collection(Login.userType).document(Login.userID);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        ArrayList<String> eventIDArrayList = (ArrayList<String>) document.get("events");
+                        //Retrieve the event arraylist from the ids
+                        List<Task<DocumentSnapshot>> tasks = new ArrayList<>();
+                        for (String doc : eventIDArrayList) {
+                            tasks.add(db.collection("Events").document(doc.trim()).get());
+                        }
+                        Tasks.whenAllSuccess(tasks).addOnSuccessListener(new OnSuccessListener<List<Object>>() {
+                            @Override
+                            public void onSuccess(List<Object> list) {
+                                ArrayList<EventInfo> eventInfoDummyList = new ArrayList<>();
+                                for (Object object : list) {
+
+                                    EventInfo fm = ((DocumentSnapshot) object).toObject(EventInfo.class);
+                                    eventInfoDummyList.add(fm);
+                                }
+                                for (EventInfo event :eventInfoDummyList){
+                                    if (event == null){
+                                        Log.d("HomeFragment", "1");
+                                        String fmID = eventIDArrayList.get(eventInfoDummyList.indexOf(null));
+                                        docRef.update("events", FieldValue.arrayRemove(fmID));
+                                    }
+                                    else if (event.getStartTime().compareTo(Timestamp.now()) < 0){
+                                        Log.d("HomeFragment", "2");
+                                        String fmID = eventIDArrayList.get(eventInfoDummyList.indexOf(event));
+                                        db.collection("Events").document(fmID).delete();
+                                        docRef.update("events", FieldValue.arrayRemove(fmID));
+                                    }
+                                    else {
+                                        Log.d("HomeFragment", "3");
+                                        eventInfoArrayList.add(event);
+                                    }
+                                }
+                                Collections.sort(eventInfoArrayList);
+                            }
+                        });
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
     }
 }

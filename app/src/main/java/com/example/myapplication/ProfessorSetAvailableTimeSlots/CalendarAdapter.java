@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.SeeEventList.EventListViewActivity;
+import com.example.myapplication.Fragments.Calendar.EventListViewActivity;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -22,13 +22,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.429" />
 
     <Button
         android:id="@+id/profID"
         android:layout_width="203dp"
         android:layout_height="65dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="68dp"
         android:background="@drawable/btn_bg"
         android:fontFamily="@font/amaranth_bold"
         android:text="PROFESSOR"
@@ -37,28 +37,12 @@
         android:textSize="20sp"
         android:textStyle="normal"
         app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/studentID"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/studentID"
-        app:layout_constraintTop_toBottomOf="@+id/studentID" />
-
-    <Button
-        android:id="@+id/adminID"
-        android:layout_width="203dp"
-        android:layout_height="65dp"
-        android:background="@drawable/btn_bg"
-        android:fontFamily="@font/amaranth_bold"
-        android:text="ADMIN"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:iconTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/profID"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/profID"
-        app:layout_constraintTop_toBottomOf="@+id/profID"
-        app:layout_constraintVertical_bias="0.263" />
+        app:layout_constraintTop_toBottomOf="@+id/studentID"
+        app:layout_constraintVertical_bias="0.229" />
 
     <TextView
         android:id="@+id/textView"

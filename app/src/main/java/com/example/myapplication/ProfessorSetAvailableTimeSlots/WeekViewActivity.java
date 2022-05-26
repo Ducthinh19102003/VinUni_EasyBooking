@@ -6,13 +6,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,7 +24,7 @@ import static com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotU
 import com.example.myapplication.EventInfo;
 import com.example.myapplication.HomePageProfessor;
 import com.example.myapplication.R;
-import com.example.myapplication.SeeEventList.EventListViewActivity;
+import com.example.myapplication.Fragments.Calendar.EventListViewActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;

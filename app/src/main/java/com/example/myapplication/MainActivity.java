@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         student = findViewById(R.id.studentID);
         professor = findViewById(R.id.profID);
-        admin = findViewById(R.id.adminID);
 
         student.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -40,14 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
             public void onClick(View v) {
                 Login.portal = 2;
-                startActivity(new Intent(MainActivity.this, Login.class));
-            }
-        });
-
-        admin.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                Login.portal = 3;
                 startActivity(new Intent(MainActivity.this, Login.class));
             }
         });

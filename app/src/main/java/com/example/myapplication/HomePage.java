@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.BookingProcess.OfficeHourBooking;
+import com.example.myapplication.ProfessorSetAvailableTimeSlots.WeekViewActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -35,7 +36,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class HomePageStudent extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
     TextView name,email;
     FirebaseFirestore fstore;
     StudentInfo student;
@@ -59,12 +60,17 @@ public class HomePageStudent extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarHomePage.toolbar);
+
         //fabs4life
         officeHourFAB = binding.appBarHomePage.officeHourFAB;
         discussionRoomFAB = binding.appBarHomePage.discussionRoomFAB;
         fab = binding.appBarHomePage.fab;
         officeHourText = binding.appBarHomePage.officeHourText;
         discussionRoomText = binding.appBarHomePage.discussionRoomText;
+
+        if (Login.portal == 2) {
+            officeHourText.setText("Set Available Timeslots");
+        }
 
         //fabs are invisible at first
         isAllFabsVisible = false;
@@ -73,7 +79,7 @@ public class HomePageStudent extends AppCompatActivity {
         officeHourText.setVisibility(View.GONE);
         discussionRoomText.setVisibility(View.GONE);
         fab.shrink();
-        //ok go on
+
 //        binding.appBarHomePage.fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -86,7 +92,7 @@ public class HomePageStudent extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_view_professors, R.id.nav_account)
+                R.id.nav_home, R.id.nav_view_professors, R.id.nav_account, R.id.nav_calendar)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_home_page);
@@ -141,11 +147,18 @@ public class HomePageStudent extends AppCompatActivity {
         }
     }
 
-    public void toBookOfficeHour(View view) {
-        Toast.makeText(this, "to book office hour", Toast.LENGTH_SHORT).show();
+    public void OfficeHour(View view) {
+        if (Login.portal == 1) {
+            Toast.makeText(this, "To Booking Office Hours", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, OfficeHourBooking.class));
+        }
+        else if (Login.portal == 2) {
+            Toast.makeText(this, "To Set Available Timeslots Page", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, WeekViewActivity.class));
+        }
     }
 
-    public void toBookDiscussionRoom(View view) {
-        Toast.makeText(this, "to book discussion room", Toast.LENGTH_SHORT).show();
+    public void DiscussionRoom(View view) {
+        Toast.makeText(this, "To Booking Discussion Room", Toast.LENGTH_SHORT).show();
     }
 }

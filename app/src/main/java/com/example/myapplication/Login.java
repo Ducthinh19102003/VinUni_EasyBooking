@@ -17,6 +17,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.example.myapplication.Fragments.Home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +36,7 @@ public class Login extends AppCompatActivity {
     static public ProfessorInfo currentProfessor;
     static public StudentInfo currentStudent;
     static public String userID;
+    static public String userType;
     static public int portal;
     private static final String tag = "MyActivity";
 
@@ -92,7 +94,6 @@ public class Login extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 // authenticate the user
-
                 fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
                     @Override
@@ -101,27 +102,29 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
 
                             if (Login.portal == 1) {
+                                userType = "Students";
                                 userID = fAuth.getCurrentUser().getUid();
                                 DocumentReference docRef = fstore.collection("Students").document(userID);
                                 docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                                         currentStudent = documentSnapshot.toObject(StudentInfo.class);
-                                        startActivity(new Intent(getApplicationContext(), HomePageStudent.class));
                                     }
                                 });
                             }
                             else if (Login.portal == 2) {
+                                userType = "Professors";
                                 userID = fAuth.getCurrentUser().getUid();
                                 DocumentReference docRef = fstore.collection("Professors").document(userID);
                                 docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                                         currentProfessor = documentSnapshot.toObject(ProfessorInfo.class);
-                                        startActivity(new Intent(getApplicationContext(), HomePageProfessor.class));
                                     }
                                 });
                             }
+                            //Need to synchronize professor with student homepage into homepage
+                            startActivity(new Intent(Login.this, HomePage.class));
                         } else {
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
