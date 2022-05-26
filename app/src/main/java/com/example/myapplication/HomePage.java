@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,9 +8,13 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Registry;
+import com.bumptech.glide.module.AppGlideModule;
 import com.example.myapplication.BookingProcess.OfficeHourBooking;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.WeekViewActivity;
+import com.example.myapplication.RoomBookingProcess.RoomBookingActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -35,6 +40,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.InputStream;
 
 public class HomePage extends AppCompatActivity {
     TextView name,email;
@@ -160,5 +168,7 @@ public class HomePage extends AppCompatActivity {
 
     public void DiscussionRoom(View view) {
         Toast.makeText(this, "To Booking Discussion Room", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, RoomBookingActivity.class));
     }
 }
+

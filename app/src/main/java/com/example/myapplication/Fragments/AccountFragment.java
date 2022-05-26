@@ -16,7 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Login;
+import com.example.myapplication.MyAppGlideModule;
 import com.example.myapplication.databinding.FragmentAccountBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,9 +68,19 @@ public class AccountFragment extends Fragment {
 //        });
 
         if (Login.portal == 1) {
+
+
+
             fullName.setText(Login.currentStudent.getName());
             email.setText(Login.currentStudent.getEmail());
             info.setText(Login.currentStudent.getID());
+            // Reference to pro5 image file in Cloud Storage
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().
+                    child("studentProfilePics/" + Login.currentStudent.getID() + ".jpg");
+            
+            Glide.with(this /* context */)
+                    .load(storageReference)
+                    .into(image);
         }
         else if (Login.portal == 2) {
             fullName.setText(Login.currentProfessor.getName());
