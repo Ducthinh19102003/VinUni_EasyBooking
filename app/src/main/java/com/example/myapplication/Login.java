@@ -34,6 +34,7 @@ public class Login extends AppCompatActivity {
     FirebaseFirestore fstore;
     static public ProfessorInfo currentProfessor;
     static public StudentInfo currentStudent;
+    static public String userID;
     static public int portal;
     private static final String tag = "MyActivity";
 
@@ -100,8 +101,8 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
 
                             if (Login.portal == 1) {
-                                String UID_student = fAuth.getCurrentUser().getUid();
-                                DocumentReference docRef = fstore.collection("Students").document(UID_student);
+                                userID = fAuth.getCurrentUser().getUid();
+                                DocumentReference docRef = fstore.collection("Students").document(userID);
                                 docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -111,8 +112,8 @@ public class Login extends AppCompatActivity {
                                 });
                             }
                             else if (Login.portal == 2) {
-                                String UID_professor = fAuth.getCurrentUser().getUid();
-                                DocumentReference docRef = fstore.collection("Professors").document(UID_professor);
+                                userID = fAuth.getCurrentUser().getUid();
+                                DocumentReference docRef = fstore.collection("Professors").document(userID);
                                 docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                     @Override
                                     public void onSuccess(DocumentSnapshot documentSnapshot) {

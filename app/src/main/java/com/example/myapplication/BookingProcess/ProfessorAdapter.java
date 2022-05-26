@@ -21,7 +21,6 @@ public class ProfessorAdapter extends RecyclerView.Adapter<ProfessorAdapter.MyVi
     ArrayList<ProfessorInfo> professorItemArrayList;
     OnItemListener listener;
 
-
     public ProfessorAdapter(Context context, ArrayList<ProfessorInfo> professorItemArrayList, OnItemListener listener) {
         this.context = context;
         this.professorItemArrayList = professorItemArrayList;

@@ -36,7 +36,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
     @NonNull
     @Override
     public TimeSlotAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.item_timeslot,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_timeslot,parent,false);
         return new MyViewHolder(v, listener);
     }
 
@@ -74,7 +74,6 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         AppCompatButton time;
         OnTimeSlotListener listener;
-
 
         public MyViewHolder(@NonNull View itemView, TimeSlotAdapter.OnTimeSlotListener listener) {
             super(itemView);

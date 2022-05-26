@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventInfo {
+public class EventInfo implements Comparable<EventInfo> {
 
     private static final String TAG = "EventInfo";
     private String host;
@@ -299,5 +299,12 @@ public class EventInfo {
                 });
             }
         });
+    }
+
+    @Override
+    public int compareTo(EventInfo eventInfo) {
+        if (this.getStartTime().compareTo(eventInfo.startTime) < 0) return -1;
+        else if (this.getStartTime().compareTo(eventInfo.startTime) > 0)  return 1;
+        else return 0;
     }
 }
