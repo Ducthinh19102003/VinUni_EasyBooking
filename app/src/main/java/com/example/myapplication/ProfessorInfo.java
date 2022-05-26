@@ -16,6 +16,7 @@ public class ProfessorInfo {
     private ArrayList<String> Events;
     private ArrayList<Timestamp> availableTimeSlots;
     private String UID;
+    private String location;
 
     public ProfessorInfo() {
 
@@ -29,6 +30,14 @@ public class ProfessorInfo {
         this.Events = new ArrayList<>();
         this.availableTimeSlots = new ArrayList<>();
         this.UID = UID;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getEmail() {

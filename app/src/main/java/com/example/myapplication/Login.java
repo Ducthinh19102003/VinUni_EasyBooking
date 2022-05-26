@@ -1,8 +1,8 @@
 package com.example.myapplication;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,18 +14,28 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-import android.view.MenuItem;
 
+import com.example.myapplication.Fragments.Home.CardEvents;
 import com.example.myapplication.Fragments.Home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Login extends AppCompatActivity {
     EditText getEmail, getPassword;
@@ -123,7 +133,7 @@ public class Login extends AppCompatActivity {
                                     }
                                 });
                             }
-                            //Need to synchronize professor with student homepage into homepage
+                            Log.d("Login", "data retrieval");
                             startActivity(new Intent(Login.this, HomePage.class));
                         } else {
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -141,13 +151,5 @@ public class Login extends AppCompatActivity {
                 if (Login.portal == 2) startActivity(new Intent(getApplicationContext(),RegisterProfessor.class));
             }
         });
-    }
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

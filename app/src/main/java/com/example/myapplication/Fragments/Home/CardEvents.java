@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 public class CardEvents {
     String date;
-    ArrayList<EventInfo> eventInfoArrayList;
+    ArrayList<EventInfo> eventList;
 
     CardEvents() {
 
     }
 
-    CardEvents(String date, ArrayList<EventInfo> eventInfoArrayList) {
+    public CardEvents(String date, ArrayList<EventInfo> eventInfoArrayList) {
         this.date = date;
-        this.eventInfoArrayList = eventInfoArrayList;
+        this.eventList = eventInfoArrayList;
     }
 
     public String getDate() {
@@ -26,10 +26,10 @@ public class CardEvents {
     }
 
     public ArrayList<EventInfo> getEventInfoArrayList() {
-        return eventInfoArrayList;
+        return eventList;
     }
 
     public void setEventInfoArrayList(ArrayList<EventInfo> eventInfoArrayList) {
-        this.eventInfoArrayList = eventInfoArrayList;
+        this.eventList = eventInfoArrayList;
     }
 }

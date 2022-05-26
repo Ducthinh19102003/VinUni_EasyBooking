@@ -67,4 +67,6 @@ public class CardEventsAdapter extends RecyclerView.Adapter<CardEventsAdapter.Ca
             subRvEvents = itemView.findViewById(R.id.rvEventsID);
         }
     }
+
+
 }

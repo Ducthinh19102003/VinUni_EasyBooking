@@ -47,9 +47,7 @@ import java.io.InputStream;
 public class HomePage extends AppCompatActivity {
     TextView name,email;
     FirebaseFirestore fstore;
-    StudentInfo student;
     DrawerLayout drawer;
-    BottomNavigationView bottomNavigationView;
 
     FloatingActionButton officeHourFAB, discussionRoomFAB;
     ExtendedFloatingActionButton fab;
@@ -114,17 +112,21 @@ public class HomePage extends AppCompatActivity {
         name = headerView.findViewById(R.id.txt_user_name);
         email = headerView.findViewById(R.id.txt_email);
 
-        String UID_student = FirebaseAuth.getInstance().getCurrentUser().getUid();
         fstore = FirebaseFirestore.getInstance();
 
         //Query the data of student then convert it to object
-        DocumentReference docRef = fstore.collection("Students").document(UID_student);
+        DocumentReference docRef = fstore.collection(Login.userType).document(Login.userID);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                student = documentSnapshot.toObject(StudentInfo.class);
-                name.setText(student.getName());
-                email.setText(student.getEmail());
+                if (Login.portal == 1) {
+                    name.setText(Login.currentStudent.getName());
+                    email.setText(Login.currentStudent.getEmail());
+                }
+                else if (Login.portal == 2) {
+                    name.setText(Login.currentProfessor.getName());
+                    email.setText(Login.currentProfessor.getEmail());
+                }
             }
         });
     }

@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Fragments.Calendar.CalendarFragment;
 import com.example.myapplication.R;
-import com.example.myapplication.Fragments.Calendar.EventListViewActivity;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -48,7 +48,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         {
             holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
             String selectedDateString = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            if (EventListViewActivity.eventInfoHashMap.containsKey(selectedDateString)) holder.dayOfMonth.setTextColor(Color.RED);
+            if (CalendarFragment.eventInfoHashMap.containsKey(selectedDateString)) holder.dayOfMonth.setTextColor(Color.RED);
             if(date.equals(CalendarUtils.selectedDate))
                 holder.parentView.setBackgroundColor(Color.LTGRAY);
         }

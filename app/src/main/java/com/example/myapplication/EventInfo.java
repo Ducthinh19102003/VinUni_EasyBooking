@@ -28,7 +28,24 @@ public class EventInfo implements Comparable<EventInfo> {
     private Timestamp startTime;
     private Timestamp endTime;
     private String note;
+    private String meetingName;
+    private String location;
 
+    public String getMeetingName() {
+        return meetingName;
+    }
+
+    public void setMeetingName(String meetingName) {
+        this.meetingName = meetingName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public EventInfo() {
 
@@ -42,6 +59,15 @@ public class EventInfo implements Comparable<EventInfo> {
         this.note = "";
     }
 
+    public EventInfo(String host, ArrayList<String> members, Timestamp startTime, Timestamp endTime, String note, String meetingName, String location) {
+        this.host = host;
+        this.members = members;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.note = note;
+        this.meetingName = meetingName;
+        this.location = location;
+    }
 
     public Timestamp getEndTime() {
         return endTime;

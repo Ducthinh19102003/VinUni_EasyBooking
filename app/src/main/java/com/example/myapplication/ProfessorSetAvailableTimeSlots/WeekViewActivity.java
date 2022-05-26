@@ -22,9 +22,10 @@ import static com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotU
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotUtils.profAvailableSlots;
 
 import com.example.myapplication.EventInfo;
-import com.example.myapplication.HomePageProfessor;
+import com.example.myapplication.Fragments.Calendar.CalendarFragment;
+import com.example.myapplication.Fragments.Home.HomeFragment;
+import com.example.myapplication.HomePage;
 import com.example.myapplication.R;
-import com.example.myapplication.Fragments.Calendar.EventListViewActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
@@ -48,7 +49,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         Log.d("WeekViewActivity", "Started");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_view);
-        EventListViewActivity.eventInfoHashMap = new HashMap<String, ArrayList<EventInfo>>();
+        CalendarFragment.eventInfoHashMap = new HashMap<String, ArrayList<EventInfo>>();
         CalendarUtils.selectedDate = LocalDate.now();
         initWidgets();
         setWeekView();
@@ -136,7 +137,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     public void submitAvailableTimeSlots(View view) {
         Collections.sort(HourSlotUtils.profAvailableSlots);
         docRef.update("availableTimeSlots", profAvailableSlots);
-        Intent k = new Intent(this, HomePageProfessor.class);
+        Intent k = new Intent(this, HomeFragment.class);
         startActivity(k);
     }
 }

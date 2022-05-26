@@ -25,6 +25,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,53 +39,53 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private RecyclerView CardsEventsRv;
     private static final String TAG  = "WeekViewActivity";
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseFirestore fstore = FirebaseFirestore.getInstance();
 
-    private static ArrayList<EventInfo> eventInfoArrayList;
-    public static ArrayList<CardEvents> cardEventsArrayList;
+    public ArrayList<EventInfo> eventInfoArrayList;
+    public ArrayList<CardEvents> cardEventsArrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        CardsEventsRv = binding.appointmentsID;
-        eventInfoArrayList = new ArrayList<>();
+        eventInfoArrayList = new ArrayList<EventInfo>();
         cardEventsArrayList = new ArrayList<CardEvents>();
 
-//        retrieveData();
-//        Log.d("HomeFragment", eventInfoArrayList + "");
-//        CreateCardEventsArrayList();
-//        Log.d("HomeFragment", cardEventsArrayList + "");
-//        setCardsEventsView();
+        CardsEventsRv = binding.appointmentsID;
+        retrieveData();
         return root;
     }
 
-    void CreateCardEventsArrayList() {
+    void createCardEventsArrayList() {
         String pattern = "EEEE, dd/MM";
         DateFormat df = new SimpleDateFormat(pattern);
 
-        String date = "";
-        ArrayList<EventInfo> eventList = new ArrayList<>();
+        String date = df.format(eventInfoArrayList.get(0).getStartTime().toDate());
 
-        for (EventInfo event: eventInfoArrayList){
-            if (date == "") {
-                eventList.add(event);
-                date = df.format(event.getStartTime().toDate());
-            }
-            else if (date == df.format(event.getStartTime().toDate())) {
-                eventList.add(event);
+        ArrayList<EventInfo> eventList = new ArrayList<>();
+        eventList.add(eventInfoArrayList.get(0));
+
+        cardEventsArrayList.add(new CardEvents(date, eventList));
+
+        int index = 0;
+
+        for (int i = 1; i < eventInfoArrayList.size(); i++) {
+            String new_date = df.format(eventInfoArrayList.get(i).getStartTime().toDate());
+            if (date.equals(new_date)) {
+                cardEventsArrayList.get(index).eventList.add(eventInfoArrayList.get(i));
             }
             else {
-                cardEventsArrayList.add(new CardEvents(date, eventList));
                 eventList = new ArrayList<>();
-                date = "";
+                eventList.add(eventInfoArrayList.get(i));
+                cardEventsArrayList.add(new CardEvents(new_date, eventList));
+                index++;
             }
         }
     }
 
     public void setCardsEventsView() {
+        Log.d("HomeFragment", "Card Events: " + cardEventsArrayList );
         CardEventsAdapter eventSlotAdapter = new CardEventsAdapter(cardEventsArrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         CardsEventsRv.setLayoutManager(layoutManager);
@@ -95,60 +97,33 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
     public void retrieveData() {
         //Retrieve the array of event ids
-
-        DocumentReference docRef = db.collection(Login.userType).document(Login.userID);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        ArrayList<String> eventIDArrayList = (ArrayList<String>) document.get("events");
-                        //Retrieve the event arraylist from the ids
-                        List<Task<DocumentSnapshot>> tasks = new ArrayList<>();
-                        for (String doc : eventIDArrayList) {
-                            tasks.add(db.collection("Events").document(doc.trim()).get());
-                        }
-                        Tasks.whenAllSuccess(tasks).addOnSuccessListener(new OnSuccessListener<List<Object>>() {
-                            @Override
-                            public void onSuccess(List<Object> list) {
-                                ArrayList<EventInfo> eventInfoDummyList = new ArrayList<>();
-                                for (Object object : list) {
-
-                                    EventInfo fm = ((DocumentSnapshot) object).toObject(EventInfo.class);
-                                    eventInfoDummyList.add(fm);
+        Log.d("HomeFragment", "Hello");
+        Log.d("HomeFragment", Login.userType + "/" + Login.userID + "/" + "Events");
+        fstore.collection(Login.userType).document(Login.userID).collection("Events")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("HomeFragment", "Getting document");
+                                EventInfo event = document.toObject(EventInfo.class);
+                                if (event.getStartTime().compareTo(Timestamp.now()) < 0) {
+                                    document.getReference().delete();
                                 }
-                                for (EventInfo event :eventInfoDummyList){
-                                    if (event == null){
-                                        Log.d("HomeFragment", "1");
-                                        String fmID = eventIDArrayList.get(eventInfoDummyList.indexOf(null));
-                                        docRef.update("events", FieldValue.arrayRemove(fmID));
-                                    }
-                                    else if (event.getStartTime().compareTo(Timestamp.now()) < 0){
-                                        Log.d("HomeFragment", "2");
-                                        String fmID = eventIDArrayList.get(eventInfoDummyList.indexOf(event));
-                                        db.collection("Events").document(fmID).delete();
-                                        docRef.update("events", FieldValue.arrayRemove(fmID));
-                                    }
-                                    else {
-                                        Log.d("HomeFragment", "3");
-                                        eventInfoArrayList.add(event);
-                                    }
+                                else {
+                                    Log.d("HomeFragment", "event is " + event);
+                                    eventInfoArrayList.add(event);
                                 }
-                                Collections.sort(eventInfoArrayList);
                             }
-                        });
-                    } else {
-                        Log.d(TAG, "No such document");
+                            Collections.sort(eventInfoArrayList);
+                            createCardEventsArrayList();
+                            setCardsEventsView();
+                        } else {
+                            Log.d("HomeFragment", "Error getting documents: ", task.getException());
+                        }
                     }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
+                });
     }
 }
