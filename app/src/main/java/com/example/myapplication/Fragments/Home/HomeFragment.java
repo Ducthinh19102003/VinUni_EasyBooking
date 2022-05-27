@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment {
     void createCardEventsArrayList() {
         String pattern = "EEEE, dd/MM";
         DateFormat df = new SimpleDateFormat(pattern);
-
+        if (eventInfoArrayList.size() == 0) return;
         String date = df.format(eventInfoArrayList.get(0).getStartTime().toDate());
 
         ArrayList<EventInfo> eventList = new ArrayList<>();

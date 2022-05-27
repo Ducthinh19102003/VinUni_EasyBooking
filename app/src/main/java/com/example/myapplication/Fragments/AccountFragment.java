@@ -1,14 +1,18 @@
 package com.example.myapplication.Fragments;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Login;
 import com.example.myapplication.MyAppGlideModule;
+import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentAccountBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,9 +38,9 @@ public class AccountFragment extends Fragment {
     TextView fullName, email, info;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    Button logout, resetPassWord,changeImageBtn;
+    Button logout, resetPassWord,changeImageBtn, changePro5;
     FirebaseUser fUser;
-    ImageView image;
+    ImageView image, notiBall;
     StorageReference storageReference;
     private FragmentAccountBinding binding;
 
@@ -51,8 +56,9 @@ public class AccountFragment extends Fragment {
 
         changeImageBtn = binding.changeProfileImage;
         image = binding.profileImage;
+        notiBall = binding.notiBall;
         resetPassWord = binding.ResetPassword;
-
+        changePro5 = binding.ChangePro5Btn;
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         fUser = fAuth.getCurrentUser();
@@ -66,7 +72,7 @@ public class AccountFragment extends Fragment {
 //                Picasso.get().load(uri).into(profileImage);
 //            }
 //        });
-
+        notiBall.setVisibility(View.GONE);
         if (Login.portal == 1) {
 
 
@@ -86,8 +92,56 @@ public class AccountFragment extends Fragment {
             fullName.setText(Login.currentProfessor.getName());
             email.setText(Login.currentProfessor.getEmail());
             info.setText(Login.currentProfessor.getSubject());
+            if (Login.currentProfessor.getLocation() == null) notiBall.setVisibility(View.VISIBLE);
         }
+        changePro5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Login.portal == 2){
+                    Dialog dialog = new Dialog(getActivity());
+                    dialog.setCancelable(true);
+                    dialog.setContentView(R.layout.change_profile_prof);
 
+                    Button ok = dialog.findViewById(R.id.okBtn_pro5prof);
+                    Button cancel = dialog.findViewById(R.id.cancelBtn_pro5prof);
+
+                    EditText editName = dialog.findViewById(R.id.editName);
+                    EditText editEmail = dialog.findViewById(R.id.editEmail);
+                    EditText editLoc = dialog.findViewById(R.id.editLocation);
+                    EditText editOther = dialog.findViewById(R.id.editOther);
+
+                    editName.setText(Login.currentProfessor.getName());
+                    editEmail.setText(Login.currentProfessor.getEmail());
+                    editOther.setText(Login.currentProfessor.getSubject());
+                    editLoc.setText(Login.currentProfessor.getLocation());
+
+                    cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    ok.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String newName, newEmail, newLoc, newOther;
+                            newName = editName.getText().toString();
+                            newEmail = editEmail.getText().toString();
+                            newLoc = editLoc.getText().toString();
+                            newOther = editOther.getText().toString();
+                            //do other things with it if needed
+                            Log.d("editinfoprof", newName + newEmail + newLoc + newOther);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+                    Window window = dialog.getWindow();
+                    window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                }
+            }
+        });
         resetPassWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
