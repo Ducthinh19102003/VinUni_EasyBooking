@@ -1,29 +1,43 @@
 package com.example.myapplication.BookingProcess;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.EventInfo;
+import com.example.myapplication.Login;
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -34,21 +48,30 @@ public class SelectDate extends AppCompatActivity implements
         DatePickerDialog.OnDateSetListener, TimeSlotAdapter.OnTimeSlotListener  {
 
     DatePickerDialog datePickerDialog ;
-    AppCompatButton setDateBtn, setTimeBtn, makeAppointmentBtn;
+    MaterialCardView setDateBtn, setTimeBtn;
+    AppCompatButton makeAppointmentBtn;
+    EditText meetingTitle, meetingParticipants, meetingNote;
     TextView dateSelected, timeSelected;
+    Switch isOnline;
+    ArrayList<String> participantList = new ArrayList<>();
+    ProgressBar progressBar;
 
     RecyclerView timeSlotRecyclerView;
     TimeSlotAdapter timeSlotAdapter;
     RecyclerView.LayoutManager layoutManager;
     Dialog dialog;
+    static Timestamp selectedTimestamp;
 
     public static ArrayList<Timestamp> availableSlots;
-    public static String UID_professor;
+    public static String location;
     ArrayList<Calendar> calendarList;
     HashMap<String, ArrayList<Timestamp>> categorizedTimeslots;
     static String date = "";
-    static String time;
+    static String time = "";
+    static String host = "";
+    static Timestamp endTime;
     ArrayList<Timestamp> hours;
+    FirebaseFirestore fstore;
 
     void setTimeSlotRecyclerView() {
         Log.d("SelectDate", availableSlots + " ");
@@ -65,22 +88,28 @@ public class SelectDate extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_make_appointment);
+        setContentView(R.layout.make_appointment);
 
+        fstore = FirebaseFirestore.getInstance();
         calendarList = new ArrayList<Calendar>();
-
 
         setCalendarArrays();
         categorizedTimeslots = timestampArrayListToHashMap();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        dateSelected = findViewById(R.id.dateDisplay);
-        timeSelected = findViewById(R.id.timeDisplay);
-        makeAppointmentBtn = findViewById(R.id.setappoinment);
+        dateSelected = findViewById(R.id.DateSetID);
+        timeSelected = findViewById(R.id.TimSetID);
+        makeAppointmentBtn = findViewById(R.id.AppointmentSetID);
 
-        setDateBtn = findViewById(R.id.setDate);
-        setTimeBtn = findViewById(R.id.setTime);
+        setDateBtn = findViewById(R.id.setMeetingDate);
+        setTimeBtn = findViewById(R.id.setMeetingTime);
+        progressBar = findViewById(R.id.progressID);
+
+        meetingTitle = findViewById(R.id.AddTitleID);
+        meetingNote = findViewById(R.id.AddNoteID);
+        meetingParticipants = findViewById(R.id.AddParticipantsID);
+        isOnline = findViewById(R.id.isOnlineID);
 
         Calendar now = Calendar.getInstance();
         setDateBtn.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +145,9 @@ public class SelectDate extends AppCompatActivity implements
 
             @Override
             public void onClick(View view) {
-                if (date.equals("")) Toast.makeText(SelectDate.this, "Select date first!", Toast.LENGTH_SHORT).show();
+                if (date.equals("")) {
+                    Toast.makeText(SelectDate.this, "Select Date first!", Toast.LENGTH_SHORT).show();
+                }
                 else openDialog(SelectDate.this);
             }
         });
@@ -124,10 +155,51 @@ public class SelectDate extends AppCompatActivity implements
         makeAppointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String title = meetingTitle.getText().toString().trim();
+                String participants = meetingParticipants.getText().toString().trim();
+                participantList.addAll(Arrays.asList(participants.split("[, ]+")));
+                String note = meetingNote.getText().toString().trim();
 
+
+                if (TextUtils.isEmpty(title)) {
+                    meetingTitle.setError("Add meeting title!");
+                    meetingTitle.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(note)) {
+                    meetingNote.setError("Add meeting note!");
+                    meetingNote.requestFocus();
+                    return;
+                }
+                if (date.equals("")) {
+                    Toast.makeText(SelectDate.this, "Date is required!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (time.equals("")) {
+                    Toast.makeText(SelectDate.this, "Time is required!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                progressBar.setVisibility(View.VISIBLE);
+                if (isOnline.isChecked()) {
+                    location = "Microsoft Teams";
+                }
+                EventInfo new_event = new EventInfo(host, participantList, selectedTimestamp, endTime, note, title, location);
+                fstore.collection(Login.userType).document(Login.userID).collection("Events")
+                        .add(new_event)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d("SelectDate", "DocumentSnapshot written with ID: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("SelectDate", "Error adding document", e);
+                            }
+                        });
             }
         });
-
     }
     public void openDialog(Activity activity) {
         dialog = new Dialog(activity);
@@ -137,7 +209,10 @@ public class SelectDate extends AppCompatActivity implements
         Button ok = dialog.findViewById(R.id.okBtn);
         Button cancel = dialog.findViewById(R.id.cancelBtn);
 
-
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        setTimeSlotRecyclerView();
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,14 +230,17 @@ public class SelectDate extends AppCompatActivity implements
                 dialog.dismiss();
             }
         });
-
-        dialog.show();
-        Window window = dialog.getWindow();
-        window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        setTimeSlotRecyclerView();
     }
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        date = dayOfMonth + "/" + "0" + (monthOfYear+1) + "/"+ year;
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(0);
+        cal.set(year, monthOfYear, dayOfMonth, 0, 0, 0);
+        Date chosenDate = cal.getTime();
+
+        String pattern = "EEEE, dd/MM";
+        DateFormat df = new SimpleDateFormat(pattern);
+
+        date = df.format(chosenDate);
         Toast.makeText(SelectDate.this, date, Toast.LENGTH_LONG).show();
         dateSelected.setText(date);
         hours = categorizedTimeslots.get(date);
@@ -179,8 +257,7 @@ public class SelectDate extends AppCompatActivity implements
 
     public HashMap<String, ArrayList<Timestamp>> timestampArrayListToHashMap(){
         HashMap<String, ArrayList<Timestamp>> timeStampHashMap = new HashMap<String, ArrayList<Timestamp>>();
-//        String pattern = "dd/MM/yyyy";
-        String pattern = "dd/MM/yyyy";
+        String pattern = "EEEE, dd/MM";
         DateFormat df = new SimpleDateFormat(pattern);
         for (Timestamp availableTimeSlot: availableSlots){
             Date date = availableTimeSlot.toDate();

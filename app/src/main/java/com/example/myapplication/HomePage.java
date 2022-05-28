@@ -46,7 +46,6 @@ import java.io.InputStream;
 
 public class HomePage extends AppCompatActivity {
     TextView name,email;
-    FirebaseFirestore fstore;
     DrawerLayout drawer;
 
     FloatingActionButton officeHourFAB, discussionRoomFAB;
@@ -86,13 +85,6 @@ public class HomePage extends AppCompatActivity {
         discussionRoomText.setVisibility(View.GONE);
         fab.shrink();
 
-//        binding.appBarHomePage.fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -111,24 +103,14 @@ public class HomePage extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         name = headerView.findViewById(R.id.txt_user_name);
         email = headerView.findViewById(R.id.txt_email);
-
-        fstore = FirebaseFirestore.getInstance();
-
-        //Query the data of student then convert it to object
-        DocumentReference docRef = fstore.collection(Login.userType).document(Login.userID);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (Login.portal == 1) {
-                    name.setText(Login.currentStudent.getName());
-                    email.setText(Login.currentStudent.getEmail());
-                }
-                else if (Login.portal == 2) {
-                    name.setText(Login.currentProfessor.getName());
-                    email.setText(Login.currentProfessor.getEmail());
-                }
-            }
-        });
+        if (Login.portal == 1) {
+            name.setText(Login.currentStudent.getName());
+            email.setText(Login.currentStudent.getEmail());
+        }
+        else if (Login.portal == 2) {
+            name.setText(Login.currentProfessor.getName());
+            email.setText(Login.currentProfessor.getEmail());
+        }
     }
 
     @Override

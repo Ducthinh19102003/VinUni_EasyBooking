@@ -52,10 +52,6 @@ public class RegisterProfessor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(fAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(getApplicationContext(), HomePage.class));
-                    finish();
-                }
 
                 // getting text from our edittext fields.
                 String email = professorEmail.getText().toString().trim();
@@ -104,6 +100,8 @@ public class RegisterProfessor extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(RegisterProfessor.this, "You have successfully created an account!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(RegisterProfessor.this, Login.class);
+                                    startActivity(intent);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -111,8 +109,6 @@ public class RegisterProfessor extends AppCompatActivity {
                                     Toast.makeText(RegisterProfessor.this, "Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                                 }
                             });
-                            Intent intent = new Intent(RegisterProfessor.this, Login.class);
-                            startActivity(intent);
                         }
                         else {
                             Toast.makeText(RegisterProfessor.this, "Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();

@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,10 +51,6 @@ public class RegisterStudent extends AppCompatActivity {
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(fAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(getApplicationContext(), HomePage.class));
-                    finish();
-                }
 
                 // getting text from our edittext fields.
                 String email = studentEmail.getText().toString().trim();
@@ -95,12 +92,15 @@ public class RegisterStudent extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Log.d("Register", "It goes into right");
                             UID_Student = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fStore.collection("Students").document(UID_Student);
                             documentReference.set(student).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(RegisterStudent.this, "You have successfully created an account!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(RegisterStudent.this, Login.class);
+                                    startActivity(intent);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -108,8 +108,6 @@ public class RegisterStudent extends AppCompatActivity {
                                     Toast.makeText(RegisterStudent.this, "Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                                 }
                             });
-                            Intent intent = new Intent(RegisterStudent.this, Login.class);
-                            startActivity(intent);
                         }
                         else {
                             Toast.makeText(RegisterStudent.this, "Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();

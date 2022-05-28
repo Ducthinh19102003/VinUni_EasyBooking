@@ -74,9 +74,6 @@ public class AccountFragment extends Fragment {
 //        });
         notiBall.setVisibility(View.GONE);
         if (Login.portal == 1) {
-
-
-
             fullName.setText(Login.currentStudent.getName());
             email.setText(Login.currentStudent.getEmail());
             info.setText(Login.currentStudent.getID());

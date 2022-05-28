@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,21 +42,25 @@ public class HomeFragment extends Fragment {
     private static final String TAG  = "WeekViewActivity";
     FirebaseFirestore fstore = FirebaseFirestore.getInstance();
 
-    public ArrayList<EventInfo> eventInfoArrayList;
-    public ArrayList<CardEvents> cardEventsArrayList;
+    public static ArrayList<EventInfo> eventInfoArrayList;
+    public static ArrayList<CardEvents> cardEventsArrayList;
+    TextView noti;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        CardsEventsRv = binding.appointmentsID;
+        noti = binding.notiID;
+
         eventInfoArrayList = new ArrayList<EventInfo>();
         cardEventsArrayList = new ArrayList<CardEvents>();
 
-        CardsEventsRv = binding.appointmentsID;
-        retrieveData();
+        setCardsEventsView();
         return root;
     }
+
 
     void createCardEventsArrayList() {
         String pattern = "EEEE, dd/MM";
@@ -118,8 +123,13 @@ public class HomeFragment extends Fragment {
                                 }
                             }
                             Collections.sort(eventInfoArrayList);
-                            createCardEventsArrayList();
-                            setCardsEventsView();
+
+                            if(eventInfoArrayList.size() > 0) {
+                                noti.setVisibility(View.GONE);
+                                createCardEventsArrayList();
+                                setCardsEventsView();
+                            }
+
                         } else {
                             Log.d("HomeFragment", "Error getting documents: ", task.getException());
                         }

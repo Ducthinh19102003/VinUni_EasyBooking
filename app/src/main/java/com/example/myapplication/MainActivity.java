@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         student.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Login.portal = 1;
+                Login.userType = "Students";
                 startActivity(new Intent(MainActivity.this, Login.class));
             }
         });
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
             public void onClick(View v) {
                 Login.portal = 2;
+                Login.userType = "Professors";
                 startActivity(new Intent(MainActivity.this, Login.class));
             }
         });

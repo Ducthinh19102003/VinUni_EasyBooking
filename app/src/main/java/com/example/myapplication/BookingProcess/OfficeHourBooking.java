@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.myapplication.ProfessorInfo;
 import com.example.myapplication.R;
@@ -80,10 +81,15 @@ public class OfficeHourBooking extends AppCompatActivity implements ProfessorAda
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(OfficeHourBooking.this, SelectDate.class);
         ProfessorInfo currentProfessor = professorItemArrayList.get(position);
         SelectDate.availableSlots = currentProfessor.getAvailableTimeSlots();
-        SelectDate.UID_professor = currentProfessor.getUID();
+        if (SelectDate.availableSlots.size() == 0) {
+            Toast.makeText(OfficeHourBooking.this, "Professor " + currentProfessor.getName() + " is currently unavailable!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        SelectDate.location = currentProfessor.getLocation();
+        SelectDate.host = currentProfessor.getName();
+        Intent intent = new Intent(OfficeHourBooking.this, SelectDate.class);
         startActivity(intent);
     }
 }

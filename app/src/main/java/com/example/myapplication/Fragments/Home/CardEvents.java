@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class CardEvents {
     String date;
-    ArrayList<EventInfo> eventList;
+    public ArrayList<EventInfo> eventList;
 
     CardEvents() {
 

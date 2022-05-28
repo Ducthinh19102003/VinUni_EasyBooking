@@ -19,8 +19,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyViewHolder> {
     Context context;
@@ -42,12 +46,15 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull TimeSlotAdapter.MyViewHolder holder, int position) {
-        Timestamp hour = hours.get(position);
-        String h = String.valueOf(hour.toDate().getHours());
-        String m = String.valueOf(hour.toDate().getMinutes());
-        if(m.equals("0")) m = "00";
-        String timetime = h + ":" + m;
-        holder.time.setText(timetime);
+        Timestamp timeslot = hours.get(position);
+        Date dateSlot = timeslot.toDate();
+        SelectDate.selectedTimestamp = hours.get(position);
+        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+
+        String timeselect = df.format(dateSlot);
+
+
+        holder.time.setText(timeselect);
 
         if (selectedPosition==holder.getBindingAdapterPosition()) {
             holder.time.setBackgroundColor(ContextCompat.getColor(context, R.color.teal_200));
@@ -58,7 +65,13 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
         holder.time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SelectDate.time = timetime;
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(dateSlot);
+                cal.add(Calendar.MINUTE, 30);
+                SelectDate.endTime = new Timestamp(cal.getTime());
+                String endTime = df.format(SelectDate.endTime);
+
+                SelectDate.time = timeselect + " - " + endTime;
                 selectedPosition = holder.getBindingAdapterPosition();
                 notifyDataSetChanged();
             }

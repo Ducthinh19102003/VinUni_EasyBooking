@@ -1,4 +1,7 @@
 package com.example.myapplication;
+import static com.example.myapplication.Fragments.Home.HomeFragment.cardEventsArrayList;
+import static com.example.myapplication.Fragments.Home.HomeFragment.eventInfoArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,6 +52,7 @@ public class Login extends AppCompatActivity {
     static public String userType;
     static public int portal;
     private static final String tag = "MyActivity";
+    public static ArrayList<String> usersList;
 
     ProgressBar progressBar;
 
@@ -64,9 +68,9 @@ public class Login extends AppCompatActivity {
         else if (Login.portal == 2) {
             actionBar.setTitle("Welcome professor!");
         }
-
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        usersList = new ArrayList<>();
         getEmail = findViewById(R.id.email);
         getPassword = findViewById(R.id.profPassword);
         LoginButton = findViewById(R.id.profRegisterBtn);
@@ -105,36 +109,33 @@ public class Login extends AppCompatActivity {
 
                 // authenticate the user
                 fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        userID = fAuth.getCurrentUser().getUid();
                         if (task.isSuccessful()) {
-                            Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-
-                            if (Login.portal == 1) {
-                                userType = "Students";
-                                userID = fAuth.getCurrentUser().getUid();
-                                DocumentReference docRef = fstore.collection("Students").document(userID);
-                                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        currentStudent = documentSnapshot.toObject(StudentInfo.class);
+                            DocumentReference docRef = fstore.collection(userType).document(userID);
+                            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        DocumentSnapshot document = task.getResult();
+                                        if (document != null) {
+                                            Log.d("Login", "DocumentSnapshot data: " + task.getResult().getData());
+                                            if (userType.equals("Students")) currentStudent = task.getResult().toObject(StudentInfo.class);
+                                            else if (userType.equals("Professors")) currentProfessor = task.getResult().toObject(ProfessorInfo.class);
+                                            Log.d("Login", "Student: " + currentStudent);
+                                            retrieveData();
+                                            retrieveUsersEmail();
+                                            Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(Login.this, HomePage.class));
+                                        } else {
+                                            Log.d("Login", "No such document");
+                                        }
+                                    } else {
+                                        Log.d("Login", "get failed with ", task.getException());
                                     }
-                                });
-                            }
-                            else if (Login.portal == 2) {
-                                userType = "Professors";
-                                userID = fAuth.getCurrentUser().getUid();
-                                DocumentReference docRef = fstore.collection("Professors").document(userID);
-                                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        currentProfessor = documentSnapshot.toObject(ProfessorInfo.class);
-                                    }
-                                });
-                            }
-                            Log.d("Login", "data retrieval");
-                            startActivity(new Intent(Login.this, HomePage.class));
+                                }
+                            });
                         } else {
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
@@ -146,10 +147,96 @@ public class Login extends AppCompatActivity {
         toRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(tag, Login.portal + " ");
                 if (Login.portal == 1) startActivity(new Intent(getApplicationContext(),RegisterStudent.class));
                 if (Login.portal == 2) startActivity(new Intent(getApplicationContext(),RegisterProfessor.class));
             }
         });
+    }
+
+    public void retrieveData() {
+        fstore.collection(Login.userType).document(Login.userID).collection("Events")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("Login", "Getting document");
+                                EventInfo event = document.toObject(EventInfo.class);
+                                if (event.getStartTime().compareTo(Timestamp.now()) < 0) {
+                                    document.getReference().delete();
+                                }
+                                else {
+                                    Log.d("Login", "event is " + event);
+                                    eventInfoArrayList.add(event);
+                                }
+                            }
+                            Collections.sort(eventInfoArrayList);
+
+                            if(eventInfoArrayList.size() > 0) {
+                                createCardEventsArrayList();
+                            }
+
+                        } else {
+                            Log.d("Login", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void retrieveUsersEmail() {
+        fstore.collection("Professors").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        usersList.add(document.getString("email"));
+
+                    }
+                }
+                else {
+                    Log.d("Login", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+        fstore.collection("Students").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        usersList.add(document.getString("email"));
+                    }
+                }
+                else {
+                    Log.d("Login", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+    }
+
+    void createCardEventsArrayList() {
+        String pattern = "EEEE, dd/MM";
+        DateFormat df = new SimpleDateFormat(pattern);
+
+        String date = df.format(eventInfoArrayList.get(0).getStartTime().toDate());
+
+        ArrayList<EventInfo> eventList = new ArrayList<>();
+        eventList.add(eventInfoArrayList.get(0));
+
+        cardEventsArrayList.add(new CardEvents(date, eventList));
+
+        int index = 0;
+
+        for (int i = 1; i < eventInfoArrayList.size(); i++) {
+            String new_date = df.format(eventInfoArrayList.get(i).getStartTime().toDate());
+            if (date.equals(new_date)) {
+                cardEventsArrayList.get(index).eventList.add(eventInfoArrayList.get(i));
+            }
+            else {
+                eventList = new ArrayList<>();
+                eventList.add(eventInfoArrayList.get(i));
+                cardEventsArrayList.add(new CardEvents(new_date, eventList));
+                index++;
+            }
+        }
     }
 }
