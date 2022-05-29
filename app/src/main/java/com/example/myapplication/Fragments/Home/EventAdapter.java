@@ -42,7 +42,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventSlotVie
     @Override
     public void onBindViewHolder(@NonNull EventSlotViewHolder holder, int position) {
         EventInfo event = eventInfoArrayList.get(position);
-        holder.meetingName.setText("Meeting with " + event.getHost());
+        holder.meetingName.setText(event.getMeetingName());
 
         DateFormat df = new SimpleDateFormat("HH:mm");
         String startTime = df.format(event.getStartTime().toDate());
@@ -50,7 +50,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventSlotVie
 
         holder.time.setText(startTime + " - " + endTime);
 
-        holder.location.setText("Office room");
+        holder.location.setText(event.getLocation());
     }
 
     @Override

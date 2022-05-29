@@ -39,7 +39,6 @@ public class ProfessorFragment extends Fragment implements ProfessorAdapter.OnIt
     ProfessorAdapter myAdapter;
     ArrayList<ProfessorInfo> professorItemArrayList;
     FirebaseFirestore fstore;
-    ProgressDialog progressDialog;
 
     private FragmentViewProfessorsBinding binding;
 
@@ -49,11 +48,6 @@ public class ProfessorFragment extends Fragment implements ProfessorAdapter.OnIt
         binding = FragmentViewProfessorsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Fetching data...");
-        progressDialog.show();
-
         professorRecView = binding.profList2;
         professorRecView.setHasFixedSize(true);
         professorRecView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -61,7 +55,6 @@ public class ProfessorFragment extends Fragment implements ProfessorAdapter.OnIt
         fstore = FirebaseFirestore.getInstance();
         professorItemArrayList = new ArrayList<ProfessorInfo>();
         myAdapter = new ProfessorAdapter(getActivity(), professorItemArrayList,this);
-
         professorRecView.setAdapter(myAdapter);
 
         EventChangeListener();
@@ -90,9 +83,6 @@ public class ProfessorFragment extends Fragment implements ProfessorAdapter.OnIt
                             Log.d("OfficeHourBooking", "Error getting documents: ", task.getException());
                         }
                         myAdapter.notifyDataSetChanged();
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
                     }
                 });
     }

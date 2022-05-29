@@ -1,8 +1,8 @@
 package com.example.myapplication;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventInfo implements Comparable<EventInfo> {
+public class EventInfo implements Parcelable, Comparable<EventInfo> {
 
     private static final String TAG = "EventInfo";
     private String host;
@@ -68,6 +68,60 @@ public class EventInfo implements Comparable<EventInfo> {
         this.meetingName = meetingName;
         this.location = location;
     }
+    @Override
+    public int compareTo(EventInfo eventInfo) {
+        if (this.getStartTime().compareTo(eventInfo.startTime) < 0) return -1;
+        else if (this.getStartTime().compareTo(eventInfo.startTime) > 0)  return 1;
+        else return 0;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.host);
+        dest.writeStringList(this.members);
+        dest.writeParcelable(this.startTime, flags);
+        dest.writeParcelable(this.endTime, flags);
+        dest.writeString(this.note);
+        dest.writeString(this.meetingName);
+        dest.writeString(this.location);
+    }
+
+    public void readFromParcel(Parcel source) {
+        this.host = source.readString();
+        this.members = source.createStringArrayList();
+        this.startTime = source.readParcelable(Timestamp.class.getClassLoader());
+        this.endTime = source.readParcelable(Timestamp.class.getClassLoader());
+        this.note = source.readString();
+        this.meetingName = source.readString();
+        this.location = source.readString();
+    }
+
+    protected EventInfo(Parcel in) {
+        this.host = in.readString();
+        this.members = in.createStringArrayList();
+        this.startTime = in.readParcelable(Timestamp.class.getClassLoader());
+        this.endTime = in.readParcelable(Timestamp.class.getClassLoader());
+        this.note = in.readString();
+        this.meetingName = in.readString();
+        this.location = in.readString();
+    }
+
+    public static final Creator<EventInfo> CREATOR = new Creator<EventInfo>() {
+        @Override
+        public EventInfo createFromParcel(Parcel source) {
+            return new EventInfo(source);
+        }
+
+        @Override
+        public EventInfo[] newArray(int size) {
+            return new EventInfo[size];
+        }
+    };
 
     public Timestamp getEndTime() {
         return endTime;
@@ -93,72 +147,7 @@ public class EventInfo implements Comparable<EventInfo> {
         this.members = members;
     }
 
-    public void addMember(String memberID) {
-        //This is for adding new member to the eventInfo object BEFORE it gets online.
-        //For why, see method RoomInfo.roomBooking.
-        //check for conflict
-        EventInfo event = this;
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference memberRef = db.collection("Professors").document(memberID.trim());
-        memberRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentReference memberDocRef;
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        //if the new member id is indeed in "Professors"
-                        memberDocRef = db.collection("Professors").document(memberID.trim());
-                    } else {
-                        //if the new member id is not in "Professors"
-                        memberDocRef = db.collection("Students").document(memberID.trim());
-                    }
-                    memberDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                DocumentSnapshot document = task.getResult();
-                                if (document.exists()) {
-                                    Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                    ArrayList<String> eventIDArrayList = (ArrayList<String>) document.get("events");
-                                    //Retrieve the event arraylist from the ids
-                                    List<Task<DocumentSnapshot>> tasks = new ArrayList<>();
-                                    for (String doc : eventIDArrayList) {
-                                        Log.d("Debug", doc.trim()); //yes, a bug was here
-                                        tasks.add(db.collection("Events").document(doc.trim()).get());
-                                    }
-                                    Tasks.whenAllSuccess(tasks).addOnSuccessListener(new OnSuccessListener<List<Object>>() {
-                                        @Override
-                                        public void onSuccess(List<Object> list) {
-                                            //Do what you need to do with your list
-                                            ArrayList<EventInfo> memberEventInfoArrayList = new ArrayList<>();
-                                            for (Object object : list) {
-                                                EventInfo fm = ((DocumentSnapshot) object).toObject(EventInfo.class);
-                                                if (fm != null) memberEventInfoArrayList.add(fm);
-                                                boolean conflict = checkConflict(event , memberEventInfoArrayList);
-                                                if (conflict) Log.d("Debug", "conflict");
-                                                else {
-                                                    event.members.add(memberID);
-                                                }
-                                            }
-                                        }
 
-                                    });
-                                } else {
-                                    Log.d(TAG, "No such document");
-                                }
-                            } else {
-                                Log.d(TAG, "get failed with ", task.getException());
-                            }
-                        }
-                    });
-
-                } else {
-                    Log.d(TAG, "Failed with: ", task.getException());
-                }
-            }
-        });
-    }
 
     public String getHost() {
         return host;
@@ -229,13 +218,21 @@ public class EventInfo implements Comparable<EventInfo> {
                 });;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     public static boolean checkConflict(EventInfo newEvent, ArrayList<EventInfo> eventInfoArrayList){
         //loop thru everything because it's the only way. Like bruh.
         //May use binary search later. But there are 2 cases so I'm not sure.
         for (int i = 0; i <eventInfoArrayList.size(); i++){
             //Conflict cases
             if (newEvent.startTime.compareTo(eventInfoArrayList.get(i).startTime) > 0
-                && newEvent.startTime.compareTo(eventInfoArrayList.get(i).endTime) < 0)
+                    && newEvent.startTime.compareTo(eventInfoArrayList.get(i).endTime) < 0)
                 //Event start as another is happening
                 return true;
             if (newEvent.endTime.compareTo(eventInfoArrayList.get(i).startTime) > 0
@@ -244,14 +241,6 @@ public class EventInfo implements Comparable<EventInfo> {
                 return true;
         }
         return false;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
     }
 
     public static void memberJoinEvent(String memberID, String eventID){
@@ -326,11 +315,70 @@ public class EventInfo implements Comparable<EventInfo> {
             }
         });
     }
+    public void addMember(String memberID) {
+        //This is for adding new member to the eventInfo object BEFORE it gets online.
+        //For why, see method RoomInfo.roomBooking.
+        //check for conflict
+        EventInfo event = this;
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference memberRef = db.collection("Professors").document(memberID.trim());
+        memberRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentReference memberDocRef;
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        //if the new member id is indeed in "Professors"
+                        memberDocRef = db.collection("Professors").document(memberID.trim());
+                    } else {
+                        //if the new member id is not in "Professors"
+                        memberDocRef = db.collection("Students").document(memberID.trim());
+                    }
+                    memberDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                    ArrayList<String> eventIDArrayList = (ArrayList<String>) document.get("events");
+                                    //Retrieve the event arraylist from the ids
+                                    List<Task<DocumentSnapshot>> tasks = new ArrayList<>();
+                                    for (String doc : eventIDArrayList) {
+                                        Log.d("Debug", doc.trim()); //yes, a bug was here
+                                        tasks.add(db.collection("Events").document(doc.trim()).get());
+                                    }
+                                    Tasks.whenAllSuccess(tasks).addOnSuccessListener(new OnSuccessListener<List<Object>>() {
+                                        @Override
+                                        public void onSuccess(List<Object> list) {
+                                            //Do what you need to do with your list
+                                            ArrayList<EventInfo> memberEventInfoArrayList = new ArrayList<>();
+                                            for (Object object : list) {
+                                                EventInfo fm = ((DocumentSnapshot) object).toObject(EventInfo.class);
+                                                if (fm != null) memberEventInfoArrayList.add(fm);
+                                                boolean conflict = checkConflict(event , memberEventInfoArrayList);
+                                                if (conflict) Log.d("Debug", "conflict");
+                                                else {
+                                                    event.members.add(memberID);
+                                                }
+                                            }
+                                        }
 
-    @Override
-    public int compareTo(EventInfo eventInfo) {
-        if (this.getStartTime().compareTo(eventInfo.startTime) < 0) return -1;
-        else if (this.getStartTime().compareTo(eventInfo.startTime) > 0)  return 1;
-        else return 0;
+                                    });
+                                } else {
+                                    Log.d(TAG, "No such document");
+                                }
+                            } else {
+                                Log.d(TAG, "get failed with ", task.getException());
+                            }
+                        }
+                    });
+
+                } else {
+                    Log.d(TAG, "Failed with: ", task.getException());
+                }
+            }
+        });
     }
 }

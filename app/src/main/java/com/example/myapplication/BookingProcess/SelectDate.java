@@ -1,26 +1,31 @@
 package com.example.myapplication.BookingProcess;
+import static com.example.myapplication.Login.professorList;
+import static com.example.myapplication.Login.studentList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.EventInfo;
 import com.example.myapplication.Login;
 import com.example.myapplication.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -47,42 +52,42 @@ import com.google.firebase.Timestamp;
 public class SelectDate extends AppCompatActivity implements
         DatePickerDialog.OnDateSetListener, TimeSlotAdapter.OnTimeSlotListener  {
 
-    DatePickerDialog datePickerDialog ;
+    DatePickerDialog datePickerDialog;
     MaterialCardView setDateBtn, setTimeBtn;
     AppCompatButton makeAppointmentBtn;
     EditText meetingTitle, meetingParticipants, meetingNote;
     TextView dateSelected, timeSelected;
     Switch isOnline;
-    ArrayList<String> participantList = new ArrayList<>();
+    ArrayList<String> professors = new ArrayList<>();
+    ArrayList<String> students = new ArrayList<>();
+
     ProgressBar progressBar;
 
     RecyclerView timeSlotRecyclerView;
     TimeSlotAdapter timeSlotAdapter;
     RecyclerView.LayoutManager layoutManager;
     Dialog dialog;
-    static Timestamp selectedTimestamp;
+    static Timestamp selectedTimestamp, endTime;
 
     public static ArrayList<Timestamp> availableSlots;
     public static String location;
     ArrayList<Calendar> calendarList;
     HashMap<String, ArrayList<Timestamp>> categorizedTimeslots;
+    static String host = "";
     static String date = "";
     static String time = "";
-    static String host = "";
-    static Timestamp endTime;
+
     ArrayList<Timestamp> hours;
     FirebaseFirestore fstore;
+    EventInfo new_event;
+    public static ArrayList<EventInfo> evlst;
 
     void setTimeSlotRecyclerView() {
-        Log.d("SelectDate", availableSlots + " ");
-        Log.d("SelectDate", hours + " ");
-
         timeSlotRecyclerView = dialog.findViewById(R.id.recTimeID);
         timeSlotAdapter = new TimeSlotAdapter(SelectDate.this, hours, this);
         layoutManager = new GridLayoutManager(getApplicationContext(), 3);
         timeSlotRecyclerView.setAdapter(timeSlotAdapter);
         timeSlotRecyclerView.setLayoutManager(layoutManager);
-
     }
 
     @Override
@@ -134,7 +139,6 @@ public class SelectDate extends AppCompatActivity implements
 
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
-
                         Toast.makeText(SelectDate.this, "Datepicker Canceled", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -157,18 +161,29 @@ public class SelectDate extends AppCompatActivity implements
             public void onClick(View view) {
                 String title = meetingTitle.getText().toString().trim();
                 String participants = meetingParticipants.getText().toString().trim();
-                participantList.addAll(Arrays.asList(participants.split("[, ]+")));
+                ArrayList<String> participantList = new ArrayList<>();
+                participantList.add(Login.currentStudent.getEmail());
                 String note = meetingNote.getText().toString().trim();
-
 
                 if (TextUtils.isEmpty(title)) {
                     meetingTitle.setError("Add meeting title!");
                     meetingTitle.requestFocus();
                     return;
                 }
-                if (TextUtils.isEmpty(note)) {
-                    meetingNote.setError("Add meeting note!");
-                    meetingNote.requestFocus();
+                ArrayList<String> check = new ArrayList<>();
+                if (!TextUtils.isEmpty(participants)) {
+                    participantList.addAll(Arrays.asList(participants.split("\\s*,\\s*")));
+                    for (String str : participantList) {
+                        if (professorList.contains(str)) {
+                            professors.add(str);
+                        } else if (studentList.contains(str)) {
+                            students.add(str);
+                        } else check.add(str);
+                    }
+                }
+                Log.d("SelectDate", "check: " + check);
+                if (check.size() > 0) {
+                    Toast.makeText(SelectDate.this, "Unavailable record(s): " + check, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (date.equals("")) {
@@ -179,25 +194,17 @@ public class SelectDate extends AppCompatActivity implements
                     Toast.makeText(SelectDate.this, "Time is required!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (TextUtils.isEmpty(note)) {
+                    meetingNote.setError("Add meeting note!");
+                    meetingNote.requestFocus();
+                    return;
+                }
                 progressBar.setVisibility(View.VISIBLE);
                 if (isOnline.isChecked()) {
                     location = "Microsoft Teams";
                 }
-                EventInfo new_event = new EventInfo(host, participantList, selectedTimestamp, endTime, note, title, location);
-                fstore.collection(Login.userType).document(Login.userID).collection("Events")
-                        .add(new_event)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d("SelectDate", "DocumentSnapshot written with ID: " + documentReference.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w("SelectDate", "Error adding document", e);
-                            }
-                        });
+                new_event = new EventInfo(host, participantList, selectedTimestamp, endTime, note, title, location);
+                if (notConflict()) EventToFireBase();
             }
         });
     }
@@ -270,7 +277,60 @@ public class SelectDate extends AppCompatActivity implements
         }
         return timeStampHashMap;
     }
+    public void EventToFireBase() {
+        for(String s: students) {
+            Query query = fstore.collection("Students").whereEqualTo("email", s);
+            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String ID = document.getId();
+                        fstore.collection("Students").document(ID).collection("Events")
+                                .add(new_event);
+                    }
+                }
+            });
+        }
+        for(String s: professors) {
+            Query query = fstore.collection("Professors").whereEqualTo("email", s);
+            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        String ID = document.getId();
+                        fstore.collection("Professors").document(ID).collection("Events")
+                                .add(new_event);
+                    }
+                }
+            });
+        }
+    }
 
+    public boolean notConflict() {
+        for(int i = 0; i <= evlst.size(); i++)  {
+            if (evlst.get(i).getStartTime().compareTo(new_event.getStartTime()) < 0) {
+                Timestamp prev_end_time = evlst.get(i).getEndTime();
+                Timestamp start_time = new_event.getStartTime();
+                Timestamp end_time = new_event.getEndTime();
+                Timestamp next_start_time = evlst.get(i+1).getStartTime();
+
+                if ( (start_time.compareTo(prev_end_time) < 0) && (end_time.compareTo(next_start_time) > 0) ) {
+                    Toast.makeText(SelectDate.this, "Your choosen timeslot conflicts with event " + evlst.get(i).getMeetingName() + " and " + evlst.get(i + 1).getMeetingName(), Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                if (start_time.compareTo(prev_end_time) < 0) {
+                    Toast.makeText(SelectDate.this, "Your choosen timeslot conflicts with event " + evlst.get(i).getMeetingName(), Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                if (end_time.compareTo(next_start_time) > 0) {
+                    Toast.makeText(SelectDate.this, "Your choosen timeslot conflicts with event " + evlst.get(i+1).getMeetingName(), Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                else return true;
+            }
+        }
+        return true;
+    }
     @Override
     public void onTimeSlotClick(int position) {
         Log.d("Time", time);

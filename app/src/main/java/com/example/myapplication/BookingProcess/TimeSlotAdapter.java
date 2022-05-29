@@ -1,5 +1,7 @@
 package com.example.myapplication.BookingProcess;
-
+import static com.example.myapplication.BookingProcess.SelectDate.endTime;
+import static com.example.myapplication.BookingProcess.SelectDate.time;
+import static com.example.myapplication.BookingProcess.SelectDate.selectedTimestamp;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -48,7 +50,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
     public void onBindViewHolder(@NonNull TimeSlotAdapter.MyViewHolder holder, int position) {
         Timestamp timeslot = hours.get(position);
         Date dateSlot = timeslot.toDate();
-        SelectDate.selectedTimestamp = hours.get(position);
+        selectedTimestamp = hours.get(position);
         SimpleDateFormat df = new SimpleDateFormat("HH:mm");
 
         String timeselect = df.format(dateSlot);
@@ -68,10 +70,10 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(dateSlot);
                 cal.add(Calendar.MINUTE, 30);
-                SelectDate.endTime = new Timestamp(cal.getTime());
-                String endTime = df.format(SelectDate.endTime);
+                endTime = new Timestamp(cal.getTime());
+                String endTime = df.format(SelectDate.endTime.toDate());
 
-                SelectDate.time = timeselect + " - " + endTime;
+                time = timeselect + " - " + endTime;
                 selectedPosition = holder.getBindingAdapterPosition();
                 notifyDataSetChanged();
             }
