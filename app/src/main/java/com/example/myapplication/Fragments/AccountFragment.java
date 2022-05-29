@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -94,6 +95,7 @@ public class AccountFragment extends Fragment {
         changePro5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DocumentReference userDocRef = FirebaseFirestore.getInstance().collection(Login.userType).document(Login.userID);
                 if (Login.portal == 2){
                     Dialog dialog = new Dialog(getActivity());
                     dialog.setCancelable(true);
@@ -129,6 +131,55 @@ public class AccountFragment extends Fragment {
                             newOther = editOther.getText().toString();
                             //do other things with it if needed
                             Log.d("editinfoprof", newName + newEmail + newLoc + newOther);
+                            userDocRef.update("name", newName);
+                            userDocRef.update("email", newEmail);
+                            userDocRef.update("subject", newOther);
+                            userDocRef.update("location", newLoc);
+                            dialog.dismiss();
+                            Toast.makeText(getActivity(), "Information confirmed.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    dialog.show();
+                    Window window = dialog.getWindow();
+                    window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                }
+                else if (Login.portal == 1){
+                    Dialog dialog = new Dialog(getActivity());
+                    dialog.setCancelable(true);
+                    dialog.setContentView(R.layout.change_profile_stu);
+
+                    Button ok = dialog.findViewById(R.id.okBtn_pro5stu);
+                    Button cancel = dialog.findViewById(R.id.cancelBtn_pro5stu);
+
+                    EditText editName = dialog.findViewById(R.id.editName);
+                    EditText editEmail = dialog.findViewById(R.id.editEmail);
+                    EditText editOther = dialog.findViewById(R.id.editOther);
+
+                    editName.setText(Login.currentStudent.getName());
+                    editEmail.setText(Login.currentStudent.getEmail());
+                    editOther.setText(Login.currentStudent.getID());
+
+                    cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    ok.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String newName, newEmail, newLoc, newOther;
+                            newName = editName.getText().toString();
+                            newEmail = editEmail.getText().toString();
+                            newOther = editOther.getText().toString();
+                            //do other things with it if needed
+                            Log.d("editinfostu", newName + newEmail + newOther);
+                            userDocRef.update("name", newName);
+                            userDocRef.update("email", newEmail);
+                            userDocRef.update("id", newOther);
+                            Toast.makeText(getActivity(), "Information confirmed.", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         }
                     });
