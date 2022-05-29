@@ -90,7 +90,7 @@ public class AccountFragment extends Fragment {
             fullName.setText(Login.currentProfessor.getName());
             email.setText(Login.currentProfessor.getEmail());
             info.setText(Login.currentProfessor.getSubject());
-            if (Login.currentProfessor.getLocation() == null) notiBall.setVisibility(View.VISIBLE);
+            if (Login.currentProfessor.getLocation() == null || Login.currentProfessor.getLocation() == "") notiBall.setVisibility(View.VISIBLE);
         }
         changePro5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +114,7 @@ public class AccountFragment extends Fragment {
                     editOther.setText(Login.currentProfessor.getSubject());
                     editLoc.setText(Login.currentProfessor.getLocation());
 
+
                     cancel.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -135,6 +136,14 @@ public class AccountFragment extends Fragment {
                             userDocRef.update("email", newEmail);
                             userDocRef.update("subject", newOther);
                             userDocRef.update("location", newLoc);
+
+                            Login.currentProfessor.setName(newName);
+                            Login.currentProfessor.setEmail(newEmail);
+                            Login.currentProfessor.setLocation(newLoc);
+                            Login.currentProfessor.setSubject(newOther);
+                            fullName.setText(Login.currentProfessor.getName());
+                            email.setText(Login.currentProfessor.getEmail());
+                            info.setText(Login.currentProfessor.getSubject());
                             dialog.dismiss();
                             Toast.makeText(getActivity(), "Information confirmed.", Toast.LENGTH_SHORT).show();
                         }
@@ -160,6 +169,7 @@ public class AccountFragment extends Fragment {
                     editEmail.setText(Login.currentStudent.getEmail());
                     editOther.setText(Login.currentStudent.getID());
 
+
                     cancel.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -179,6 +189,13 @@ public class AccountFragment extends Fragment {
                             userDocRef.update("name", newName);
                             userDocRef.update("email", newEmail);
                             userDocRef.update("id", newOther);
+
+                            Login.currentStudent.setName(newName);
+                            Login.currentStudent.setEmail(newEmail);
+                            Login.currentStudent.setID(newOther);
+                            fullName.setText(Login.currentStudent.getName());
+                            email.setText(Login.currentStudent.getEmail());
+                            info.setText(Login.currentStudent.getID());
                             Toast.makeText(getActivity(), "Information confirmed.", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         }

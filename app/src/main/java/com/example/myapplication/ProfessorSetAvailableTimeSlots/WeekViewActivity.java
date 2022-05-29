@@ -137,7 +137,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     public void submitAvailableTimeSlots(View view) {
         Collections.sort(HourSlotUtils.profAvailableSlots);
         docRef.update("availableTimeSlots", profAvailableSlots);
-        Intent k = new Intent(this, HomeFragment.class);
+        Intent k = new Intent(this, HomePage.class);
         startActivity(k);
     }
 }
