@@ -1,6 +1,9 @@
 package com.example.myapplication.Fragments;
 
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +25,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Login;
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.MyAppGlideModule;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentAccountBinding;
@@ -108,11 +112,13 @@ public class AccountFragment extends Fragment {
                     EditText editEmail = dialog.findViewById(R.id.editEmail);
                     EditText editLoc = dialog.findViewById(R.id.editLocation);
                     EditText editOther = dialog.findViewById(R.id.editOther);
+                    EditText editInterest = dialog.findViewById(R.id.editInterest);
 
                     editName.setText(Login.currentProfessor.getName());
                     editEmail.setText(Login.currentProfessor.getEmail());
                     editOther.setText(Login.currentProfessor.getSubject());
                     editLoc.setText(Login.currentProfessor.getLocation());
+                    editInterest.setText(Login.currentProfessor.getResearchInterest());
 
 
                     cancel.setOnClickListener(new View.OnClickListener() {
@@ -125,22 +131,25 @@ public class AccountFragment extends Fragment {
                     ok.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            String newName, newEmail, newLoc, newOther;
+                            String newName, newEmail, newLoc, newOther, newInterest;
                             newName = editName.getText().toString();
                             newEmail = editEmail.getText().toString();
                             newLoc = editLoc.getText().toString();
                             newOther = editOther.getText().toString();
+                            newInterest = editInterest.getText().toString();
                             //do other things with it if needed
                             Log.d("editinfoprof", newName + newEmail + newLoc + newOther);
                             userDocRef.update("name", newName);
                             userDocRef.update("email", newEmail);
                             userDocRef.update("subject", newOther);
                             userDocRef.update("location", newLoc);
+                            userDocRef.update("researchInterest", newInterest);
 
                             Login.currentProfessor.setName(newName);
                             Login.currentProfessor.setEmail(newEmail);
                             Login.currentProfessor.setLocation(newLoc);
                             Login.currentProfessor.setSubject(newOther);
+                            Login.currentProfessor.setResearchInterest(newInterest);
                             fullName.setText(Login.currentProfessor.getName());
                             email.setText(Login.currentProfessor.getEmail());
                             info.setText(Login.currentProfessor.getSubject());
@@ -251,8 +260,7 @@ public class AccountFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity(),Login.class));
+                restartApp();
             }
         });
 
@@ -275,4 +283,13 @@ public class AccountFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+    private void restartApp() {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        int mPendingIntentId = 8;
+        PendingIntent mPendingIntent = PendingIntent.getActivity(getContext(), mPendingIntentId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        AlarmManager mgr = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+        System.exit(0);
+    }
+
 }

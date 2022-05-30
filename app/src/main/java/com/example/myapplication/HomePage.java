@@ -1,8 +1,11 @@
 package com.example.myapplication;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -45,6 +48,7 @@ import com.google.firebase.storage.StorageReference;
 import java.io.InputStream;
 
 public class HomePage extends AppCompatActivity {
+    private static final int MAGICAL_NUMBER = 8;
     TextView name,email;
     DrawerLayout drawer;
 
@@ -97,7 +101,7 @@ public class HomePage extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_nav_view);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
 
         View headerView = navigationView.getHeaderView(0);
@@ -154,4 +158,5 @@ public class HomePage extends AppCompatActivity {
         Toast.makeText(this, "To Booking Discussion Room", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, RoomBookingActivity.class));
     }
+
 }

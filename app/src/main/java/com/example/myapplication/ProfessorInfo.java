@@ -17,6 +17,7 @@ public class ProfessorInfo implements Parcelable {
     private ArrayList<Timestamp> availableTimeSlots;
     private String UID;
     private String location;
+    private String researchInterest;
 
     public ProfessorInfo() {
 
@@ -30,6 +31,7 @@ public class ProfessorInfo implements Parcelable {
         this.Events = new ArrayList<>();
         this.availableTimeSlots = new ArrayList<>();
         this.UID = UID;
+        this.researchInterest = null;
     }
 
     public String getLocation() {
@@ -144,5 +146,13 @@ public class ProfessorInfo implements Parcelable {
             return new ProfessorInfo[size];
         }
     };
+
+    public String getResearchInterest() {
+        return researchInterest;
+    }
+
+    public void setResearchInterest(String researchInterest) {
+        this.researchInterest = researchInterest;
+    }
 }
 

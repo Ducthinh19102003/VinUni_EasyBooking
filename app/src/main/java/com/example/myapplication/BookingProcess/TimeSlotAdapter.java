@@ -52,10 +52,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
         Date dateSlot = timeslot.toDate();
         selectedTimestamp = hours.get(position);
         SimpleDateFormat df = new SimpleDateFormat("HH:mm");
-
         String timeselect = df.format(dateSlot);
-
-
         holder.time.setText(timeselect);
 
         if (selectedPosition==holder.getBindingAdapterPosition()) {

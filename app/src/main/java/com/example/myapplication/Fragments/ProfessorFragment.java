@@ -110,11 +110,13 @@ public class ProfessorFragment extends Fragment implements ProfessorAdapter.OnIt
         TextView currentProfName = dialog.findViewById(R.id.name_professor);
         TextView currentProfSubject = dialog.findViewById(R.id.prof_subjects);
         TextView currentProfEmail = dialog.findViewById(R.id.prof_email);
+        TextView currentProfInterest = dialog.findViewById((R.id.prof_interest));
         Button done = dialog.findViewById(R.id.done_btn);
 
         currentProfName.setText(currentProfessor.getName());
-        currentProfSubject.setText(currentProfessor.getSubject());
-        currentProfEmail.setText(currentProfessor.getEmail());
+        currentProfSubject.setText("Subject: " + currentProfessor.getSubject());
+        currentProfEmail.setText("Email: " + currentProfessor.getEmail());
+        currentProfInterest.setText("Research interest: "+ currentProfessor.getResearchInterest());
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override

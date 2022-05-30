@@ -40,7 +40,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/info_constraint"
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="250dp">
 
 
             <ImageView
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.01"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.1"
@@ -75,12 +75,12 @@
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/imageView5"
+                app:layout_constraintBottom_toTopOf="@+id/imageView35"
                 app:layout_constraintEnd_toEndOf="@+id/imageView2"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:layout_constraintVertical_bias="0.213"
+                app:layout_constraintVertical_bias="0.5"
                 app:srcCompat="@drawable/ic_email_black_24dp" />
 
             <EditText
@@ -97,18 +97,41 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="@+id/imageView3"
                 app:layout_constraintVertical_bias="0.5" />
-
+            <ImageView
+                android:id="@+id/imageView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/imageView5"
+                app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintVertical_bias="0.5"
+                app:srcCompat="@drawable/ic_interest" />
+            <EditText
+                android:id="@+id/editInterest"
+                android:layout_width="253dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:hint="Interest"
+                android:inputType="text"
+                android:minHeight="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView35"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.216"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/imageView35"
+                app:layout_constraintVertical_bias="0.5" />
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 app:layout_constraintBottom_toTopOf="@+id/imageView5"
-                app:layout_constraintEnd_toEndOf="@+id/imageView2"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="@+id/imageView35"
+                app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:layout_constraintVertical_bias="0.708"
+                app:layout_constraintTop_toBottomOf="@+id/imageView35"
+                app:layout_constraintVertical_bias="0.5"
                 app:srcCompat="@drawable/ic_book" />
 
             <EditText
@@ -116,7 +139,7 @@
                 android:layout_width="253dp"
                 android:layout_height="40dp"
                 android:ems="10"
-                android:hint="subject"
+                android:hint="Subject"
                 android:inputType="text"
                 android:minHeight="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView4"
@@ -133,7 +156,7 @@
                 android:layout_marginTop="104dp"
                 app:layout_constraintBottom_toBottomOf="@id/info_constraint"
                 app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.777"

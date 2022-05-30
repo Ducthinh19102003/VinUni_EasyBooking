@@ -4,6 +4,7 @@ public class StudentInfo {
     private String password;
     private String name;
     private String ID;
+    private String hobby;
 
     public StudentInfo() {
 
@@ -14,6 +15,7 @@ public class StudentInfo {
         this.password = password;
         this.name = name;
         this.ID = ID;
+        this.hobby = null;
     }
 
     public String getEmail() {
@@ -46,5 +48,13 @@ public class StudentInfo {
 
     public void setID(String ID) {
         this.ID = ID;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
     }
 }

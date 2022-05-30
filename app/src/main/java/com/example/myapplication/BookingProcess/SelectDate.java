@@ -129,6 +129,7 @@ public class SelectDate extends AppCompatActivity implements
         setDateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                selectedTimestamp = endTime = null;
                 datePickerDialog = DatePickerDialog.newInstance(SelectDate.this,
                         now.get(Calendar.YEAR), // Initial year selection
                         now.get(Calendar.MONTH), // Initial month selection
@@ -213,7 +214,7 @@ public class SelectDate extends AppCompatActivity implements
                     location = "Microsoft Teams";
                 }
                 Log.d("Professor", currentProfessor + "");
-                new_event = new EventInfo(currentProfessor.getName(), participantList, selectedTimestamp,endTime,note, title, currentProfessor.getLocation());
+                new_event = new EventInfo(currentProfessor.getName(), participantList, selectedTimestamp,new Timestamp(selectedTimestamp.getSeconds()+1800,0),note, title, currentProfessor.getLocation());
                 ArrayList<String> conflict = checkConflict(new_event, evlst);
                 progressBar.setVisibility(View.GONE);
                 if (conflict.size() > 0) {
@@ -264,13 +265,15 @@ public class SelectDate extends AppCompatActivity implements
         cal.setTimeInMillis(0);
         cal.set(year, monthOfYear, dayOfMonth, 0, 0, 0);
         Date chosenDate = cal.getTime();
-
+        time = "";
+        timeSelected.setText(time);
         String pattern = "EEEE, dd/MM";
         DateFormat df = new SimpleDateFormat(pattern);
 
         date = df.format(chosenDate);
         Toast.makeText(SelectDate.this, date, Toast.LENGTH_LONG).show();
         dateSelected.setText(date);
+
         hours = categorizedTimeslots.get(date);
     }
 

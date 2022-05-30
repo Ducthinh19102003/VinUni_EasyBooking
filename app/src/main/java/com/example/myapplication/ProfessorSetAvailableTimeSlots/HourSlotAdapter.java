@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.google.firebase.Timestamp;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -42,7 +44,9 @@ public class HourSlotAdapter extends RecyclerView.Adapter<HourSlotViewHolder>{
             holder.hourOfSlot.setText("");
         else
         {
-            holder.hourOfSlot.setText(String.valueOf(hour.toDate().getHours() + ":" + hour.toDate().getMinutes()));
+            DateFormat df = new SimpleDateFormat("HH:mm");
+            String startTime = df.format(hour.toDate());
+            holder.hourOfSlot.setText(startTime);
             if(HourSlotUtils.profAvailableSlots.contains(hour))
                 holder.parentView2.setBackgroundColor(Color.LTGRAY);
             //Make it so that it changes color depends on whether the slot is in the retrieved array or not
