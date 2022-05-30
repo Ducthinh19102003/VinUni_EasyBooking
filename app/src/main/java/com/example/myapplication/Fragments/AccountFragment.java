@@ -275,4 +275,5 @@ public class AccountFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 }

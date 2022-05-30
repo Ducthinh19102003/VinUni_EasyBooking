@@ -25,6 +25,7 @@ import com.example.myapplication.EventInfo;
 import com.example.myapplication.Fragments.Calendar.CalendarFragment;
 import com.example.myapplication.Fragments.Home.HomeFragment;
 import com.example.myapplication.HomePage;
+import com.example.myapplication.Login;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,9 +40,8 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private RecyclerView hourSlotsRecyclerView;
-    String professorID = "GutdziKpOWV44uZ6aSEeQqhwfVc2";
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference docRef = db.collection("Professors").document(professorID);
+    DocumentReference docRef = db.collection(Login.userType).document(Login.userID);
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

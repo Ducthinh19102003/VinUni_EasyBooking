@@ -11,15 +11,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.BookingProcess.SelectDate;
 import com.example.myapplication.EventInfo;
+import com.example.myapplication.Fragments.Home.EventAdapter;
 import com.example.myapplication.Fragments.Home.HomeFragment;
+import com.example.myapplication.Login;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarAdapter;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotAdapter;
@@ -35,6 +40,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -52,9 +59,6 @@ public class CalendarFragment extends Fragment implements EventSlotAdapter.OnIte
     private RecyclerView eventRecyclerView, calendarRecyclerView;
     private TextView monthYearText;
     private static final String TAG  = "WeekViewActivity";
-    String professorID = "GutdziKpOWV44uZ6aSEeQqhwfVc2";
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference docRef = db.collection("Professors").document(professorID);
     private static ArrayList<EventInfo> eventInfoArrayList = new ArrayList<>();
     public static HashMap<String, ArrayList<EventInfo>> eventInfoHashMap = new HashMap<String, ArrayList<EventInfo>>();
 
@@ -66,60 +70,7 @@ public class CalendarFragment extends Fragment implements EventSlotAdapter.OnIte
         View root = binding.getRoot();
         CalendarUtils.selectedDate = LocalDate.now();
         initWidgets();
-        setWeekView();
-        //Retrieve the array of event ids
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        ArrayList<String> eventIDArrayList = (ArrayList<String>) document.get("events");
-                        //Retrieve the event arraylist from the ids
-                        List<Task<DocumentSnapshot>> tasks = new ArrayList<>();
-                        for (String doc : eventIDArrayList) {
-                            Log.d("Debug", doc.trim()); //yes, a bug was here
-                            tasks.add(db.collection("Events").document(doc.trim()).get());
-                        }
-                        Tasks.whenAllSuccess(tasks).addOnSuccessListener(new OnSuccessListener<List<Object>>() {
-                            @Override
-                            public void onSuccess(List<Object> list) {
-                                //Do what you need to do with your list
-                                Log.d("debug", list.toString());
-                                //create dummy list, put everything there, check later
-                                ArrayList<EventInfo> eventInfoDummyList = new ArrayList<>();
-                                for (Object object : list) {
-
-                                    EventInfo fm = ((DocumentSnapshot) object).toObject(EventInfo.class);
-                                    eventInfoDummyList.add(fm);
-                                }
-                                //look into the dummy list
-                                for (EventInfo event :eventInfoDummyList){
-                                    if (event == null){
-                                        String fmID = eventIDArrayList.get(eventInfoDummyList.indexOf(null));
-                                        docRef.update("events", FieldValue.arrayRemove(fmID));
-                                    }
-                                    else if (event.getStartTime().compareTo(Timestamp.now()) < 0){
-                                        String fmID = eventIDArrayList.get(eventInfoDummyList.indexOf(event));
-                                        db.collection("Events").document(fmID).delete();
-                                        docRef.update("events", FieldValue.arrayRemove(fmID));
-                                    }
-                                    else eventInfoArrayList.add(event);
-                                }
-                                eventInfoHashMap = eventInfoArrayListToHashMap(eventInfoArrayList);
-                                setEventView();
-                            }
-
-                        });
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
+        retrieveData();
     return root;
     }
 
@@ -144,17 +95,35 @@ public class CalendarFragment extends Fragment implements EventSlotAdapter.OnIte
         ArrayList<EventInfo> passing = new ArrayList<>();
         if (eventInfoHashMap.containsKey(selectedDateString)) passing = eventInfoHashMap.get(selectedDateString);
         if (CalendarUtils.selectedDate.compareTo(LocalDate.now()) < 0) passing = new ArrayList<>();
-        EventSlotAdapter eventSlotAdapter = new EventSlotAdapter(passing, this);
+        EventAdapter eventAdapter = new EventAdapter(passing);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         eventRecyclerView.setLayoutManager(layoutManager);
-        eventRecyclerView.setAdapter(eventSlotAdapter);
+        eventRecyclerView.setAdapter(eventAdapter);
     }
 
     private void initWidgets()
     {
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         calendarRecyclerView = binding.calendarRecyclerView;
         monthYearText = binding.monthYearTV;
         eventRecyclerView = binding.EventRecyclerView;
+        Button nextWeekButton = binding.nextWeekButton;
+        Button prevWeekButton = binding.previousWeekButton;
+        nextWeekButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextWeekAction(view);
+            }
+        });
+        prevWeekButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                previousWeekAction(view);
+            }
+        });
+        eventRecyclerView.addItemDecoration(itemDecoration);
+        eventInfoArrayList = new ArrayList<>();
+        eventInfoHashMap = new HashMap<String, ArrayList<EventInfo>>();
     }
 
     @Override
@@ -196,4 +165,39 @@ public class CalendarFragment extends Fragment implements EventSlotAdapter.OnIte
         setWeekView();
         setEventView();
     }
+    public void retrieveData() {
+        FirebaseFirestore.getInstance().collection(Login.userType).document(Login.userID).collection("Events")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.d("Login", "Getting document");
+                        EventInfo event = document.toObject(EventInfo.class);
+                        if (event.getStartTime().compareTo(Timestamp.now()) < 0) {
+                            document.getReference().delete();
+                        }
+                        else {
+                            Log.d("Login", "event is " + event);
+                            eventInfoArrayList.add(event);
+                        }
+                    }
+                    Collections.sort(eventInfoArrayList);
+
+                    if(eventInfoArrayList.size() > 0) {
+                        SelectDate.evlst = eventInfoArrayList;
+                        Log.d("Debug", eventInfoArrayList + "");
+                        eventInfoHashMap = eventInfoArrayListToHashMap(eventInfoArrayList);
+                        setWeekView();
+                        setEventView();
+                    }
+                    else setWeekView();
+                } else {
+                    Log.d("Login", "Error getting documents: ", task.getException());
+                    setWeekView();
+                }
+            }
+        });
+    }
+
 }
