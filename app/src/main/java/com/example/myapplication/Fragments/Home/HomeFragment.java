@@ -102,7 +102,6 @@ public class HomeFragment extends Fragment {
                                 }
                             }
                             Collections.sort(eventInfoArrayList);
-
                             if(eventInfoArrayList.size() > 0) {
                                 SelectDate.evlst = eventInfoArrayList;
                                 Log.d("Debug", eventInfoArrayList + "");
@@ -125,7 +124,7 @@ public class HomeFragment extends Fragment {
         DateFormat df = new SimpleDateFormat(pattern);
 
         String date = df.format(eventInfoArrayList.get(0).getStartTime().toDate());
-
+        Log.d("debug", date);
         ArrayList<EventInfo> eventList = new ArrayList<>();
         eventList.add(eventInfoArrayList.get(0));
 
@@ -135,15 +134,19 @@ public class HomeFragment extends Fragment {
 
         for (int i = 1; i < eventInfoArrayList.size(); i++) {
             String new_date = df.format(eventInfoArrayList.get(i).getStartTime().toDate());
+            Log.d("debug", new_date);
             if (date.equals(new_date)) {
+                Log.d("debug", "keep");
                 cardEventsArrayList.get(index).eventList.add(eventInfoArrayList.get(i));
             }
             else {
+                Log.d("debug", "next");
                 eventList = new ArrayList<>();
                 eventList.add(eventInfoArrayList.get(i));
                 cardEventsArrayList.add(new CardEvents(new_date, eventList));
                 index++;
             }
+            date = new_date;
         }
     }
 }
