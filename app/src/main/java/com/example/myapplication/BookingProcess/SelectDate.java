@@ -101,7 +101,7 @@ public class SelectDate extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.make_appointment);
-
+        date = "";
         fstore = FirebaseFirestore.getInstance();
         calendarList = new ArrayList<Calendar>();
         currentProfessor = getIntent().getParcelableExtra("professor");
