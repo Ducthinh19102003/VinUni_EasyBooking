@@ -66,7 +66,6 @@ public class SelectDate extends AppCompatActivity implements
     Switch isOnline;
     ArrayList<String> professors = new ArrayList<>();
     ArrayList<String> students = new ArrayList<>();
-    static String UID_professor;
     ProfessorInfo currentProfessor;
 
     ProgressBar progressBar;
@@ -81,9 +80,9 @@ public class SelectDate extends AppCompatActivity implements
     public static String location;
     ArrayList<Calendar> calendarList;
     HashMap<String, ArrayList<Timestamp>> categorizedTimeslots;
-    static String host = "";
     static String date = "";
     static String time = "";
+    String converted;
 
     ArrayList<Timestamp> hours;
     FirebaseFirestore fstore;
@@ -105,6 +104,8 @@ public class SelectDate extends AppCompatActivity implements
 
         fstore = FirebaseFirestore.getInstance();
         calendarList = new ArrayList<Calendar>();
+        currentProfessor = getIntent().getParcelableExtra("professor");
+        availableSlots = currentProfessor.getAvailableTimeSlots();
 
         setCalendarArrays();
         categorizedTimeslots = timestampArrayListToHashMap();
@@ -211,12 +212,8 @@ public class SelectDate extends AppCompatActivity implements
                 if (isOnline.isChecked()) {
                     location = "Microsoft Teams";
                 }
-                currentProfessor = getIntent().getParcelableExtra("professor");
                 Log.d("Professor", currentProfessor + "");
-//                new_event = new EventInfo(host, participantList, selectedTimestamp, endTime, note, title, location);
                 new_event = new EventInfo(currentProfessor.getName(), participantList, selectedTimestamp,endTime,note, title, currentProfessor.getLocation());
-                Log.d("start time", new_event.getStartTime().toDate().getHours() + "");
-                Log.d("start time", new_event.getEndTime().toDate().getHours() + "");
                 ArrayList<String> conflict = checkConflict(new_event, evlst);
                 progressBar.setVisibility(View.GONE);
                 if (conflict.size() > 0) {

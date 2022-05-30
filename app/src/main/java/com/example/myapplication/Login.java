@@ -113,8 +113,8 @@ public class Login extends AppCompatActivity {
                 fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        userID = fAuth.getCurrentUser().getUid();
                         if (task.isSuccessful()) {
+                            userID = fAuth.getCurrentUser().getUid();
                             DocumentReference docRef = fstore.collection(userType).document(userID);
                             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
