@@ -14,7 +14,7 @@ import com.bumptech.glide.Registry;
 import com.bumptech.glide.module.AppGlideModule;
 import com.example.myapplication.BookingProcess.OfficeHourBooking;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.WeekViewActivity;
-import com.example.myapplication.RoomBookingProcess.RoomBookingActivity;
+import com.example.myapplication.RoomBookingActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -155,4 +155,3 @@ public class HomePage extends AppCompatActivity {
         startActivity(new Intent(this, RoomBookingActivity.class));
     }
 }
-

@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventInfo implements Parcelable, Comparable<EventInfo> {
+public class EventInfo implements Comparable<EventInfo> {
 
     private static final String TAG = "EventInfo";
     private String host;
@@ -30,22 +30,6 @@ public class EventInfo implements Parcelable, Comparable<EventInfo> {
     private String note;
     private String meetingName;
     private String location;
-
-    public String getMeetingName() {
-        return meetingName;
-    }
-
-    public void setMeetingName(String meetingName) {
-        this.meetingName = meetingName;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
     public EventInfo() {
 
@@ -68,60 +52,28 @@ public class EventInfo implements Parcelable, Comparable<EventInfo> {
         this.meetingName = meetingName;
         this.location = location;
     }
+
+    public String getMeetingName() {
+        return meetingName;
+    }
+
+    public void setMeetingName(String meetingName) {
+        this.meetingName = meetingName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
     @Override
     public int compareTo(EventInfo eventInfo) {
         if (this.getStartTime().compareTo(eventInfo.startTime) < 0) return -1;
         else if (this.getStartTime().compareTo(eventInfo.startTime) > 0)  return 1;
         else return 0;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.host);
-        dest.writeStringList(this.members);
-        dest.writeParcelable(this.startTime, flags);
-        dest.writeParcelable(this.endTime, flags);
-        dest.writeString(this.note);
-        dest.writeString(this.meetingName);
-        dest.writeString(this.location);
-    }
-
-    public void readFromParcel(Parcel source) {
-        this.host = source.readString();
-        this.members = source.createStringArrayList();
-        this.startTime = source.readParcelable(Timestamp.class.getClassLoader());
-        this.endTime = source.readParcelable(Timestamp.class.getClassLoader());
-        this.note = source.readString();
-        this.meetingName = source.readString();
-        this.location = source.readString();
-    }
-
-    protected EventInfo(Parcel in) {
-        this.host = in.readString();
-        this.members = in.createStringArrayList();
-        this.startTime = in.readParcelable(Timestamp.class.getClassLoader());
-        this.endTime = in.readParcelable(Timestamp.class.getClassLoader());
-        this.note = in.readString();
-        this.meetingName = in.readString();
-        this.location = in.readString();
-    }
-
-    public static final Creator<EventInfo> CREATOR = new Creator<EventInfo>() {
-        @Override
-        public EventInfo createFromParcel(Parcel source) {
-            return new EventInfo(source);
-        }
-
-        @Override
-        public EventInfo[] newArray(int size) {
-            return new EventInfo[size];
-        }
-    };
 
     public Timestamp getEndTime() {
         return endTime;
@@ -235,8 +187,8 @@ public class EventInfo implements Parcelable, Comparable<EventInfo> {
                     && newEvent.startTime.compareTo(eventInfoArrayList.get(i).endTime) < 0)
                 //Event start as another is happening
                 return true;
-            if (newEvent.endTime.compareTo(eventInfoArrayList.get(i).startTime) > 0
-                    && newEvent.endTime.compareTo(eventInfoArrayList.get(i).endTime) < 0)
+            if (newEvent.startTime.compareTo(eventInfoArrayList.get(i).startTime) < 0
+                    && newEvent.endTime.compareTo(eventInfoArrayList.get(i).startTime) > 0)
                 //Another event would start as this event is happening.
                 return true;
         }

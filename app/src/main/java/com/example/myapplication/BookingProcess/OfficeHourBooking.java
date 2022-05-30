@@ -82,14 +82,12 @@ public class OfficeHourBooking extends AppCompatActivity implements ProfessorAda
     @Override
     public void onItemClick(int position) {
         ProfessorInfo currentProfessor = professorItemArrayList.get(position);
-        SelectDate.availableSlots = currentProfessor.getAvailableTimeSlots();
-        if (SelectDate.availableSlots.size() == 0) {
+        if (currentProfessor.getAvailableTimeSlots().size() == 0) {
             Toast.makeText(OfficeHourBooking.this, "Professor " + currentProfessor.getName() + " is currently unavailable!", Toast.LENGTH_SHORT).show();
             return;
         }
-        SelectDate.location = currentProfessor.getLocation();
-        SelectDate.host = currentProfessor.getName();
         Intent intent = new Intent(OfficeHourBooking.this, SelectDate.class);
+        intent.putExtra("professor", currentProfessor);
         startActivity(intent);
     }
 }

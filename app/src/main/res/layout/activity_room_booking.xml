@@ -7,7 +7,7 @@
     android:background="#FFFFFF"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".RoomBookingProcess.RoomBookingActivity">
+    tools:context=".RoomBookingActivity">
 
     <EditText
         android:id="@+id/eventEdt2"

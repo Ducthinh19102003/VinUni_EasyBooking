@@ -10,12 +10,17 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.EventInfo;
+import com.example.myapplication.Fragments.Home.HomeFragment;
+import com.example.myapplication.HomePage;
 import com.example.myapplication.Login;
+import com.example.myapplication.ProfessorInfo;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -39,6 +44,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -60,6 +66,7 @@ public class SelectDate extends AppCompatActivity implements
     Switch isOnline;
     ArrayList<String> professors = new ArrayList<>();
     ArrayList<String> students = new ArrayList<>();
+    ProfessorInfo currentProfessor;
 
     ProgressBar progressBar;
 
@@ -73,9 +80,9 @@ public class SelectDate extends AppCompatActivity implements
     public static String location;
     ArrayList<Calendar> calendarList;
     HashMap<String, ArrayList<Timestamp>> categorizedTimeslots;
-    static String host = "";
     static String date = "";
     static String time = "";
+    String converted;
 
     ArrayList<Timestamp> hours;
     FirebaseFirestore fstore;
@@ -97,6 +104,8 @@ public class SelectDate extends AppCompatActivity implements
 
         fstore = FirebaseFirestore.getInstance();
         calendarList = new ArrayList<Calendar>();
+        currentProfessor = getIntent().getParcelableExtra("professor");
+        availableSlots = currentProfessor.getAvailableTimeSlots();
 
         setCalendarArrays();
         categorizedTimeslots = timestampArrayListToHashMap();
@@ -173,13 +182,13 @@ public class SelectDate extends AppCompatActivity implements
                 ArrayList<String> check = new ArrayList<>();
                 if (!TextUtils.isEmpty(participants)) {
                     participantList.addAll(Arrays.asList(participants.split("\\s*,\\s*")));
-                    for (String str : participantList) {
-                        if (professorList.contains(str)) {
-                            professors.add(str);
-                        } else if (studentList.contains(str)) {
-                            students.add(str);
-                        } else check.add(str);
-                    }
+                }
+                for (String str : participantList) {
+                    if (professorList.contains(str)) {
+                        professors.add(str);
+                    } else if (studentList.contains(str)) {
+                        students.add(str);
+                    } else check.add(str);
                 }
                 Log.d("SelectDate", "check: " + check);
                 if (check.size() > 0) {
@@ -203,8 +212,20 @@ public class SelectDate extends AppCompatActivity implements
                 if (isOnline.isChecked()) {
                     location = "Microsoft Teams";
                 }
-                new_event = new EventInfo(host, participantList, selectedTimestamp, endTime, note, title, location);
-                if (notConflict()) EventToFireBase();
+                Log.d("Professor", currentProfessor + "");
+                new_event = new EventInfo(currentProfessor.getName(), participantList, selectedTimestamp,endTime,note, title, currentProfessor.getLocation());
+                ArrayList<String> conflict = checkConflict(new_event, evlst);
+                progressBar.setVisibility(View.GONE);
+                if (conflict.size() > 0) {
+                    Toast.makeText(SelectDate.this, "Choosen timeslot conflict with " + conflict, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else {
+                    professors.add(currentProfessor.getEmail());
+                    EventToFireBase();
+                    removeTimeslot();
+                    startActivity(new Intent(SelectDate.this, HomePage.class));
+                }
             }
         });
     }
@@ -278,6 +299,8 @@ public class SelectDate extends AppCompatActivity implements
         return timeStampHashMap;
     }
     public void EventToFireBase() {
+        Log.d("Students", students + "");
+        Log.d("Professors", professors + "");
         for(String s: students) {
             Query query = fstore.collection("Students").whereEqualTo("email", s);
             query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -305,34 +328,33 @@ public class SelectDate extends AppCompatActivity implements
             });
         }
     }
+    public void removeTimeslot() {
+        Log.d("Professor", currentProfessor.getUID());
+        DocumentReference docref = fstore.collection("Professors").document(currentProfessor.getUID());
+        docref.update("availableTimeSlots", FieldValue.arrayRemove(selectedTimestamp));
+    }
 
-    public boolean notConflict() {
-        for(int i = 0; i <= evlst.size(); i++)  {
-            if (evlst.get(i).getStartTime().compareTo(new_event.getStartTime()) < 0) {
-                Timestamp prev_end_time = evlst.get(i).getEndTime();
-                Timestamp start_time = new_event.getStartTime();
-                Timestamp end_time = new_event.getEndTime();
-                Timestamp next_start_time = evlst.get(i+1).getStartTime();
-
-                if ( (start_time.compareTo(prev_end_time) < 0) && (end_time.compareTo(next_start_time) > 0) ) {
-                    Toast.makeText(SelectDate.this, "Your choosen timeslot conflicts with event " + evlst.get(i).getMeetingName() + " and " + evlst.get(i + 1).getMeetingName(), Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-                if (start_time.compareTo(prev_end_time) < 0) {
-                    Toast.makeText(SelectDate.this, "Your choosen timeslot conflicts with event " + evlst.get(i).getMeetingName(), Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-                if (end_time.compareTo(next_start_time) > 0) {
-                    Toast.makeText(SelectDate.this, "Your choosen timeslot conflicts with event " + evlst.get(i+1).getMeetingName(), Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-                else return true;
-            }
+    public ArrayList<String> checkConflict(EventInfo newEvent, ArrayList<EventInfo> eventInfoArrayList){
+        //loop thru everything because it's the only way. Like bruh.
+        //May use binary search later. But there are 2 cases so I'm not sure.
+        ArrayList<String> conflictEvents = new ArrayList<>();
+        for (int i = 0; i < eventInfoArrayList.size(); i++){
+            //Conflict cases
+            if (newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getStartTime()) > 0
+                    && newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getEndTime()) < 0)
+                //Event start as another is happening
+                conflictEvents.add(eventInfoArrayList.get(i).getMeetingName());
+            if (newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getStartTime()) < 0
+                    && newEvent.getEndTime().compareTo(eventInfoArrayList.get(i).getStartTime()) > 0)
+                //Another event would start as this event is happening
+                conflictEvents.add(eventInfoArrayList.get(i).getMeetingName());
         }
-        return true;
+        return conflictEvents;
     }
     @Override
     public void onTimeSlotClick(int position) {
         Log.d("Time", time);
     }
+
+
 }

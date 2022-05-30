@@ -1,22 +1,19 @@
-package com.example.myapplication.RoomBookingProcess;
+package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.BookingProcess.SelectDate;
-import com.example.myapplication.BookingProcess.TimeSlotAdapter;
-import com.example.myapplication.R;
+import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Adapter;
@@ -25,8 +22,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
@@ -36,51 +35,68 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
+
 import com.google.firebase.Timestamp;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
-import android.os.Bundle;
+public class RoomBookingActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-import com.example.myapplication.R;
+    DatePickerDialog datePickerDialog;
+    TimePickerDialog timePickerDialog;
+    MaterialCardView setDateBtn, setStartTimeBtn, setEndTimeBtn;
+    AppCompatButton makeAppointmentBtn;
+    EditText meetingTitle, meetingParticipants, meetingNote;
+    TextView dateSelected, startTimeSelected, endTimeSelected;
 
-public class RoomBookingActivity extends AppCompatActivity implements
-        DatePickerDialog.OnDateSetListener  {
+    ArrayList<String> professors = new ArrayList<>();
+    ArrayList<String> students = new ArrayList<>();
 
-    DatePickerDialog datePickerDialog ;
-    AppCompatButton setDateBtn, setTimeBtn, makeAppointmentBtn;
-    TextView dateSelected, timeSelected;
+    RoomInfo currentRoom;
+    ProgressBar progressBar;
 
-    Dialog dialog;
+    RecyclerView.LayoutManager layoutManager;
+    Timestamp startTimestamp, endTimestamp;
+    String date, startTime, endTime, location;
 
-    HashMap<String, ArrayList<Timestamp>> categorizedTimeslots;
-    static String date = "";
-    static String startTime, endTime;
+    String selectedRoom;
 
-
+    FirebaseFirestore fstore;
+    EventInfo new_event;
+    public static ArrayList<EventInfo> evlst;
     Spinner roomSpinner;
-    static String selectedRoom;
+    Calendar calendar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room_booking);
+        setContentView(R.layout.room_booking);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        dateSelected = findViewById(R.id.dateDisplay);
-        timeSelected = findViewById(R.id.timeDisplay);
+
+        setStartTimeBtn = findViewById(R.id.startTimeID);
+        setEndTimeBtn = findViewById(R.id.endTimeID);
+
+        startTimeSelected = findViewById(R.id.startTimeID);
+        endTimeSelected = findViewById(R.id.endTimeID);
+
+        fstore = FirebaseFirestore.getInstance();
+
         makeAppointmentBtn = findViewById(R.id.setappoinment);
 
         setDateBtn = findViewById(R.id.setDate);
-        setTimeBtn = findViewById(R.id.setTime);
+        setStartTimeBtn = findViewById(R.id.startTimeID);
+        setEndTimeBtn = findViewById(R.id.endTimeID);
 
-        Calendar now = Calendar.getInstance();
+        calendar = Calendar.getInstance();
         setDateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 datePickerDialog = DatePickerDialog.newInstance(RoomBookingActivity.this,
-                        now.get(Calendar.YEAR), // Initial year selection
-                        now.get(Calendar.MONTH), // Initial month selection
-                        now.get(Calendar.DAY_OF_MONTH)// Inital day selection
+                        calendar.get(Calendar.YEAR), // Initial year selection
+                        calendar.get(Calendar.MONTH), // Initial month selection
+                        calendar.get(Calendar.DAY_OF_MONTH)  // Inital day selection
                 );
                 datePickerDialog.setVersion(DatePickerDialog.Version.VERSION_2);
                 datePickerDialog.setThemeDark(false);
@@ -100,12 +116,26 @@ public class RoomBookingActivity extends AppCompatActivity implements
                 datePickerDialog.show(getSupportFragmentManager(), "DatePickerDialog");
             }
         });
-        setTimeBtn.setOnClickListener(new View.OnClickListener() {
+        setStartTimeBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                if (date.equals("")) Toast.makeText(RoomBookingActivity.this, "Select date first!", Toast.LENGTH_SHORT).show();
-                else openDialog(RoomBookingActivity.this);
+                timePickerDialog = TimePickerDialog.newInstance(RoomBookingActivity.this, calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE),false );
+                timePickerDialog.setThemeDark(false);
+                //timePickerDialog.showYearPickerFirst(false);
+                timePickerDialog.setTitle("Set Time");
+                timePickerDialog.setMinTime(9, 0,0);
+                timePickerDialog.setMaxTime(21,0,0);
+
+                timePickerDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+
+                        Toast.makeText(RoomBookingActivity.this, "Timepicker Canceled", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                timePickerDialog.show(getSupportFragmentManager(), "TimePickerDialog");
             }
         });
 
@@ -124,8 +154,8 @@ public class RoomBookingActivity extends AppCompatActivity implements
                 rooms);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        this.roomSpinner.setAdapter(adapter);
-        this.roomSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        roomSpinner.setAdapter(adapter);
+        roomSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -146,46 +176,21 @@ public class RoomBookingActivity extends AppCompatActivity implements
         return selectedRoom;
     }
 
-
-    public void openDialog(Activity activity) {
-        dialog = new Dialog(activity);
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.select_booking_time);
-
-        Button ok = dialog.findViewById(R.id.ok_btn);
-        Button cancel = dialog.findViewById(R.id.cancel_btn);
-        EditText startHour = dialog.findViewById(R.id.startHour);
-        EditText endHour = dialog.findViewById(R.id.endHour);
-        EditText startMinute = dialog.findViewById(R.id.startMinute);
-        EditText endMinute = dialog.findViewById(R.id.endMinute);
-
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startTime = endTime = "";
-                timeSelected.setText("");
-                dialog.dismiss();
-            }
-        });
-
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startTime = startHour.getText().toString() +":" + startMinute.getText().toString();
-                endTime = endHour.getText().toString() +":" + endMinute.getText().toString();
-                timeSelected.setText(startTime +"-" + endTime);
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-        Window window = dialog.getWindow();
-        window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-    }
+    @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        date = dayOfMonth + "/" + "0" + (monthOfYear+1) + "/"+ year;
+        calendar.set(year, monthOfYear, dayOfMonth, 0, 0, 0);
+        Date chosenDate = calendar.getTime();
+
+        String pattern = "EEEE, dd/MM";
+        DateFormat df = new SimpleDateFormat(pattern);
+
+        date = df.format(chosenDate);
         Toast.makeText(RoomBookingActivity.this, date, Toast.LENGTH_LONG).show();
         dateSelected.setText(date);
     }
 
+    @Override
+    public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
 
+    }
 }
