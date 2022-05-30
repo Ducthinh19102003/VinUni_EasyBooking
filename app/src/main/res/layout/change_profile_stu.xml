@@ -96,7 +96,8 @@
                 app:layout_constraintHorizontal_bias="0.216"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="@+id/imageView3"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintVertical_bias="0.5"
+                android:focusable="false" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -116,7 +117,7 @@
                 android:layout_width="253dp"
                 android:layout_height="40dp"
                 android:ems="10"
-                android:hint="subject"
+                android:hint="studentID"
                 android:inputType="text"
                 android:minHeight="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView4"
@@ -124,7 +125,8 @@
                 app:layout_constraintHorizontal_bias="0.216"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="@+id/imageView4"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintVertical_bias="0.5"
+                android:focusable="false" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
