@@ -25,5 +25,6 @@
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="@+id/prof_list2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+        app:layout_constraintVertical_bias="0.742"
+        android:id="@+id/prof_search"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

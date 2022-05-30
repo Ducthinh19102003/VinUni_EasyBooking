@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class ProfessorFragment extends Fragment implements ProfessorAdapter.OnIt
     ProfessorAdapter myAdapter;
     ArrayList<ProfessorInfo> professorItemArrayList;
     FirebaseFirestore fstore;
+    SearchView profSearch;
 
     private FragmentViewProfessorsBinding binding;
 
@@ -51,12 +53,24 @@ public class ProfessorFragment extends Fragment implements ProfessorAdapter.OnIt
         professorRecView = binding.profList2;
         professorRecView.setHasFixedSize(true);
         professorRecView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        profSearch = binding.profSearch;
         fstore = FirebaseFirestore.getInstance();
         professorItemArrayList = new ArrayList<ProfessorInfo>();
         myAdapter = new ProfessorAdapter(getActivity(), professorItemArrayList,this);
         professorRecView.setAdapter(myAdapter);
+        profSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                myAdapter.getFilter().filter(s);
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String s) {
+                myAdapter.getFilter().filter(s);
+                return false;
+            }
+        });
         EventChangeListener();
         return root;
     }
@@ -89,7 +103,6 @@ public class ProfessorFragment extends Fragment implements ProfessorAdapter.OnIt
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(getContext(), SelectDate.class);
         ProfessorInfo currentProfessor = professorItemArrayList.get(position);
         Dialog dialog = new Dialog(getActivity());
         dialog.setCancelable(false);
