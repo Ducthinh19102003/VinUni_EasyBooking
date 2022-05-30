@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.myapplication.ProfessorInfo;
@@ -29,6 +30,7 @@ public class OfficeHourBooking extends AppCompatActivity implements ProfessorAda
     ProfessorAdapter myAdapter;
     ArrayList<ProfessorInfo> professorItemArrayList;
     FirebaseFirestore fstore;
+    SearchView profSearch;
     ProgressDialog progressDialog;
 
     @Override
@@ -51,7 +53,20 @@ public class OfficeHourBooking extends AppCompatActivity implements ProfessorAda
         fstore = FirebaseFirestore.getInstance();
         professorItemArrayList = new ArrayList<ProfessorInfo>();
         myAdapter = new ProfessorAdapter(OfficeHourBooking.this, professorItemArrayList,this);
+        profSearch = findViewById(R.id.prof_search);
+        profSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                myAdapter.getFilter().filter(s);
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String s) {
+                myAdapter.getFilter().filter(s);
+                return false;
+            }
+        });
         professorRecView.setAdapter(myAdapter);
 
         EventChangeListener();

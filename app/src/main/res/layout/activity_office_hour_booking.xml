@@ -5,13 +5,22 @@
     android:layout_height="match_parent"
     tools:context=".BookingProcess.OfficeHourBooking">
 
+    <SearchView
+        android:id="@+id/prof_search"
+        android:layout_width="370dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/prof_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginBottom="10dp" />
 
 </RelativeLayout>
