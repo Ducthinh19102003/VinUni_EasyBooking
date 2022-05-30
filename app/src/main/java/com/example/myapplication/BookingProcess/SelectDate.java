@@ -87,7 +87,7 @@ public class SelectDate extends AppCompatActivity implements
     ArrayList<Timestamp> hours;
     FirebaseFirestore fstore;
     EventInfo new_event;
-    public static ArrayList<EventInfo> evlst;
+    public static ArrayList<EventInfo> evlst = new ArrayList<>();
 
     void setTimeSlotRecyclerView() {
         timeSlotRecyclerView = dialog.findViewById(R.id.recTimeID);
