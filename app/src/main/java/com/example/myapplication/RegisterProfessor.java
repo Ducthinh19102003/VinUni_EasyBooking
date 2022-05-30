@@ -66,6 +66,11 @@ public class RegisterProfessor extends AppCompatActivity {
                     professorEmail.requestFocus();
                     return;
                 }
+                if (!email.contains("@vinuni.edu.vn")) {
+                    professorEmail.setError("Must be a vinuni email");
+                    professorEmail.requestFocus();
+                    return;
+                }
                 if (TextUtils.isEmpty(password)) {
                     professorPassword.setError("Password is required");
                     professorPassword.requestFocus();

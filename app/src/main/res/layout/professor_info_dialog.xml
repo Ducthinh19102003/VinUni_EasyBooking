@@ -28,23 +28,41 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recTimeID"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:orientation="horizontal"
+        android:layout_height="350dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingRight="5dp"
-        android:layout_marginTop="30dp">
+        android:paddingRight="5dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_professor"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/image1"
-            app:layout_constraintVertical_bias="0.01"
             app:layout_constraintBottom_toBottomOf="@+id/prof_email"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
+
+        <TextView
+            android:id="@+id/name_professor"
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="8dp"
+
+            android:layout_toEndOf="@+id/img_professor"
+            android:text="Name"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.127"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.392" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -53,27 +71,11 @@
 
             app:layout_constraintBottom_toBottomOf="@+id/name_professor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_bias="0.026"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/name_professor"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/ic_person_black_24dp" />
-
-        <TextView
-            android:id="@+id/name_professor"
-            android:layout_width="250dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@+id/img_professor"
-
-            android:text="Name"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/prof_subjects"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/img_professor" />
 
         <TextView
             android:id="@+id/prof_email"
@@ -81,12 +83,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/name_professor"
             android:layout_alignParentTop="true"
+            android:layout_marginBottom="20dp"
             android:layout_toEndOf="@+id/img_professor"
             android:text="Email"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/name_professor"
-            app:layout_constraintStart_toStartOf="@+id/name_professor" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/name_professor"
+            app:layout_constraintTop_toBottomOf="@+id/name_professor"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -97,6 +103,7 @@
             app:layout_constraintEnd_toEndOf="@+id/imageView2"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/prof_email"
+            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/ic_email_black_24dp" />
 
         <TextView
@@ -109,7 +116,7 @@
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/prof_interest"
             app:layout_constraintEnd_toEndOf="@+id/name_professor"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/name_professor"
             app:layout_constraintTop_toBottomOf="@id/name_professor" />
 
@@ -122,6 +129,7 @@
 
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/prof_subjects"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_book" />
 
         <TextView
@@ -157,12 +165,15 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
         android:layout_gravity="right">
-        <Button
-            android:id="@+id/done_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:text="Done" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/done_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
+        android:text="Done" />
 
 </LinearLayout>

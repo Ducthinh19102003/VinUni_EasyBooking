@@ -48,9 +48,8 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull TimeSlotAdapter.MyViewHolder holder, int position) {
-        Timestamp timeslot = hours.get(position);
-        Date dateSlot = timeslot.toDate();
-        selectedTimestamp = hours.get(position);
+        Timestamp timestamp = hours.get(position);
+        Date dateSlot = timestamp.toDate();
         SimpleDateFormat df = new SimpleDateFormat("HH:mm");
         String timeselect = df.format(dateSlot);
         holder.time.setText(timeselect);
@@ -72,6 +71,7 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
 
                 time = timeselect + " - " + end;
                 selectedPosition = holder.getBindingAdapterPosition();
+                selectedTimestamp = hours.get(selectedPosition);
                 notifyDataSetChanged();
             }
         });

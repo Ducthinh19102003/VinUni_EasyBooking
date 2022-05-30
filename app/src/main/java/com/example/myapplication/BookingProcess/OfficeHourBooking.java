@@ -16,6 +16,7 @@ import com.example.myapplication.ProfessorInfo;
 import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -82,10 +83,17 @@ public class OfficeHourBooking extends AppCompatActivity implements ProfessorAda
     @Override
     public void onItemClick(int position) {
         ProfessorInfo currentProfessor = professorItemArrayList.get(position);
-        if (currentProfessor.getAvailableTimeSlots().size() == 0) {
+        ArrayList<Timestamp> evl = currentProfessor.getAvailableTimeSlots();
+        for (Timestamp time : evl) {
+            if (time.compareTo(Timestamp.now()) <= 0) {
+                evl.remove(time);
+            }
+        }
+        if (evl.size() == 0) {
             Toast.makeText(OfficeHourBooking.this, "Professor " + currentProfessor.getName() + " is currently unavailable!", Toast.LENGTH_SHORT).show();
             return;
         }
+        currentProfessor.setAvailableTimeSlots(evl);
         Intent intent = new Intent(OfficeHourBooking.this, SelectDate.class);
         intent.putExtra("professor", currentProfessor);
         startActivity(intent);

@@ -65,6 +65,11 @@ public class RegisterStudent extends AppCompatActivity {
                     studentEmail.requestFocus();
                     return;
                 }
+                if (!email.contains("@vinuni.edu.vn")) {
+                    studentEmail.setError("Must be a vinuni email");
+                    studentEmail.requestFocus();
+                    return;
+                }
                 if (TextUtils.isEmpty(password)) {
                     studentPassword.setError("Password is required");
                     studentPassword.requestFocus();

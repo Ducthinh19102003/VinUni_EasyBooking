@@ -87,7 +87,7 @@ public class SelectDate extends AppCompatActivity implements
     ArrayList<Timestamp> hours;
     FirebaseFirestore fstore;
     EventInfo new_event;
-    public static ArrayList<EventInfo> evlst;
+    public static ArrayList<EventInfo> evlst = new ArrayList<>();
 
     void setTimeSlotRecyclerView() {
         timeSlotRecyclerView = dialog.findViewById(R.id.recTimeID);
@@ -109,7 +109,7 @@ public class SelectDate extends AppCompatActivity implements
 
         setCalendarArrays();
         categorizedTimeslots = timestampArrayListToHashMap();
-
+        Log.d("debuf=g", date);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         dateSelected = findViewById(R.id.DateSetID);
@@ -159,6 +159,7 @@ public class SelectDate extends AppCompatActivity implements
 
             @Override
             public void onClick(View view) {
+                Log.d("Date", "" + date);
                 if (date.equals("")) {
                     Toast.makeText(SelectDate.this, "Select Date first!", Toast.LENGTH_SHORT).show();
                 }
@@ -211,7 +212,7 @@ public class SelectDate extends AppCompatActivity implements
                 }
                 progressBar.setVisibility(View.VISIBLE);
                 if (isOnline.isChecked()) {
-                    location = "Microsoft Teams";
+                    currentProfessor.setLocation("Microsoft Teams");
                 }
                 Log.d("Professor", currentProfessor + "");
                 new_event = new EventInfo(currentProfessor.getName(), participantList, selectedTimestamp,new Timestamp(selectedTimestamp.getSeconds()+1800,0),note, title, currentProfessor.getLocation());

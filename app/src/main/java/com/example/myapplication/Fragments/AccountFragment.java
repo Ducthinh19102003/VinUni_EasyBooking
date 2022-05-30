@@ -70,13 +70,6 @@ public class AccountFragment extends Fragment {
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
-//        StorageReference profileRef = storageReference.child("users/"+fUser.getUid()+"/profile.jpg");
-//        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                Picasso.get().load(uri).into(profileImage);
-//            }
-//        });
         notiBall.setVisibility(View.GONE);
         if (Login.portal == 1) {
             fullName.setText(Login.currentStudent.getName());
@@ -223,7 +216,7 @@ public class AccountFragment extends Fragment {
                 final EditText resetPassword = new EditText(v.getContext());
 
                 final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
-                passwordResetDialog.setTitle("Reset Password ?");
+                passwordResetDialog.setTitle("Reset Password?");
                 passwordResetDialog.setMessage("Enter New Password > 8 Characters long.");
                 passwordResetDialog.setView(resetPassword);
 
@@ -264,17 +257,6 @@ public class AccountFragment extends Fragment {
             }
         });
 
-//        changeProfileImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // open gallery
-//                Intent i = new Intent(v.getContext(),EditProfile.class);
-//                i.putExtra("fullName",fullName.getText().toString());
-//                i.putExtra("email",email.getText().toString());
-//                i.putExtra("phone",phone.getText().toString());
-//                startActivity(i);
-//            }
-//        });
         return root;
     }
 
