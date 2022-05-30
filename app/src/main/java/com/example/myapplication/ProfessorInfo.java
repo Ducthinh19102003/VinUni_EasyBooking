@@ -8,7 +8,7 @@ import com.google.firebase.firestore.DocumentReference;
 
 import java.util.ArrayList;
 
-public class ProfessorInfo {
+public class ProfessorInfo implements Parcelable {
     private String email;
     private String password;
     private String name;
@@ -93,5 +93,56 @@ public class ProfessorInfo {
     public void setUID(String UID) {
         this.UID = UID;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.email);
+        dest.writeString(this.password);
+        dest.writeString(this.name);
+        dest.writeString(this.subject);
+        dest.writeStringList(this.Events);
+        dest.writeTypedList(this.availableTimeSlots);
+        dest.writeString(this.UID);
+        dest.writeString(this.location);
+    }
+
+    public void readFromParcel(Parcel source) {
+        this.email = source.readString();
+        this.password = source.readString();
+        this.name = source.readString();
+        this.subject = source.readString();
+        this.Events = source.createStringArrayList();
+        this.availableTimeSlots = source.createTypedArrayList(Timestamp.CREATOR);
+        this.UID = source.readString();
+        this.location = source.readString();
+    }
+
+    protected ProfessorInfo(Parcel in) {
+        this.email = in.readString();
+        this.password = in.readString();
+        this.name = in.readString();
+        this.subject = in.readString();
+        this.Events = in.createStringArrayList();
+        this.availableTimeSlots = in.createTypedArrayList(Timestamp.CREATOR);
+        this.UID = in.readString();
+        this.location = in.readString();
+    }
+
+    public static final Parcelable.Creator<ProfessorInfo> CREATOR = new Parcelable.Creator<ProfessorInfo>() {
+        @Override
+        public ProfessorInfo createFromParcel(Parcel source) {
+            return new ProfessorInfo(source);
+        }
+
+        @Override
+        public ProfessorInfo[] newArray(int size) {
+            return new ProfessorInfo[size];
+        }
+    };
 }
 
