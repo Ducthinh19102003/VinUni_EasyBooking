@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.Home.HomeFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appointmentsID"
         android:layout_width="match_parent"
@@ -30,6 +31,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.098">
-
     </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>

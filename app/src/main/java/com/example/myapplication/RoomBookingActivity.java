@@ -1,22 +1,15 @@
-package com.example.myapplication.RoomBookingProcess;
+package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.BookingProcess.SelectDate;
-import com.example.myapplication.BookingProcess.TimeSlotAdapter;
-import com.example.myapplication.R;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Adapter;
@@ -29,18 +22,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 
 import com.google.firebase.Timestamp;
-
-import android.os.Bundle;
-
-import com.example.myapplication.R;
 
 public class RoomBookingActivity extends AppCompatActivity implements
         DatePickerDialog.OnDateSetListener  {
@@ -62,7 +48,7 @@ public class RoomBookingActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room_booking);
+        setContentView(R.layout.room_booking);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

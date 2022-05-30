@@ -49,7 +49,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventSlotVie
         String endTime = df.format(event.getEndTime().toDate());
 
         holder.time.setText(startTime + " - " + endTime);
-
         holder.location.setText(event.getLocation());
     }
 

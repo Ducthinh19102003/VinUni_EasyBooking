@@ -89,7 +89,9 @@ public class OfficeHourBooking extends AppCompatActivity implements ProfessorAda
         }
         SelectDate.location = currentProfessor.getLocation();
         SelectDate.host = currentProfessor.getName();
+        SelectDate.UID_professor = currentProfessor.getUID();
         Intent intent = new Intent(OfficeHourBooking.this, SelectDate.class);
+        intent.putExtra("professor", currentProfessor);
         startActivity(intent);
     }
 }

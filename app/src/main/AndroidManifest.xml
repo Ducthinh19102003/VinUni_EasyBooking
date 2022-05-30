@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".RoomBookingProcess.RoomBookingActivity"
+            android:name=".RoomBookingActivity"
             android:parentActivityName=".HomePage"
             android:exported="true" />
         <activity

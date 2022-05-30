@@ -71,9 +71,9 @@ public class TimeSlotAdapter extends RecyclerView.Adapter<TimeSlotAdapter.MyView
                 cal.setTime(dateSlot);
                 cal.add(Calendar.MINUTE, 30);
                 endTime = new Timestamp(cal.getTime());
-                String endTime = df.format(SelectDate.endTime.toDate());
+                String end = df.format(SelectDate.endTime.toDate());
 
-                time = timeselect + " - " + endTime;
+                time = timeselect + " - " + end;
                 selectedPosition = holder.getBindingAdapterPosition();
                 notifyDataSetChanged();
             }
