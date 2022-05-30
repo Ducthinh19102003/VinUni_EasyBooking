@@ -343,11 +343,11 @@ public class SelectDate extends AppCompatActivity implements
             if (newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getStartTime()) > 0
                     && newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getEndTime()) < 0)
                 //Event start as another is happening
-                conflictEvents.add(eventInfoArrayList.get(i).getMeetingName());
+                conflictEvents.add(eventInfoArrayList.get(i).getMeetingName().toUpperCase());
             if (newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getStartTime()) < 0
                     && newEvent.getEndTime().compareTo(eventInfoArrayList.get(i).getStartTime()) > 0)
                 //Another event would start as this event is happening
-                conflictEvents.add(eventInfoArrayList.get(i).getMeetingName());
+                conflictEvents.add(eventInfoArrayList.get(i).getMeetingName().toUpperCase());
         }
         return conflictEvents;
     }

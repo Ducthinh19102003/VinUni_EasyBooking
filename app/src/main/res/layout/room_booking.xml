@@ -214,7 +214,7 @@
 
                             </com.google.android.material.card.MaterialCardView>
                             <TextView
-                                android:id="@+id/DateID"
+                                android:id="@+id/datetxt"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:textSize="17sp"
@@ -361,7 +361,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="55dp"
+                    android:layout_marginTop="30dp"
                     android:background="@drawable/custom_round_main_btn"
                     android:paddingLeft="50dp"
                     android:paddingRight="50dp"
@@ -372,11 +372,11 @@
                     android:textStyle="bold" />
 
                 <ProgressBar
-                    android:id="@+id/progressID"
+                    android:id="@+id/progress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:visibility="gone"/>
 
             </LinearLayout>
