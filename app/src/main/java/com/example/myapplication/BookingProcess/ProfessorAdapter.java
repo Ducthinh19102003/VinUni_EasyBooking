@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,15 +17,18 @@ import com.example.myapplication.ProfessorInfo;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class ProfessorAdapter extends RecyclerView.Adapter<ProfessorAdapter.MyViewHolder> {
+public class ProfessorAdapter extends RecyclerView.Adapter<ProfessorAdapter.MyViewHolder> implements Filterable{
     Context context;
     ArrayList<ProfessorInfo> professorItemArrayList;
+    ArrayList<ProfessorInfo> professorItemArrayListOld;
     OnItemListener listener;
 
     public ProfessorAdapter(Context context, ArrayList<ProfessorInfo> professorItemArrayList, OnItemListener listener) {
         this.context = context;
         this.professorItemArrayList = professorItemArrayList;
+        this.professorItemArrayListOld = professorItemArrayList;
         this.listener = listener;
     }
     @NonNull
@@ -62,7 +67,6 @@ public class ProfessorAdapter extends RecyclerView.Adapter<ProfessorAdapter.MyVi
             subjects = itemView.findViewById(R.id.prof_subjects);
             profPicture = itemView.findViewById(R.id.img_professor);
             this.listener = listener;
-
             itemView.setOnClickListener(this);
         }
 
@@ -70,9 +74,40 @@ public class ProfessorAdapter extends RecyclerView.Adapter<ProfessorAdapter.MyVi
         public void onClick(View view) {
             listener.onItemClick(getBindingAdapterPosition());
         }
+
+
     }
 
     public interface OnItemListener {
         void onItemClick(int position);
+    }
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String strSearch = charSequence.toString();
+                if (strSearch.isEmpty()){
+                    professorItemArrayList = professorItemArrayListOld;
+                } else {
+                    ArrayList<ProfessorInfo> profList = new ArrayList<>();
+                    for (ProfessorInfo prof: professorItemArrayListOld){
+                        if (prof.getName().toLowerCase().contains(strSearch.toLowerCase())){
+                            profList.add(prof);
+                        }
+                    }
+                    professorItemArrayList = profList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = professorItemArrayList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                professorItemArrayList = (ArrayList<ProfessorInfo>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }
