@@ -11,7 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -40,6 +42,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private RecyclerView hourSlotsRecyclerView;
+    public static ArrayList<String> daysWithAvailableTimeSlots;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference docRef = db.collection(Login.userType).document(Login.userID);
 
@@ -52,7 +55,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         CalendarFragment.eventInfoHashMap = new HashMap<String, ArrayList<EventInfo>>();
         CalendarUtils.selectedDate = LocalDate.now();
         initWidgets();
-        setWeekView();
+
 
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -63,6 +66,9 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         HourSlotUtils.profAvailableSlots = (ArrayList<Timestamp>) document.get("availableTimeSlots");
                         HourSlotUtils.clearMySchedule();
+                        daysWithAvailableTimeSlots = new ArrayList<>();
+                        for (Timestamp timeslot : profAvailableSlots) daysWithAvailableTimeSlots.add((new SimpleDateFormat("dd/MM/yyyy")).format(timeslot.toDate()));
+                        setWeekView();
                         setHourSlotsView();
                     } else {
                         Log.d(TAG, "No such document");
@@ -131,6 +137,9 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         if (HourSlotUtils.profAvailableSlots.contains(hour))
             HourSlotUtils.profAvailableSlots.remove(hour);
         else HourSlotUtils.profAvailableSlots.add(hour);
+        daysWithAvailableTimeSlots = new ArrayList<>();
+        for (Timestamp timeslot : profAvailableSlots) daysWithAvailableTimeSlots.add((new SimpleDateFormat("dd/MM/yyyy")).format(timeslot.toDate()));
+        setWeekView();
         setHourSlotsView();
     }
 
