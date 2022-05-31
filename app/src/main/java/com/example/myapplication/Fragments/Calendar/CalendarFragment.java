@@ -29,6 +29,7 @@ import com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarAdapter;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotAdapter;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotUtils;
+import com.example.myapplication.ProfessorSetAvailableTimeSlots.WeekViewActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentCalendarBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -68,6 +69,7 @@ public class CalendarFragment extends Fragment implements EventSlotAdapter.OnIte
 
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        WeekViewActivity.daysWithAvailableTimeSlots = new ArrayList<>();
         CalendarUtils.selectedDate = LocalDate.now();
         initWidgets();
         retrieveData();

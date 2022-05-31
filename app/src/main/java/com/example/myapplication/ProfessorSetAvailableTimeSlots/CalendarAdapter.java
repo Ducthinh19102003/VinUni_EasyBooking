@@ -1,5 +1,7 @@
 package com.example.myapplication.ProfessorSetAvailableTimeSlots;
 
+import static com.example.myapplication.ProfessorSetAvailableTimeSlots.WeekViewActivity.daysWithAvailableTimeSlots;
+
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,7 +51,8 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
             holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
             String selectedDateString = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             if (CalendarFragment.eventInfoHashMap.containsKey(selectedDateString)) holder.dayOfMonth.setTextColor(Color.RED);
-            if(date.equals(CalendarUtils.selectedDate))
+            if (daysWithAvailableTimeSlots.contains(selectedDateString)) holder.dayOfMonth.setTextColor(Color.RED);
+            if (date.equals(CalendarUtils.selectedDate))
                 holder.parentView.setBackgroundColor(Color.LTGRAY);
         }
     }

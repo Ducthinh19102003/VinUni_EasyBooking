@@ -117,7 +117,7 @@ public class ProfessorFragment extends Fragment implements ProfessorAdapter.OnIt
         currentProfSubject.setText("Subject: " + currentProfessor.getSubject());
         currentProfEmail.setText("Email: " + currentProfessor.getEmail());
         currentProfInterest.setText("Research interest: "+ currentProfessor.getResearchInterest());
-
+        if (currentProfessor.getResearchInterest() == null) currentProfInterest.setText("Research interest: ");
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

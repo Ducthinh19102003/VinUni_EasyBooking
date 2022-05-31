@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/layout_user_information"
@@ -28,27 +28,28 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recTimeID"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="5dp"
-        android:layout_marginTop="30dp">
+        android:paddingBottom="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/meeting_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/image1"
-            app:layout_constraintVertical_bias="0.01"
-            app:layout_constraintBottom_toBottomOf="@+id/recTimeID"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.01" />
 
         <TextView
             android:id="@+id/meeting_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/meeting_img"
@@ -57,59 +58,128 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/meeting_time"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.714"
+            app:layout_constraintHorizontal_bias="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meeting_img" />
+            app:layout_constraintTop_toBottomOf="@+id/meeting_img"
+            app:layout_constraintWidth_percent="0.9" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            android:src="@drawable/ic_title"
+            app:layout_constraintBottom_toBottomOf="@+id/meeting_name"
+            app:layout_constraintEnd_toStartOf="@+id/meeting_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/meeting_name" />
 
         <TextView
             android:id="@+id/meeting_time"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/meeting_name"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="188dp"
             android:layout_toEndOf="@+id/meeting_img"
             android:text="9:00 - 9:15"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/meeting_loc"
+            app:layout_constraintWidth_percent="0.9" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+
+            android:src="@drawable/ic_clock"
+            app:layout_constraintBottom_toBottomOf="@+id/meeting_time"
+            app:layout_constraintEnd_toStartOf="@+id/meeting_time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/meeting_time" />
 
         <TextView
             android:id="@+id/meeting_loc"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/meeting_time"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_toEndOf="@+id/meeting_img"
             android:text="Room A105"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/meeting_time"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.714"
+            app:layout_constraintHorizontal_bias="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/meeting_name" />
+            app:layout_constraintTop_toBottomOf="@id/meeting_name"
+            app:layout_constraintWidth_percent="0.9" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+
+            android:src="@drawable/ic_location"
+            app:layout_constraintBottom_toBottomOf="@+id/meeting_loc"
+            app:layout_constraintEnd_toStartOf="@+id/meeting_loc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/meeting_loc" />
 
         <TextView
             android:id="@+id/meeting_note"
-            android:layout_width="364dp"
-            android:layout_height="137dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/meeting_time"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="17dp"
             android:layout_toEndOf="@+id/meeting_img"
             android:text="Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut quam nec nisl vehicula ornare nec vitae est. Etiam porttitor suscipit lacus, eu gravida leo consequat ornare. Aliquam finibus lacus mi. "
             android:textSize="15sp"
-            android:layout_marginStart="17dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingTop="10dp"
             app:layout_constraintEnd_toEndOf="@+id/meeting_time"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/meeting_time"
-            app:layout_constraintTop_toBottomOf="@+id/meeting_time" />
+            app:layout_constraintTop_toBottomOf="@+id/meeting_time"
+            app:layout_constraintVertical_bias="0.045"
+            app:layout_constraintWidth_percent="0.9" />
 
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_note"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/meeting_note"
+            app:layout_constraintEnd_toStartOf="@+id/meeting_note"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/meeting_note" />
+
+        <TextView
+            android:id="@+id/meeting_members"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/meeting_time"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/meeting_img"
+            android:text="Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut quam nec nisl vehicula ornare nec vitae est. Etiam porttitor suscipit lacus, eu gravida leo consequat ornare. Aliquam finibus lacus mi. "
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/meeting_time"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/meeting_time"
+            app:layout_constraintTop_toBottomOf="@+id/meeting_note"
+            app:layout_constraintVertical_bias="0.045"
+            app:layout_constraintWidth_percent="0.9" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_people"
+            app:layout_constraintBottom_toBottomOf="@+id/meeting_members"
+            app:layout_constraintEnd_toStartOf="@+id/meeting_members"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/meeting_members" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
