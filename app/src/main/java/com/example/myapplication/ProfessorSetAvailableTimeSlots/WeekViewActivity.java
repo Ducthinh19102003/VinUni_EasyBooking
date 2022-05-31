@@ -64,6 +64,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         setHourSlotsView();
     }
 
+
     private void initWidgets()
     {
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
