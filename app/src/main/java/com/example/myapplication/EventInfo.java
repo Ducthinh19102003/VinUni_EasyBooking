@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -17,6 +19,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,10 +71,11 @@ public class EventInfo implements Comparable<EventInfo> {
     public void setLocation(String location) {
         this.location = location;
     }
+
     @Override
     public int compareTo(EventInfo eventInfo) {
         if (this.getStartTime().compareTo(eventInfo.startTime) < 0) return -1;
-        else if (this.getStartTime().compareTo(eventInfo.startTime) > 0)  return 1;
+        else if (this.getStartTime().compareTo(eventInfo.startTime) > 0) return 1;
         else return 0;
     }
 
@@ -100,7 +104,6 @@ public class EventInfo implements Comparable<EventInfo> {
     }
 
 
-
     public String getHost() {
         return host;
     }
@@ -109,7 +112,7 @@ public class EventInfo implements Comparable<EventInfo> {
         this.host = host;
     }
 
-    public static void eventToDatabase(EventInfo event){
+    public static void eventToDatabase(EventInfo event) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Events").add(event).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
@@ -140,7 +143,7 @@ public class EventInfo implements Comparable<EventInfo> {
                 });
 
                 //Adding event id to member's array
-                for (String i: event.getMembers()) {
+                for (String i : event.getMembers()) {
                     DocumentReference memberRef = db.collection("Professors").document(i.trim());
                     memberRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
@@ -167,7 +170,8 @@ public class EventInfo implements Comparable<EventInfo> {
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error adding document", e);
                     }
-                });;
+                });
+        ;
     }
 
     public String getNote() {
@@ -178,10 +182,10 @@ public class EventInfo implements Comparable<EventInfo> {
         this.note = note;
     }
 
-    public static boolean checkConflict(EventInfo newEvent, ArrayList<EventInfo> eventInfoArrayList){
+    public static boolean checkConflict(EventInfo newEvent, ArrayList<EventInfo> eventInfoArrayList) {
         //loop thru everything because it's the only way. Like bruh.
         //May use binary search later. But there are 2 cases so I'm not sure.
-        for (int i = 0; i <eventInfoArrayList.size(); i++){
+        for (int i = 0; i < eventInfoArrayList.size(); i++) {
             //Conflict cases
             if (newEvent.startTime.compareTo(eventInfoArrayList.get(i).startTime) > 0
                     && newEvent.startTime.compareTo(eventInfoArrayList.get(i).endTime) < 0)
@@ -195,7 +199,7 @@ public class EventInfo implements Comparable<EventInfo> {
         return false;
     }
 
-    public static void memberJoinEvent(String memberID, String eventID){
+    public static void memberJoinEvent(String memberID, String eventID) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         //retrieving the needed event
         DocumentReference eventRef = db.collection("Events").document(eventID);
@@ -239,7 +243,8 @@ public class EventInfo implements Comparable<EventInfo> {
                                                     ArrayList<EventInfo> memberEventInfoArrayList = new ArrayList<>();
                                                     for (Object object : list) {
                                                         EventInfo fm = ((DocumentSnapshot) object).toObject(EventInfo.class);
-                                                        if (fm != null) memberEventInfoArrayList.add(fm);
+                                                        if (fm != null)
+                                                            memberEventInfoArrayList.add(fm);
                                                         boolean conflict = checkConflict(event, memberEventInfoArrayList);
                                                         if (conflict) Log.d("Debug", "conflict");
                                                         else {
@@ -267,6 +272,7 @@ public class EventInfo implements Comparable<EventInfo> {
             }
         });
     }
+
     public void addMember(String memberID) {
         //This is for adding new member to the eventInfo object BEFORE it gets online.
         //For why, see method RoomInfo.roomBooking.
@@ -309,7 +315,7 @@ public class EventInfo implements Comparable<EventInfo> {
                                             for (Object object : list) {
                                                 EventInfo fm = ((DocumentSnapshot) object).toObject(EventInfo.class);
                                                 if (fm != null) memberEventInfoArrayList.add(fm);
-                                                boolean conflict = checkConflict(event , memberEventInfoArrayList);
+                                                boolean conflict = checkConflict(event, memberEventInfoArrayList);
                                                 if (conflict) Log.d("Debug", "conflict");
                                                 else {
                                                     event.members.add(memberID);
@@ -332,5 +338,35 @@ public class EventInfo implements Comparable<EventInfo> {
                 }
             }
         });
+    }
+
+    public static boolean checkConflict(Timestamp newslot, ArrayList<EventInfo> eventInfoArrayList, Context context) {
+        //loop thru everything because it's the only way. Like bruh.
+        //May use binary search later. But there are 2 cases so I'm not sure.
+        for (int i = 0; i < eventInfoArrayList.size(); i++) {
+            //Conflict cases
+            if (newslot.compareTo(eventInfoArrayList.get(i).startTime) > 0
+                    && newslot.compareTo(eventInfoArrayList.get(i).endTime) < 0)
+            //Event start as another is happening
+            {
+                SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+                String startString = df.format(eventInfoArrayList.get(i).startTime.toDate());
+                String endString = df.format(eventInfoArrayList.get(i).endTime.toDate());
+                Toast.makeText(context, "Conflict: An event happening during " + startString + " - " + endString , Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            if (newslot.compareTo(eventInfoArrayList.get(i).startTime) < 0
+                    && newslot.compareTo(eventInfoArrayList.get(i).startTime) > 0)
+            //Another event would start as this event is happening.
+            {
+                SimpleDateFormat df = new SimpleDateFormat("HH:mm");
+                String startString = df.format(eventInfoArrayList.get(i).startTime.toDate());
+                String endString = df.format(eventInfoArrayList.get(i).endTime.toDate());
+                Toast.makeText(context, "Conflict: An event happening during " + startString + " - " + endString , Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        }
+        return false;
     }
 }
