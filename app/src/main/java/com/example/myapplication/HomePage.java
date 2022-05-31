@@ -39,6 +39,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.databinding.ActivityHomePageBinding;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -46,6 +47,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
     private static final int MAGICAL_NUMBER = 8;
@@ -61,6 +65,7 @@ public class HomePage extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomePageBinding binding;
+    FirebaseFirestore fstore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +81,8 @@ public class HomePage extends AppCompatActivity {
         fab = binding.appBarHomePage.fab;
         officeHourText = binding.appBarHomePage.officeHourText;
         discussionRoomText = binding.appBarHomePage.discussionRoomText;
+
+        fstore = FirebaseFirestore.getInstance();
 
         if (Login.portal == 2) {
             officeHourText.setText("Set Available Timeslots");
@@ -115,6 +122,7 @@ public class HomePage extends AppCompatActivity {
             name.setText(Login.currentProfessor.getName());
             email.setText(Login.currentProfessor.getEmail());
         }
+
     }
 
     @Override

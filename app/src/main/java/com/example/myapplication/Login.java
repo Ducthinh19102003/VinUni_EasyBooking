@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.BookingProcess.OfficeHourBooking;
 import com.example.myapplication.Fragments.Home.CardEvents;
 import com.example.myapplication.Fragments.Home.CardEventsAdapter;
 import com.example.myapplication.Fragments.Home.HomeFragment;
@@ -116,23 +117,41 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference docRef = fstore.collection(userType).document(userID);
+                            Log.d("Directory", userType + " " + userID);
                             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                     if (task.isSuccessful()) {
                                         DocumentSnapshot document = task.getResult();
-                                        if (document != null) {
-                                            Log.d("Login", "DocumentSnapshot data: " + task.getResult().getData());
+                                        Log.d("Record", document + " ");
+                                        if (document.getData() != null) {
                                             if (userType.equals("Students")) currentStudent = task.getResult().toObject(StudentInfo.class);
-                                            else if (userType.equals("Professors")) currentProfessor = task.getResult().toObject(ProfessorInfo.class);
-                                            Log.d("Login", "Student: " + currentStudent);
+                                            else if (userType.equals("Professors")) {
+                                                currentProfessor = task.getResult().toObject(ProfessorInfo.class);
+                                                ArrayList<Timestamp> timeslots = Login.currentProfessor.getAvailableTimeSlots();
+                                                DateFormat df = new SimpleDateFormat("HH:mm");
+
+                                                for (int i = 0; i < timeslots.size(); i++) {
+                                                    if (timeslots.get(i).compareTo(Timestamp.now()) <= 0) {
+                                                        Log.d("Removed timeslot", df.format(timeslots.get(i).toDate()));
+                                                        timeslots.remove(i);
+                                                    }
+                                                }
+
+                                                fstore.collection("Professors").document(Login.currentProfessor.getUID())
+                                                        .update("availableTimeSlots", timeslots);
+
+                                                Login.currentProfessor.setAvailableTimeSlots(timeslots);
+                                            }
                                             retrieveUsersEmail();
                                             Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(Login.this, HomePage.class));
                                         } else {
-                                            Log.d("Login", "No such document");
+                                            Toast.makeText(Login.this, "No records found!", Toast.LENGTH_SHORT).show();
                                         }
-                                    } else {
+                                        progressBar.setVisibility(View.GONE);
+                                    }
+                                    else {
                                         Log.d("Login", "get failed with ", task.getException());
                                     }
                                 }

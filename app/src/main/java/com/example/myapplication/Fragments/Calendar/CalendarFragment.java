@@ -29,7 +29,6 @@ import com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarAdapter;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotAdapter;
 import com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotUtils;
-import com.example.myapplication.ProfessorSetAvailableTimeSlots.WeekViewActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentCalendarBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,7 +53,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class CalendarFragment extends Fragment implements EventSlotAdapter.OnItemListener, CalendarAdapter.OnItemListener {
+public class CalendarFragment extends Fragment implements CalendarAdapter.OnItemListener {
 
     private FragmentCalendarBinding binding;
     private RecyclerView eventRecyclerView, calendarRecyclerView;
@@ -69,7 +68,6 @@ public class CalendarFragment extends Fragment implements EventSlotAdapter.OnIte
 
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        WeekViewActivity.daysWithAvailableTimeSlots = new ArrayList<>();
         CalendarUtils.selectedDate = LocalDate.now();
         initWidgets();
         retrieveData();
@@ -126,11 +124,6 @@ public class CalendarFragment extends Fragment implements EventSlotAdapter.OnIte
         eventRecyclerView.addItemDecoration(itemDecoration);
         eventInfoArrayList = new ArrayList<>();
         eventInfoHashMap = new HashMap<String, ArrayList<EventInfo>>();
-    }
-
-    @Override
-    public void onItemClick(int position, EventInfo event) {
-
     }
 
     private void setWeekView()
