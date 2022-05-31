@@ -109,7 +109,6 @@ public class SelectDate extends AppCompatActivity implements
 
         setCalendarArrays();
         categorizedTimeslots = timestampArrayListToHashMap();
-        Log.d("debuf=g", date);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         dateSelected = findViewById(R.id.DateSetID);
@@ -173,6 +172,8 @@ public class SelectDate extends AppCompatActivity implements
                 String title = meetingTitle.getText().toString().trim();
                 String participants = meetingParticipants.getText().toString().trim();
                 ArrayList<String> participantList = new ArrayList<>();
+                students = new ArrayList<>();
+                professors = new ArrayList<>();
                 participantList.add(Login.currentStudent.getEmail());
                 String note = meetingNote.getText().toString().trim();
 
