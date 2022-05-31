@@ -52,32 +52,16 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         Log.d("WeekViewActivity", "Started");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_view);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         CalendarFragment.eventInfoHashMap = new HashMap<String, ArrayList<EventInfo>>();
         CalendarUtils.selectedDate = LocalDate.now();
         initWidgets();
-
-
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        HourSlotUtils.profAvailableSlots = (ArrayList<Timestamp>) document.get("availableTimeSlots");
-                        HourSlotUtils.clearMySchedule();
-                        daysWithAvailableTimeSlots = new ArrayList<>();
-                        for (Timestamp timeslot : profAvailableSlots) daysWithAvailableTimeSlots.add((new SimpleDateFormat("dd/MM/yyyy")).format(timeslot.toDate()));
-                        setWeekView();
-                        setHourSlotsView();
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
+        HourSlotUtils.profAvailableSlots = Login.currentProfessor.getAvailableTimeSlots();
+        HourSlotUtils.clearMySchedule();
+        daysWithAvailableTimeSlots = new ArrayList<>();
+        for (Timestamp timeslot : profAvailableSlots) daysWithAvailableTimeSlots.add((new SimpleDateFormat("dd/MM/yyyy")).format(timeslot.toDate()));
+        setWeekView();
+        setHourSlotsView();
     }
 
     private void initWidgets()
@@ -146,6 +130,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     public void submitAvailableTimeSlots(View view) {
         Collections.sort(HourSlotUtils.profAvailableSlots);
         docRef.update("availableTimeSlots", profAvailableSlots);
+        Login.currentProfessor.setAvailableTimeSlots(profAvailableSlots);
         Intent k = new Intent(this, HomePage.class);
         startActivity(k);
     }
