@@ -106,6 +106,7 @@ public class Login extends AppCompatActivity {
                 if (!email.contains("@vinuni.edu.vn")) {
                     getEmail.setError("Invalid email");
                     getEmail.requestFocus();
+                    return;
                 }
 
                 progressBar.setVisibility(View.VISIBLE);

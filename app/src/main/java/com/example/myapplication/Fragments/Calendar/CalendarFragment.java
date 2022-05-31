@@ -70,7 +70,14 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
         View root = binding.getRoot();
         CalendarUtils.selectedDate = LocalDate.now();
         initWidgets();
-        retrieveData();
+        if (SelectDate.evlst.size() > 0) {
+            eventInfoHashMap = eventInfoArrayListToHashMap(SelectDate.evlst);
+            setWeekView();
+            setEventView();
+        }
+        else {
+            setWeekView();
+        }
     return root;
     }
 
@@ -160,39 +167,4 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.OnItem
         setWeekView();
         setEventView();
     }
-    public void retrieveData() {
-        FirebaseFirestore.getInstance().collection(Login.userType).document(Login.userID).collection("Events")
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        Log.d("Login", "Getting document");
-                        EventInfo event = document.toObject(EventInfo.class);
-                        if (event.getStartTime().compareTo(Timestamp.now()) < 0) {
-                            document.getReference().delete();
-                        }
-                        else {
-                            Log.d("Login", "event is " + event);
-                            eventInfoArrayList.add(event);
-                        }
-                    }
-                    Collections.sort(eventInfoArrayList);
-
-                    if(eventInfoArrayList.size() > 0) {
-                        SelectDate.evlst = eventInfoArrayList;
-                        Log.d("Debug", eventInfoArrayList + "");
-                        eventInfoHashMap = eventInfoArrayListToHashMap(eventInfoArrayList);
-                        setWeekView();
-                        setEventView();
-                    }
-                    else setWeekView();
-                } else {
-                    Log.d("Login", "Error getting documents: ", task.getException());
-                    setWeekView();
-                }
-            }
-        });
-    }
-
 }

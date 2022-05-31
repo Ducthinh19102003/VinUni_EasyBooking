@@ -89,7 +89,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventSlotVie
             TextView currentEvTime = dialog.findViewById(R.id.meeting_time);
             TextView currentEvLoc = dialog.findViewById(R.id.meeting_loc);
             TextView currentEvNote = dialog.findViewById(R.id.meeting_note);
-            TextView currentEvMembers = dialog.findViewById(R.id.meeting_members);
             Button done = dialog.findViewById(R.id.done_btn);
 
             currentEvName.setText(thisEvent.getMeetingName());
@@ -99,11 +98,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventSlotVie
             String endTime = df.format(thisEvent.getEndTime().toDate());
             currentEvTime.setText((new SimpleDateFormat("dd/MM/yyyy")).format(thisEvent.getStartTime().toDate()) + ": " + startTime + " - " + endTime);
             currentEvNote.setText(thisEvent.getNote());
-            String memberstring = "Host: " + thisEvent.getHost() + "\nMembers: ";
-            for (String member: thisEvent.getMembers()){
-                memberstring += "\n" + member;
-            }
-            currentEvMembers.setText(memberstring);
 
             done.setOnClickListener(new View.OnClickListener() {
                 @Override

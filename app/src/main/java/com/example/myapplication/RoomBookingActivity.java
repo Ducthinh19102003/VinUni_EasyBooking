@@ -6,6 +6,7 @@ import static com.example.myapplication.Login.professorList;
 import static com.example.myapplication.Login.studentList;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.AppCompatButton;
@@ -67,8 +68,8 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
 
     int timetype;
 
-    ArrayList<String> professors = new ArrayList<>();
-    ArrayList<String> students = new ArrayList<>();
+    ArrayList<String> professors;
+    ArrayList<String> students;
 
     RoomInfo currentRoom;
     ProgressBar progressBar;
@@ -205,6 +206,8 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
                 String title = meetingTitle.getText().toString().trim();
                 String participants = meetingParticipants.getText().toString().trim();
                 ArrayList<String> participantList = new ArrayList<>();
+                students = new ArrayList<>();
+                professors = new ArrayList<>();
                 if (Login.portal == 1) {
                     participantList.add(Login.currentStudent.getEmail());
                     host = currentStudent.getName();
@@ -261,20 +264,36 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
 
                 progressBar.setVisibility(View.GONE);
                 if (roomConflict.size() > 0) {
-                    Log.d("roomConflict", roomConflict + "1");
-                    String message = "Choosen timeslot conflict with followings events: ";
+                    Log.d("roomConflict", roomConflict + "");
+                    String message = "Choosen timeslot conflict with followings events: \n";
                     for (int i = 0; i < roomConflict.size(); i++) {
-
                         message += "Event " + (i + 1) + ": " + roomConflict.get(i) + "\n";
                     }
-                    Toast.makeText(RoomBookingActivity.this, message, Toast.LENGTH_SHORT).show();
-                    roomEvents = new ArrayList<>();
+                    Log.d("Message", message + "");
+                    openDialog("Room has conlicted events!", message);
                     return;
                 }
-                ArrayList<String> userConflict = checkRoomConflict(new_event, SelectDate.evlst);
+                ArrayList<String> userConflict = checkTimeConflict(new_event, SelectDate.evlst);
                 if (userConflict.size() > 0) {
-                    Toast.makeText(RoomBookingActivity.this, "Choosen timeslot conflict with " + userConflict, Toast.LENGTH_SHORT).show();
+                    String message = "Choosen timeslot conflict with: \n";
+                    for (int i = 0; i < userConflict.size(); i++) {
+                        message += userConflict.get(i) + "\n";
+                    }
+                    Log.d("Message", message + "");
+                    openDialog("You have conlicted events!", message);
                     return;
+                }
+                if (Login.portal == 2) {
+                    ArrayList<String> slotConflict = checkAvailableTimeSlotsConflict(new_event, currentProfessor);
+                    if (slotConflict.size() > 0) {
+                        String message = "Choosen timeslot conflict with followings timeslot for office hour: \n";
+                        for (int i = 0; i < slotConflict.size(); i++) {
+                            message += "Slot " + (i + 1) + ": " + slotConflict.get(i) + "\n";
+                        }
+                        Log.d("Message", message + "");
+                        openDialog("Office hours have conlicted events!", message);
+                        return;
+                    }
                 }
                 EventToFireBase();
                 startActivity(new Intent(RoomBookingActivity.this, HomePage.class));
@@ -373,27 +392,6 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
                 });
     }
 
-    public ArrayList<String> checkRoomConflict(EventInfo newEvent, ArrayList<EventInfo> eventInfoArrayList){
-        //loop thru everything because it's the only way. Like bruh.
-        //May use binary search later. But there are 2 cases so I'm not sure.
-
-        DateFormat df = new SimpleDateFormat("HH:mm");
-        ArrayList<String> conflictEvents = new ArrayList<>();
-        for (int i = 0; i < eventInfoArrayList.size(); i++){
-            //Conflict cases
-            if (newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getStartTime()) > 0
-                    && newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getEndTime()) < 0)
-                //Event start as another is happening
-                conflictEvents.add(df.format(eventInfoArrayList.get(i).getStartTime().toDate()) + " - " +  df.format(eventInfoArrayList.get(i).getEndTime().toDate()));
-            if (newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getStartTime()) < 0
-                    && newEvent.getEndTime().compareTo(eventInfoArrayList.get(i).getStartTime()) > 0)
-                //Another event would start as this event is happening
-                conflictEvents.add(df.format(eventInfoArrayList.get(i).getStartTime().toDate()) + " - " + df.format(eventInfoArrayList.get(i).getEndTime().toDate()));
-        }
-        Log.d("roomConflict", "method: " + conflictEvents);
-        return conflictEvents;
-    }
-
     public void EventToFireBase() {
         fstore.collection("Rooms").document(selectedRoom).collection("Events")
                 .add(new_event);
@@ -441,5 +439,65 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
                 conflictEvents.add(eventInfoArrayList.get(i).getMeetingName().toUpperCase());
         }
         return conflictEvents;
+    }
+    
+    public ArrayList<String> checkRoomConflict(EventInfo newEvent, ArrayList<EventInfo> eventInfoArrayList){
+        //loop thru everything because it's the only way. Like bruh.
+        //May use binary search later. But there are 2 cases so I'm not sure.
+
+        DateFormat df = new SimpleDateFormat("HH:mm");
+        ArrayList<String> conflictEvents = new ArrayList<>();
+        for (int i = 0; i < eventInfoArrayList.size(); i++){
+            //Conflict cases
+            if (newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getStartTime()) > 0
+                    && newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getEndTime()) < 0)
+                //Event start as another is happening
+                conflictEvents.add(df.format(eventInfoArrayList.get(i).getStartTime().toDate()) + " - " +  df.format(eventInfoArrayList.get(i).getEndTime().toDate()));
+            if (newEvent.getStartTime().compareTo(eventInfoArrayList.get(i).getStartTime()) < 0
+                    && newEvent.getEndTime().compareTo(eventInfoArrayList.get(i).getStartTime()) > 0)
+                //Another event would start as this event is happening
+                conflictEvents.add(df.format(eventInfoArrayList.get(i).getStartTime().toDate()) + " - " + df.format(eventInfoArrayList.get(i).getEndTime().toDate()));
+        }
+        Log.d("roomConflict", "Inside method: " + conflictEvents);
+        return conflictEvents;
+    }
+    
+    public ArrayList<String> checkAvailableTimeSlotsConflict(EventInfo newEvent, ProfessorInfo professor){
+        //loop thru everything because it's the only way. Like bruh.
+        //May use binary search later. But there are 2 cases so I'm not sure.
+
+        DateFormat df = new SimpleDateFormat("HH:mm");
+        ArrayList<String> conflictEvents = new ArrayList<>();
+        ArrayList<Timestamp> availableSlots = professor.getAvailableTimeSlots();
+        for (int i = 0; i < availableSlots.size(); i++){
+            Timestamp startTime = availableSlots.get(i);
+            Timestamp endTime = new Timestamp(startTime.getSeconds()+1800,0);
+            //Conflict cases
+            if (newEvent.getStartTime().compareTo(startTime) > 0
+                    && newEvent.getStartTime().compareTo(endTime) < 0)
+                //Event start as another is happening
+                conflictEvents.add(df.format(startTime.toDate()) + " - " +  df.format(endTime.toDate()));
+            if (newEvent.getStartTime().compareTo(startTime) < 0
+                    && newEvent.getEndTime().compareTo(startTime) > 0)
+                //Another event would start as this event is happening
+                conflictEvents.add(df.format(startTime.toDate()) + " - " + df.format(endTime.toDate()));
+        }
+        return conflictEvents;
+    }
+    public void openDialog (String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(RoomBookingActivity.this);
+
+        // Specify the alert dialog title
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+        // Set the positive button
+        builder.setPositiveButton("OK",null);
+
+        // Create the alert dialog
+        AlertDialog dialog = builder.create();
+
+        // Finally, display the alert dialog
+        dialog.show();
     }
 }
