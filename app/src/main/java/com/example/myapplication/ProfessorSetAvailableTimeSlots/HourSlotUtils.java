@@ -3,6 +3,7 @@ package com.example.myapplication.ProfessorSetAvailableTimeSlots;
 
 import com.google.firebase.Timestamp;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -39,7 +40,7 @@ public class HourSlotUtils {
 
     public static void clearMySchedule() {
         ZoneOffset zone = ZoneOffset.of("+07:00");
-        profAvailableSlots.removeIf(hour -> hour.compareTo(new Timestamp(LocalDate.now().atStartOfDay().toEpochSecond(zone), 0)) < 0);
+        profAvailableSlots.removeIf(hour -> hour.compareTo(Timestamp.now()) < 0);
     }
     public static HashMap<String, ArrayList<Timestamp>> timestampArrayListToHashMap(ArrayList<Timestamp> timestampArrayList){
         HashMap<String, ArrayList<Timestamp>> timeStampHashMap = new HashMap<String, ArrayList<Timestamp>>();
