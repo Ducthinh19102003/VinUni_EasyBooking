@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import static com.example.myapplication.BookingProcess.SelectDate.evlst;
+import static com.example.myapplication.EventInfo.checkConflict;
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils.daysInWeekArray;
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.CalendarUtils.monthYearFromDate;
 import static com.example.myapplication.ProfessorSetAvailableTimeSlots.HourSlotUtils.defaultHours;
@@ -121,7 +123,9 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         Log.d("HourSlotClicked", hour.toString());
         if (HourSlotUtils.profAvailableSlots.contains(hour))
             HourSlotUtils.profAvailableSlots.remove(hour);
-        else HourSlotUtils.profAvailableSlots.add(hour);
+        else {
+            if (!checkConflict(hour, evlst, getApplicationContext())) HourSlotUtils.profAvailableSlots.add(hour);
+        }
         daysWithAvailableTimeSlots = new ArrayList<>();
         for (Timestamp timeslot : profAvailableSlots) daysWithAvailableTimeSlots.add((new SimpleDateFormat("dd/MM/yyyy")).format(timeslot.toDate()));
         setWeekView();
