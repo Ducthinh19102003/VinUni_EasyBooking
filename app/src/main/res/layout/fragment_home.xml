@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Home.HomeFragment">
+    tools:context=".Fragments.Home.HomeFragment"
+    android:background="@drawable/home">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appointmentsID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="60dp"
+        android:paddingBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingTop="58dp"
-        android:paddingBottom="60dp"
-        app:layout_constraintVertical_bias="0.193" />
+        app:layout_constraintVertical_bias="0.194" />
 
     <TextView
         android:id="@+id/notiID"

@@ -94,6 +94,7 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        roomEvents = new ArrayList<>();
 
         setStartTimeBtn = findViewById(R.id.startTimeID);
         setEndTimeBtn = findViewById(R.id.endTimeID);
@@ -108,7 +109,6 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
         meetingNote = findViewById(R.id.NoteID);
 
         fstore = FirebaseFirestore.getInstance();
-        roomEvents = new ArrayList<>();
 
         makeAppointmentBtn = findViewById(R.id.AppointBtnID);
 
@@ -132,7 +132,7 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
                 datePickerDialog.setTitle("Set Date");
                 Log.d("min date", Calendar.HOUR_OF_DAY + "");
                 Calendar min_date_c = Calendar.getInstance();
-                if (min_date_c.get(Calendar.HOUR_OF_DAY) >= 21) {
+                if (min_date_c.get(Calendar.HOUR_OF_DAY) >= 20) {
                     min_date_c.add(Calendar.DATE, 1);
                 }
                 datePickerDialog.setMinDate(min_date_c);
@@ -203,6 +203,7 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
         makeAppointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                retrieveRoomData();
                 String title = meetingTitle.getText().toString().trim();
                 String participants = meetingParticipants.getText().toString().trim();
                 ArrayList<String> participantList = new ArrayList<>();
@@ -256,24 +257,15 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
                     Toast.makeText(RoomBookingActivity.this, "Start time must be sooner than end time!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                progressBar.setVisibility(View.VISIBLE);
 
-                retrieveRoomData();
+                progressBar.setVisibility(View.VISIBLE);
 
                 new_event = new EventInfo(host, participantList, startTimestamp, endTimestamp, note, title, selectedRoom);
                 ArrayList<String> roomConflict = checkRoomConflict(new_event, roomEvents);
 
+                Log.d("roomevents", roomEvents + "");
+
                 progressBar.setVisibility(View.GONE);
-                if (roomConflict.size() > 0) {
-                    Log.d("roomConflict", roomConflict + "");
-                    String message = "Choosen timeslot conflict with followings events: \n";
-                    for (int i = 0; i < roomConflict.size(); i++) {
-                        message += "Event " + (i + 1) + ": " + roomConflict.get(i) + "\n";
-                    }
-                    Log.d("Message", message + "");
-                    openDialog("Room has conlicted events!", message);
-                    return;
-                }
                 ArrayList<String> userConflict = checkTimeConflict(new_event, SelectDate.evlst);
                 if (userConflict.size() > 0) {
                     String message = "Choosen timeslot conflict with: \n";
@@ -284,8 +276,20 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
                     openDialog("You have conlicted events!", message);
                     return;
                 }
+                if (roomConflict.size() > 0) {
+                    Log.d("roomConflict", roomConflict + "");
+                    String message = "Choosen timeslot conflict with followings events: \n";
+                    for (int i = 0; i < roomConflict.size(); i++) {
+                        message += "Event " + (i + 1) + ": " + roomConflict.get(i) + "\n";
+                    }
+                    Log.d("Message", message + "");
+                    openDialog("Room has conlicted events!", message);
+                    roomEvents = new ArrayList<>();
+                    return;
+                }
                 if (Login.portal == 2) {
                     ArrayList<String> slotConflict = checkAvailableTimeSlotsConflict(new_event, currentProfessor);
+                    Log.d("Slot conflict", slotConflict + "");
                     if (slotConflict.size() > 0) {
                         String message = "Choosen timeslot conflict with followings timeslot for office hour: \n";
                         for (int i = 0; i < slotConflict.size(); i++) {
@@ -347,9 +351,11 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
 
         Date chosenDate = calendar.getTime();
 
-
         if (year == Calendar.getInstance().get(Calendar.YEAR) && monthOfYear == Calendar.getInstance().get(Calendar.MONTH) && dayOfMonth == Calendar.getInstance().get(Calendar.DAY_OF_MONTH))
             isToday = true;
+        else {
+            isToday = false;
+        }
         Log.d("RoomBooking", isToday + "");
 
 
@@ -393,6 +399,7 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
                                 } else {
                                     Log.d("Login", "event is " + event);
                                     roomEvents.add(event);
+
                                 }
                             }
                             Collections.sort(roomEvents);
@@ -457,6 +464,7 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
         //May use binary search later. But there are 2 cases so I'm not sure.
 
         DateFormat df = new SimpleDateFormat("HH:mm");
+        Log.d("eventinfo", eventInfoArrayList + "");
         ArrayList<String> conflictEvents = new ArrayList<>();
         for (int i = 0; i < eventInfoArrayList.size(); i++){
             //Conflict cases

@@ -6,10 +6,13 @@
     android:layout_height="wrap_content"
     android:id="@+id/eventsDaySlot">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#7EC3FA"
+        app:strokeWidth="5dp"
+        app:strokeColor="#C3C3C3"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="#F7F8F8"
         app:cardElevation="8dp"
         android:layout_margin="12dp">
         <LinearLayout
@@ -22,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="12sp"
-                android:background="#FFFFFF"
+                android:background="#03A9F4"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="italic"
                 android:textAlignment="center"
@@ -34,5 +38,5 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
