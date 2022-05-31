@@ -234,6 +234,7 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
                         students.add(str);
                     } else check.add(str);
                 }
+                Log.d("debug", studentList.toString());
                 if (check.size() > 0) {
                     Toast.makeText(RoomBookingActivity.this, "Unavailable record(s): " + check, Toast.LENGTH_SHORT).show();
                     return;
@@ -333,7 +334,17 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        calendar.set(year, monthOfYear, dayOfMonth, 0, 0, 0);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, monthOfYear);
+        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        if (startTimestamp != null) {
+            startTimestamp = new Timestamp(calendar.getTime());
+        }
+        if (endTimestamp != null) {
+            endTimestamp = new Timestamp(calendar.getTime());
+        }
+
         Date chosenDate = calendar.getTime();
 
 
@@ -354,7 +365,7 @@ public class RoomBookingActivity extends AppCompatActivity implements DatePicker
     public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
         String getMinute = minute < 10 ? "0" + minute : minute + "";
 
-        calendar.set(Calendar.HOUR, hourOfDay);
+        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, second);
 
