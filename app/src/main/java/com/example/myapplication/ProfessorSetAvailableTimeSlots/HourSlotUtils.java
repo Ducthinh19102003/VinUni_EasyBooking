@@ -38,6 +38,7 @@ public class HourSlotUtils {
         return defaultHours;
     }
 
+
     public static void clearMySchedule() {
         ZoneOffset zone = ZoneOffset.of("+07:00");
         profAvailableSlots.removeIf(hour -> hour.compareTo(Timestamp.now()) < 0);
