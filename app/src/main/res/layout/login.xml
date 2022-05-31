@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".Login"
+    android:background="@drawable/login">
 
     <EditText
         android:id="@+id/profPassword"
@@ -19,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.455" />
+        app:layout_constraintVertical_bias="0.477" />
 
     <EditText
         android:id="@+id/email"
@@ -45,24 +46,26 @@
         app:layout_constraintEnd_toEndOf="@+id/profPassword"
         app:layout_constraintStart_toStartOf="@+id/profPassword"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.591" />
+        app:layout_constraintVertical_bias="0.634" />
 
     <TextView
         android:id="@+id/LoginText"
-        android:layout_width="152dp"
-        android:layout_height="44dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="174dp"
         android:layout_marginEnd="179dp"
         android:fontFamily="monospace"
         android:text="Login"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.144" />
+        app:layout_constraintVertical_bias="0.096" />
 
     <TextView
         android:id="@+id/createAccount"

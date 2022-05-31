@@ -19,7 +19,7 @@
     <SearchView
         android:layout_width="370dp"
         android:layout_height="45dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/prof_list2"
         app:layout_constraintEnd_toEndOf="@+id/prof_list2"
         app:layout_constraintHorizontal_bias="0.571"

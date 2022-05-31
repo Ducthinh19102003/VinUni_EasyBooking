@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterProfessor">
+    tools:context=".RegisterProfessor"
+    android:background="@drawable/login">
 
     <EditText
         android:id="@+id/profEmail"
@@ -85,8 +86,10 @@
         android:layout_marginBottom="50dp"
         android:fontFamily="monospace"
         android:text="Register"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/profEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"

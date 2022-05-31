@@ -55,7 +55,6 @@ public class Login extends AppCompatActivity {
     public static ArrayList<String> studentList;
     public static ArrayList<String> professorList;
 
-
     ProgressBar progressBar;
 
     @Override

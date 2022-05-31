@@ -75,13 +75,6 @@ public class AccountFragment extends Fragment {
             fullName.setText(Login.currentStudent.getName());
             email.setText(Login.currentStudent.getEmail());
             info.setText(Login.currentStudent.getID());
-            // Reference to pro5 image file in Cloud Storage
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference().
-                    child("studentProfilePics/" + Login.currentStudent.getID() + ".jpg");
-            
-            Glide.with(this /* context */)
-                    .load(storageReference)
-                    .into(image);
         }
         else if (Login.portal == 2) {
             fullName.setText(Login.currentProfessor.getName());

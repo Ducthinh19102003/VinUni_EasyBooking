@@ -4,13 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/launcher"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="120dp"
+        android:layout_height="133dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/studentID"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="125dp"
+        android:layout_height="131dp"
+        android:layout_marginStart="80dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/profID"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/studentID"
-        android:layout_width="203dp"
-        android:layout_height="65dp"
+        android:layout_width="155dp"
+        android:layout_height="70dp"
         android:background="@drawable/btn_bg"
         android:fontFamily="@font/amaranth_bold"
         android:text="Student"
@@ -19,16 +42,16 @@
         android:textStyle="normal"
         app:iconTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.429" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <Button
         android:id="@+id/profID"
-        android:layout_width="203dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="155dp"
+        android:layout_height="70dp"
         android:background="@drawable/btn_bg"
         android:fontFamily="@font/amaranth_bold"
         android:text="PROFESSOR"
@@ -38,28 +61,35 @@
         android:textStyle="normal"
         app:iconTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/studentID"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/studentID"
-        app:layout_constraintTop_toBottomOf="@+id/studentID"
-        app:layout_constraintVertical_bias="0.229" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.686"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="244dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:text="VinUni EasyBooking"
+        android:lineSpacingExtra="10sp"
+        android:text="VinUni     EasyBooking"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#2196F3"
-        android:textSize="32sp"
+        android:textColor="#7B7D80"
+        android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/studentID"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="205dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,8 +51,6 @@ public class RegisterProfessor extends AppCompatActivity {
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 // getting text from our edittext fields.
                 String email = professorEmail.getText().toString().trim();
                 String password = professorPassword.getText().toString();

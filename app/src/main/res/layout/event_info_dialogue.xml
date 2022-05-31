@@ -43,24 +43,28 @@
             android:src="@drawable/image1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.01" />
+            app:layout_constraintVertical_bias="0.037" />
 
         <TextView
             android:id="@+id/meeting_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/meeting_img"
+            android:paddingLeft="10dp"
+            android:paddingBottom="5dp"
             android:text="Name"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/meeting_time"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintHorizontal_bias="0.925"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meeting_img"
+            app:layout_constraintVertical_bias="0.393"
             app:layout_constraintWidth_percent="0.9" />
 
         <ImageView
@@ -79,7 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/meeting_name"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
             android:layout_marginBottom="188dp"
             android:layout_toEndOf="@+id/meeting_img"
             android:text="9:00 - 9:15"
@@ -91,8 +96,8 @@
             app:layout_constraintWidth_percent="0.9" />
 
         <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
 
             android:src="@drawable/ic_clock"
             app:layout_constraintBottom_toBottomOf="@+id/meeting_time"
@@ -106,8 +111,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/meeting_time"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_toEndOf="@+id/meeting_img"
             android:text="Room A105"
             android:textSize="15sp"
@@ -119,8 +125,8 @@
             app:layout_constraintWidth_percent="0.9" />
 
         <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
 
             android:src="@drawable/ic_location"
             app:layout_constraintBottom_toBottomOf="@+id/meeting_loc"
@@ -134,15 +140,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/meeting_time"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/meeting_img"
+            android:lineSpacingExtra="3sp"
+            android:paddingLeft="10dp"
             android:text="Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut quam nec nisl vehicula ornare nec vitae est. Etiam porttitor suscipit lacus, eu gravida leo consequat ornare. Aliquam finibus lacus mi. "
             android:textSize="15sp"
-            android:paddingTop="10dp"
             app:layout_constraintEnd_toEndOf="@+id/meeting_time"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/meeting_time"
             app:layout_constraintTop_toBottomOf="@+id/meeting_time"
-            app:layout_constraintVertical_bias="0.045"
             app:layout_constraintWidth_percent="0.9" />
 
         <ImageView
@@ -161,15 +168,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/meeting_time"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/meeting_img"
+            android:lineSpacingExtra="3sp"
+            android:paddingLeft="10dp"
             android:text="Note: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut quam nec nisl vehicula ornare nec vitae est. Etiam porttitor suscipit lacus, eu gravida leo consequat ornare. Aliquam finibus lacus mi. "
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@+id/meeting_time"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/meeting_time"
             app:layout_constraintTop_toBottomOf="@+id/meeting_note"
-            app:layout_constraintVertical_bias="0.045"
             app:layout_constraintWidth_percent="0.9" />
 
         <ImageView

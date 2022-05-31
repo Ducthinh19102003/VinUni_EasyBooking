@@ -59,9 +59,10 @@
             <EditText
                 android:id="@+id/editName"
                 android:layout_width="253dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="Name"
+                android:focusable="false"
                 android:inputType="text"
                 android:minHeight="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -86,8 +87,9 @@
             <EditText
                 android:id="@+id/editEmail"
                 android:layout_width="253dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:ems="10"
+                android:focusable="false"
                 android:hint="Email"
                 android:inputType="text"
                 android:minHeight="20dp"
@@ -96,8 +98,7 @@
                 app:layout_constraintHorizontal_bias="0.216"
                 app:layout_constraintStart_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toTopOf="@+id/imageView3"
-                app:layout_constraintVertical_bias="0.5"
-                android:focusable="false" />
+                app:layout_constraintVertical_bias="0.5" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -115,8 +116,9 @@
             <EditText
                 android:id="@+id/editOther"
                 android:layout_width="253dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:ems="10"
+                android:focusable="false"
                 android:hint="studentID"
                 android:inputType="text"
                 android:minHeight="20dp"
@@ -125,8 +127,7 @@
                 app:layout_constraintHorizontal_bias="0.216"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="@+id/imageView4"
-                app:layout_constraintVertical_bias="0.5"
-                android:focusable="false" />
+                app:layout_constraintVertical_bias="0.5" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
