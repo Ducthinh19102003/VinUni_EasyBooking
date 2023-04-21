@@ -7,3 +7,7 @@ This is a term project for the Object-Oriented Programming course for the first 
 2. Nguyen Canh Huy
 3. Nguyen Mau Hoang Hiep
 4. Dao Chi Tuong
+
+## Basic functionalities:
+1. Signup/Login: Database via Firebase
+2. 
